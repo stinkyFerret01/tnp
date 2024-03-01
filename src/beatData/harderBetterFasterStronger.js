@@ -327,16 +327,7 @@ const beatRule = [
   },
   {
     beat: 77,
-    goodWords: [
-      "Work it",
-      "Make it",
-      "Do it",
-      "Makes us",
-      "Harder",
-      "Better",
-      "Faster",
-      "Stronger",
-    ],
+    goodWords: null,
   },
   {
     beat: 78,
@@ -352,16 +343,7 @@ const beatRule = [
   },
   {
     beat: 81,
-    goodWords: [
-      "Work it",
-      "Make it",
-      "Do it",
-      "Makes us",
-      "Harder",
-      "Better",
-      "Faster",
-      "Stronger",
-    ],
+    goodWords: null,
   },
   {
     beat: 82,
@@ -377,16 +359,7 @@ const beatRule = [
   },
   {
     beat: 85,
-    goodWords: [
-      "Work it",
-      "Make it",
-      "Do it",
-      "Makes us",
-      "Harder",
-      "Better",
-      "Faster",
-      "Stronger",
-    ],
+    goodWords: null,
   },
   {
     beat: 86,
@@ -402,16 +375,7 @@ const beatRule = [
   },
   {
     beat: 89,
-    goodWords: [
-      "Work it",
-      "Make it",
-      "Do it",
-      "Makes us",
-      "Harder",
-      "Better",
-      "Faster",
-      "Stronger",
-    ],
+    goodWords: null,
   },
   {
     beat: 90,
@@ -427,16 +391,7 @@ const beatRule = [
   },
   {
     beat: 93,
-    goodWords: [
-      "Work it",
-      "Make it",
-      "Do it",
-      "Makes us",
-      "Harder",
-      "Better",
-      "Faster",
-      "Stronger",
-    ],
+    goodWords: null,
   },
   {
     beat: 94,
@@ -452,16 +407,7 @@ const beatRule = [
   },
   {
     beat: 97,
-    goodWords: [
-      "Work it",
-      "Make it",
-      "Do it",
-      "Makes us",
-      "Harder",
-      "Better",
-      "Faster",
-      "Stronger",
-    ],
+    goodWords: null,
   },
   {
     beat: 98,
@@ -477,16 +423,7 @@ const beatRule = [
   },
   {
     beat: 101,
-    goodWords: [
-      "Work it",
-      "Make it",
-      "Do it",
-      "Makes us",
-      "Harder",
-      "Better",
-      "Faster",
-      "Stronger",
-    ],
+    goodWords: null,
   },
   {
     beat: 102,
@@ -502,16 +439,7 @@ const beatRule = [
   },
   {
     beat: 105,
-    goodWords: [
-      "Work it",
-      "Make it",
-      "Do it",
-      "Makes us",
-      "Harder",
-      "Better",
-      "Faster",
-      "Stronger",
-    ],
+    goodWords: null,
   },
   {
     beat: 106,
@@ -663,16 +591,7 @@ const beatRule = [
   },
   {
     beat: 143,
-    goodWords: [
-      "More than",
-      "Hour",
-      "Never",
-      "",
-      "Ever",
-      "After",
-      "Work is",
-      "Over",
-    ],
+    goodWords: null,
   },
   {
     beat: 144,
@@ -688,16 +607,7 @@ const beatRule = [
   },
   {
     beat: 147,
-    goodWords: [
-      "More than",
-      "Hour",
-      "Never",
-      "",
-      "Ever",
-      "After",
-      "Work is",
-      "Over",
-    ],
+    goodWords: null,
   },
   {
     beat: 148,
@@ -713,16 +623,7 @@ const beatRule = [
   },
   {
     beat: 151,
-    goodWords: [
-      "More than",
-      "Hour",
-      "Never",
-      "",
-      "Ever",
-      "After",
-      "Work is",
-      "Over",
-    ],
+    goodWords: null,
   },
   {
     beat: 152,
@@ -738,16 +639,7 @@ const beatRule = [
   },
   {
     beat: 155,
-    goodWords: [
-      "More than",
-      "Hour",
-      "Never",
-      "",
-      "Ever",
-      "After",
-      "Work is",
-      "Over",
-    ],
+    goodWords: null,
   },
   {
     beat: 156,
@@ -763,16 +655,7 @@ const beatRule = [
   },
   {
     beat: 159,
-    goodWords: [
-      "More than",
-      "Hour",
-      "Never",
-      "",
-      "Ever",
-      "After",
-      "Work is",
-      "Over",
-    ],
+    goodWords: null,
   },
   {
     beat: 160,
@@ -788,16 +671,7 @@ const beatRule = [
   },
   {
     beat: 163,
-    goodWords: [
-      "More than",
-      "Hour",
-      "Never",
-      "",
-      "Ever",
-      "After",
-      "Work is",
-      "Over",
-    ],
+    goodWords: null,
   },
   {
     beat: 164,
@@ -845,24 +719,15 @@ const beatRule = [
   },
   {
     beat: 175,
-    goodWords: ["Better", "Faster", "Hour", "Never"],
+    goodWords: null,
   },
   {
     beat: 176,
-    goodWords: [
-      "Make it",
-      "Do it",
-      "Harder",
-      "Stronger",
-      "More than",
-      "",
-      "After",
-      "Work is",
-    ],
+    goodWords: null,
   },
   {
     beat: 177,
-    goodWords: ["Work it", "Makes us", "Ever", "Over"],
+    goodWords: null,
   },
   {
     beat: 178,
