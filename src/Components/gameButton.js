@@ -52,6 +52,7 @@ const GameButton = ({ word, goodWords }) => {
       }
     };
     styleDefiner();
+    // eslint-disable-next-line
   }, [goodWords]);
 
   return (

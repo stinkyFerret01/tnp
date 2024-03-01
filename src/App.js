@@ -33,6 +33,7 @@ function App() {
     if (playing === false) {
       if (currentTime) setPlaying(true);
     }
+    // eslint-disable-next-line
   }, [currentTime]);
 
   //---- BEATS ----
@@ -75,6 +76,7 @@ function App() {
       console.log("beat ---:", beat);
       console.log("beatDif :", beatDif);
     }
+    // eslint-disable-next-line
   }, [beatDif]);
 
   return (
