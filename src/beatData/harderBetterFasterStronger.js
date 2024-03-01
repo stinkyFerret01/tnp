@@ -17,26 +17,26 @@
 // ]
 
 const beatRule = [
-  // {
-  //   beat: 0,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 1,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 2,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 3,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 4,
-  //   goodWords: null,
-  // },
+  {
+    beat: 0,
+    goodWords: null,
+  },
+  {
+    beat: 1,
+    goodWords: null,
+  },
+  {
+    beat: 2,
+    goodWords: null,
+  },
+  {
+    beat: 3,
+    goodWords: null,
+  },
+  {
+    beat: 4,
+    goodWords: null,
+  },
   {
     beat: 5,
     goodWords: null,
@@ -335,7 +335,7 @@ const beatRule = [
   },
   {
     beat: 79,
-    goodWords: ["Stronger"],
+    goodWords: null,
   },
   {
     beat: 80,
@@ -351,7 +351,7 @@ const beatRule = [
   },
   {
     beat: 83,
-    goodWords: ["Stronger"],
+    goodWords: null,
   },
   {
     beat: 84,
@@ -367,7 +367,7 @@ const beatRule = [
   },
   {
     beat: 87,
-    goodWords: ["Stronger"],
+    goodWords: null,
   },
   {
     beat: 88,
@@ -383,7 +383,7 @@ const beatRule = [
   },
   {
     beat: 91,
-    goodWords: ["Stronger"],
+    goodWords: null,
   },
   {
     beat: 92,

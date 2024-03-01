@@ -9,7 +9,6 @@ function App() {
   const audioRef = useRef(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [beat, setBeat] = useState(0);
-  // const [beatDif, setBeatDif] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [intervalIds, setIntervalIds] = useState([]);
   const [goodWords, setGoodWords] = useState(null);
@@ -28,11 +27,13 @@ function App() {
   };
 
   const handlePlayButtonClick = () => {
+    let timex = 2;
+    if (currentTime === 0) timex = 0;
     setPlaying(true);
     if (audioRef.current) {
       audioRef.current.play();
-      audioRef.current.currentTime = 0;
-      setBeat(11);
+      audioRef.current.currentTime = timex;
+      setBeat(5);
     }
   };
 
@@ -47,7 +48,7 @@ function App() {
   };
 
   const handleSkipButtonClick = () => {
-    timeDefiner(49.4, 403);
+    timeDefiner(49.5, 409);
     // if (audioRef.current) {
     //   audioRef.current.currentTime = 49.4;
     //   setBeat(5);
@@ -66,21 +67,13 @@ function App() {
   useEffect(() => {
     if (playing) {
       let ids = [];
-      let delay = 121;
-      // let tempo = 971;
-      let tempo = 1942;
+      let tempo = 121;
 
-      let length = Math.floor(tempo / delay);
-      for (let i = 0; i < length; i++) {
-        let modDelay = delay * i;
-        setTimeout(() => {
-          let beatIntervalId = setInterval(() => {
-            setBeat((prevBeat) => prevBeat + 1);
-          }, tempo);
+      let beatIntervalId = setInterval(() => {
+        setBeat((prevBeat) => prevBeat + 1);
+      }, tempo);
+      ids.push(beatIntervalId);
 
-          ids.push(beatIntervalId);
-        }, modDelay);
-      }
       setIntervalIds(ids);
     }
     return () => {
@@ -88,25 +81,6 @@ function App() {
     };
     // eslint-disable-next-line
   }, [playing]);
-
-  //---- BEATDIF (beat test purpose) ----
-  // useEffect(() => {
-  //   if (playing) {
-  //     const intervalId = setInterval(() => {
-  //       setBeatDif((prevBeatDif) => prevBeatDif + 1);
-  //     }, 121);
-
-  //     return () => clearInterval(intervalId);
-  //   }
-  // }, [playing]);
-
-  // useEffect(() => {
-  //   if (beat === 400 || beat === 800 || beat === 1200 || beat === 1600) {
-  //     console.log("beat ---:", beat);
-  //     console.log("beatDif :", beatDif);
-  //   }
-  //   // eslint-disable-next-line
-  // }, [beatDif]);
 
   //---- GOODWORDS SETTER ----
   useEffect(() => {
@@ -128,7 +102,7 @@ function App() {
         onTimeUpdate={handleTimeUpdate}
         width="10000"
         className="audioPlayer"
-        src="../Audio/HBFS.mp3"
+        src="../Audio/HBFSp02.mp3"
         type="audio/mp3"
         controls
         // muted="false"
@@ -139,7 +113,6 @@ function App() {
         <article>
           <p>Current Time: {currentTime}</p>
           <p>Beat ----: {beat}</p>
-          {/* <p>BeatDif : {beatDif}</p> */}
           <button
             style={
               currentTime > 5
@@ -156,7 +129,6 @@ function App() {
           <button
             onClick={() => {
               console.log("Beat :", beat);
-              // console.log("BeatDif :", beatDif);
             }}
           >
             test
