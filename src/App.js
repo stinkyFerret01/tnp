@@ -8,7 +8,7 @@ import ButtonList from "./Components/buttonList";
 function App() {
   const audioRef = useRef(null);
   const [currentTime, setCurrentTime] = useState(0);
-  const [beat, setBeat] = useState(5);
+  const [beat, setBeat] = useState(0);
   // const [beatDif, setBeatDif] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [intervalIds, setIntervalIds] = useState([]);
@@ -32,7 +32,7 @@ function App() {
     if (audioRef.current) {
       audioRef.current.play();
       audioRef.current.currentTime = 0;
-      setBeat(5);
+      setBeat(11);
     }
   };
 
@@ -40,7 +40,7 @@ function App() {
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
-      setBeat(5);
+      setBeat(0);
     }
     intervalIds.forEach((id) => clearInterval(id));
     setPlaying(false);
@@ -56,9 +56,9 @@ function App() {
 
   //---- BEATINITIALIZER ---
   useEffect(() => {
-    if (!playing) {
-      if (currentTime > 0) setPlaying(true);
-    }
+    // if (!playing) {
+    //   if (currentTime > 0) setPlaying(true);
+    // }
     // eslint-disable-next-line
   }, [currentTime]);
 
@@ -66,15 +66,20 @@ function App() {
   useEffect(() => {
     if (playing) {
       let ids = [];
-      for (let i = 0; i < 8; i++) {
-        let delay = 121 * i;
+      let delay = 121;
+      // let tempo = 971;
+      let tempo = 1942;
+
+      let length = Math.floor(tempo / delay);
+      for (let i = 0; i < length; i++) {
+        let modDelay = delay * i;
         setTimeout(() => {
           let beatIntervalId = setInterval(() => {
             setBeat((prevBeat) => prevBeat + 1);
-          }, 971);
+          }, tempo);
 
           ids.push(beatIntervalId);
-        }, delay);
+        }, modDelay);
       }
       setIntervalIds(ids);
     }
@@ -109,6 +114,9 @@ function App() {
       setGoodWords(beatRule[beat].goodWords);
     } else {
       setBeat(0);
+    }
+    if (beat === 2) {
+      timeDefiner(1, 17);
     }
   }, [beat]);
 

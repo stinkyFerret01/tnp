@@ -335,7 +335,7 @@ const beatRule = [
   },
   {
     beat: 79,
-    goodWords: null,
+    goodWords: ["Stronger"],
   },
   {
     beat: 80,
@@ -351,7 +351,7 @@ const beatRule = [
   },
   {
     beat: 83,
-    goodWords: null,
+    goodWords: ["Stronger"],
   },
   {
     beat: 84,
@@ -367,7 +367,7 @@ const beatRule = [
   },
   {
     beat: 87,
-    goodWords: null,
+    goodWords: ["Stronger"],
   },
   {
     beat: 88,
@@ -383,7 +383,7 @@ const beatRule = [
   },
   {
     beat: 91,
-    goodWords: null,
+    goodWords: ["Stronger"],
   },
   {
     beat: 92,
@@ -591,7 +591,7 @@ const beatRule = [
   },
   {
     beat: 143,
-    goodWords: null,
+    goodWords: ["Work it"],
   },
   {
     beat: 144,
@@ -599,7 +599,7 @@ const beatRule = [
   },
   {
     beat: 145,
-    goodWords: null,
+    goodWords: ["Make it"],
   },
   {
     beat: 146,
@@ -607,7 +607,7 @@ const beatRule = [
   },
   {
     beat: 147,
-    goodWords: null,
+    goodWords: ["Do it"],
   },
   {
     beat: 148,
@@ -615,7 +615,7 @@ const beatRule = [
   },
   {
     beat: 149,
-    goodWords: null,
+    goodWords: ["Makes us"],
   },
   {
     beat: 150,
@@ -623,7 +623,7 @@ const beatRule = [
   },
   {
     beat: 151,
-    goodWords: null,
+    goodWords: ["Harder"],
   },
   {
     beat: 152,
@@ -631,7 +631,7 @@ const beatRule = [
   },
   {
     beat: 153,
-    goodWords: null,
+    goodWords: ["Better"],
   },
   {
     beat: 154,
@@ -639,7 +639,7 @@ const beatRule = [
   },
   {
     beat: 155,
-    goodWords: null,
+    goodWords: ["Faster"],
   },
   {
     beat: 156,
@@ -647,7 +647,7 @@ const beatRule = [
   },
   {
     beat: 157,
-    goodWords: null,
+    goodWords: ["Stronger"],
   },
   {
     beat: 158,
@@ -655,7 +655,7 @@ const beatRule = [
   },
   {
     beat: 159,
-    goodWords: null,
+    goodWords: ["More than"],
   },
   {
     beat: 160,
@@ -663,7 +663,7 @@ const beatRule = [
   },
   {
     beat: 161,
-    goodWords: null,
+    goodWords: ["Hour"],
   },
   {
     beat: 162,
@@ -671,7 +671,7 @@ const beatRule = [
   },
   {
     beat: 163,
-    goodWords: null,
+    goodWords: ["Never"],
   },
   {
     beat: 164,
@@ -679,7 +679,7 @@ const beatRule = [
   },
   {
     beat: 165,
-    goodWords: null,
+    goodWords: [""],
   },
   {
     beat: 166,
@@ -687,7 +687,7 @@ const beatRule = [
   },
   {
     beat: 167,
-    goodWords: ["Harder", "Better", "Faster", "Stronger"],
+    goodWords: ["Ever"],
   },
   {
     beat: 168,
@@ -695,7 +695,7 @@ const beatRule = [
   },
   {
     beat: 169,
-    goodWords: ["Work it", "Make it", "Do it", "Makes us"],
+    goodWords: ["After"],
   },
   {
     beat: 170,
@@ -703,7 +703,7 @@ const beatRule = [
   },
   {
     beat: 171,
-    goodWords: ["Ever", "After", "Work is", "Over"],
+    goodWords: ["Work is"],
   },
   {
     beat: 172,
@@ -711,7 +711,7 @@ const beatRule = [
   },
   {
     beat: 173,
-    goodWords: ["More than", "Hour", "Never", ""],
+    goodWords: ["Over"],
   },
   {
     beat: 174,
