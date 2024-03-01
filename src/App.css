@@ -1,13 +1,10 @@
 @import "./reset.css";
+@import "./styles/buttonList.css";
+@import "./styles/gameButton.css";
+
 
 .App {
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   min-width: 100vh;
-}
-
-.buttonLight {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
 }

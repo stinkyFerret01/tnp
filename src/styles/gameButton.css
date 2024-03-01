@@ -1,0 +1,106 @@
+.game-button {
+  /* background-color: transparent; */
+  border-color: transparent;
+  width: 22vw;
+  height: 3rem;
+  /* border: solid 1px black; */
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.target-off {
+  visibility: hidden;
+  width: 2vw;
+  height: 1vh;
+}
+
+.target-start {
+  background-color: gold;
+  width: 2.3vw;
+  height: 0.8vh;
+  opacity: 0;
+  color: transparent;
+  animation: appear 0.97s;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(10);
+  }
+}
+
+.target-on {
+  background-color: lime;
+  width: 23vw;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vh; 
+  animation: bounce 0.3s ease;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.target-down {
+  background-color: purple;
+  width: 23vw;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vh; 
+  animation: explode 0.3s ease;
+}
+
+
+@keyframes explode {
+  0% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.target-lost {
+    background-color: red;
+    width: 23vw;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh; 
+    animation: disappear 0.3s ease;
+}
+
+@keyframes disappear {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+

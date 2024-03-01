@@ -1,0 +1,15 @@
+.button-list {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+    height: 18rem;
+    border: solid black 1rem
+}
+
+.buttonContainer {
+}
