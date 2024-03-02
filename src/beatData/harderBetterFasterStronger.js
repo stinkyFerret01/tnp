@@ -7151,7 +7151,7 @@ const beatRule = [
   },
   {
     beat: 1783,
-    goodWords: null,
+    goodWords: ["Make it"],
   },
   {
     beat: 1784,
@@ -7167,7 +7167,7 @@ const beatRule = [
   },
   {
     beat: 1787,
-    goodWords: null,
+    goodWords: ["Better"],
   },
   {
     beat: 1788,
@@ -7215,7 +7215,7 @@ const beatRule = [
   },
   {
     beat: 1799,
-    goodWords: null,
+    goodWords: ["Makes us"],
   },
   {
     beat: 1800,
@@ -7231,7 +7231,7 @@ const beatRule = [
   },
   {
     beat: 1803,
-    goodWords: null,
+    goodWords: ["Stronger"],
   },
   {
     beat: 1804,
@@ -7279,7 +7279,7 @@ const beatRule = [
   },
   {
     beat: 1815,
-    goodWords: null,
+    goodWords: ["Hour"],
   },
   {
     beat: 1816,
@@ -7295,7 +7295,7 @@ const beatRule = [
   },
   {
     beat: 1819,
-    goodWords: null,
+    goodWords: ["After"],
   },
   {
     beat: 1820,
@@ -7379,6 +7379,22 @@ const beatRule = [
   },
   {
     beat: 1840,
+    goodWords: null,
+  },
+  {
+    beat: 1841,
+    goodWords: null,
+  },
+  {
+    beat: 1842,
+    goodWords: null,
+  },
+  {
+    beat: 1843,
+    goodWords: null,
+  },
+  {
+    beat: 1844,
     goodWords: null,
   },
 ];

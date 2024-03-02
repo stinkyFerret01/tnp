@@ -37,7 +37,7 @@
 }
 
 .target-on {
-  background-color: lime;
+  background-color: purple;
   width: 23vw;
   height: 8vh;
   display: flex;
@@ -60,7 +60,7 @@
 }
 
 .target-down {
-  background-color: purple;
+  background-color: lime;
   width: 23vw;
   height: 8vh;
   display: flex;

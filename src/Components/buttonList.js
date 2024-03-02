@@ -1,4 +1,6 @@
 // ButtonList est la listes des bouttons de jeux disponobles
+import { useState, useEffect } from "react";
+import beatRule from "../beatData/harderBetterFasterStronger";
 import GameButton from "./gameButton";
 
 const words = [
@@ -20,7 +22,18 @@ const words = [
   { label: "Over", set: 4 },
 ];
 
-const ButtonList = ({ goodWords }) => {
+const ButtonList = ({ beat, setBeat }) => {
+  const [goodWords, setGoodWords] = useState(null);
+
+  //---- GOODWORDS SETTER ----
+  useEffect(() => {
+    if (beat <= 1850) {
+      setGoodWords(beatRule[beat].goodWords);
+    } else {
+      setBeat(0);
+    }
+  }, [beat, setBeat]);
+
   return (
     <div className="button-list">
       {words.map((word, index) => {
