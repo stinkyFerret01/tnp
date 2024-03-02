@@ -7381,46 +7381,6 @@ const beatRule = [
     beat: 1840,
     goodWords: null,
   },
-  {
-    beat: 1841,
-    goodWords: null,
-  },
-  {
-    beat: 1842,
-    goodWords: null,
-  },
-  {
-    beat: 1843,
-    goodWords: null,
-  },
-  {
-    beat: 1844,
-    goodWords: null,
-  },
-  {
-    beat: 1845,
-    goodWords: null,
-  },
-  {
-    beat: 1846,
-    goodWords: null,
-  },
-  {
-    beat: 1847,
-    goodWords: null,
-  },
-  {
-    beat: 1848,
-    goodWords: null,
-  },
-  {
-    beat: 1849,
-    goodWords: null,
-  },
-  {
-    beat: 1850,
-    goodWords: null,
-  },
 ];
 
 export default beatRule;
