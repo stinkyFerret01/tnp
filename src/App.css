@@ -1,6 +1,7 @@
 @import "./reset.css";
 @import "./styles/gameButton.css";
 @import "./styles/buttonPanel.css";
+@import "./styles/ScoreStatus.css";
 
 
 .App {

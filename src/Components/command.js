@@ -1,4 +1,10 @@
-const Command = ({ beat, setPlaying, setAudioCommand }) => {
+const Command = ({
+  beat,
+  setPlaying,
+  setAudioCommand,
+  setScore,
+  setMissedShots,
+}) => {
   const handlePlayButtonClick = () => {
     setAudioCommand({ timex: 1, beatx: 10, actionx: "play" });
     setTimeout(() => {
@@ -15,6 +21,8 @@ const Command = ({ beat, setPlaying, setAudioCommand }) => {
   };
 
   const handleStopButtonClick = () => {
+    setScore(0);
+    setMissedShots([]);
     setPlaying(false);
     setAudioCommand({ timex: 0, beatx: 0, actionx: "pause" });
   };

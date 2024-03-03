@@ -35,14 +35,19 @@ const GameButton2 = ({
       }, 242);
       console.log("OK");
     } else if (targetBlocker) {
-      setMissedShots((prevMissedShots) => prevMissedShots + 1);
+      if (missedShots.length < 10) {
+        setMissedShots((prevMissedShots) => [...prevMissedShots, Date.now()]);
+      }
       setButtonStyle("button2miss");
       setTimeout(() => {
         setButtonStyle("button2off");
       }, 150);
       console.log("BLOCK");
     } else {
-      setMissedShots((prevMissedShots) => prevMissedShots + 1);
+      console.log("miss");
+      if (missedShots.length < 10) {
+        setMissedShots((prevMissedShots) => [...prevMissedShots, Date.now()]);
+      }
       setButtonStyle("button2miss");
       setTimeout(() => {
         setButtonStyle("button2off");

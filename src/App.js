@@ -14,7 +14,7 @@ function App() {
   const [beat, setBeat] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [score, setScore] = useState(0);
-  const [missedShots, setMissedShots] = useState(0);
+  const [missedShots, setMissedShots] = useState([]);
 
   const [audioCommand, setAudioCommand] = useState({
     timex: 0,
@@ -24,6 +24,8 @@ function App() {
 
   return (
     <div className="App">
+      <ScoreStatus score={score}></ScoreStatus>
+      <MissedShotsStatus missedShots={missedShots}></MissedShotsStatus>
       <ButtonPanel
         beat={beat}
         setBeat={setBeat}
@@ -42,14 +44,14 @@ function App() {
         audioCommand={audioCommand}
         setAudioCommand={setAudioCommand}
       ></AudioNBeat>
-      <ScoreStatus score={score}></ScoreStatus>
-      <MissedShotsStatus missedShots={missedShots}></MissedShotsStatus>
-      <Control beat={beat} currentTime={currentTime}></Control>
       <Command
         beat={beat}
         setPlaying={setPlaying}
         setAudioCommand={setAudioCommand}
+        setScore={setScore}
+        setMissedShots={setMissedShots}
       ></Command>
+      <Control beat={beat} currentTime={currentTime}></Control>
     </div>
   );
 }

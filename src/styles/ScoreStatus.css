@@ -1,0 +1,22 @@
+.missed-shots-container {
+    background-color: transparent;
+    border: solid lime 0.4vh;
+    width: 27.6vw;
+    height: 3vh;
+    display: flex;
+}
+
+.missed-shot {
+    background-color: red;
+    margin: 0.5vh;
+    height: 2vh;
+    min-width: 2vh;
+    box-sizing: border-box;
+}
+
+.score-container {
+    background-color: transparent;
+    border: solid lime 0.4vh;
+    width: 27.6vw;
+    height: 3vh;
+}
