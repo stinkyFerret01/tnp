@@ -47,8 +47,8 @@ const AudioNBeat = ({
         return () => {
           clearInterval(beatIntervalId);
         };
-        // }, 1367);
-      }, 880);
+      }, 2000);
+      // }, 880);
     }
 
     // eslint-disable-next-line

@@ -7,7 +7,7 @@ const Command = ({
   setMissedShots,
 }) => {
   const handlePlayButtonClick = () => {
-    setBeat(11);
+    setBeat(20);
     setTimeout(() => {
       setPlaying(true);
     }, 64);
