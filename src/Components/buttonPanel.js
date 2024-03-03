@@ -2,28 +2,28 @@ import React, { useState, useEffect } from "react";
 
 import beatRule from "../beatData/harderBetterFasterStronger";
 
-import GameButton2 from "./gameButton2";
+import GameButton from "./gameButton";
 
 const words = [
-  { label: "Work it", set: 1 },
-  { label: "Make it", set: 1 },
-  { label: "Do it", set: 1 },
-  { label: "Makes us", set: 1 },
-  { label: "Harder", set: 2 },
-  { label: "Better", set: 2 },
-  { label: "Faster", set: 2 },
-  { label: "Stronger", set: 2 },
-  { label: "More than", set: 3 },
-  { label: "Hour", set: 3 },
-  { label: "Never", set: 3 },
-  { label: "", set: 3 },
-  { label: "Ever", set: 4 },
-  { label: "After", set: 4 },
-  { label: "Work is", set: 4 },
-  { label: "Over", set: 4 },
+  { label: "Work it" },
+  { label: "Make it" },
+  { label: "Do it" },
+  { label: "Makes us" },
+  { label: "Harder" },
+  { label: "Better" },
+  { label: "Faster" },
+  { label: "Stronger" },
+  { label: "More than" },
+  { label: "Hour" },
+  { label: "Never" },
+  { label: "" },
+  { label: "Ever" },
+  { label: "After" },
+  { label: "Work is" },
+  { label: "Over" },
 ];
 
-const BoutonGenerateur = ({ beat, setBeat }) => {
+const ButtonPanel = ({ beat, setBeat }) => {
   const [beatWawes, setBeatWawes] = useState([]);
   const [goodWords, setGoodWords] = useState(null);
 
@@ -61,7 +61,7 @@ const BoutonGenerateur = ({ beat, setBeat }) => {
         {words.map((gridOpt) => {
           return (
             <div key={gridOpt.label} className="grid-option">
-              <GameButton2
+              <GameButton
                 key={gridOpt.label}
                 active={
                   beatRule[beat].goodWords &&
@@ -71,7 +71,7 @@ const BoutonGenerateur = ({ beat, setBeat }) => {
                 }
                 word={gridOpt.label}
                 goodWords={goodWords}
-              ></GameButton2>
+              ></GameButton>
             </div>
           );
         })}
@@ -80,8 +80,17 @@ const BoutonGenerateur = ({ beat, setBeat }) => {
         <div key={btn.id} className="beat-grid">
           {words.map((gridOpt) => {
             return (
-              <div key={gridOpt.label} className="beat-grid-option">
-                {btn.word && gridOpt.label === btn.word && <div></div>}
+              <div
+                key={gridOpt.label}
+                className={
+                  btn.word && gridOpt.label === btn.word
+                    ? "beat-grid-option-active"
+                    : "beat-grid-option-off"
+                }
+              >
+                {/* {btn.word && gridOpt.label === btn.word && (
+                  <div className="targets">YOYOYO</div>
+                )} */}
               </div>
             );
           })}
@@ -91,4 +100,4 @@ const BoutonGenerateur = ({ beat, setBeat }) => {
   );
 };
 
-export default BoutonGenerateur;
+export default ButtonPanel;

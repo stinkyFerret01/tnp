@@ -19,29 +19,10 @@ const AudioNBeat = ({
     }
   };
 
-  //---- COMMANDS EXECUTER ----
+  //---- MUSIC and BEATS POSITION SETTERS ----
   useEffect(() => {
     audioRef.current.currentTime = audioCommand.timex;
     setBeat(audioCommand.beatx);
-    // const timeDefiner = (timex, beatx, actionx) => {
-    //   if (audioRef.current) {
-    //     setTimeout(() => {
-    //       audioRef.current.currentTime = timex;
-    //       setBeat(beatx);
-    //       if (actionx === "play") {
-    //         audioRef.current.play();
-    //       }
-    //     }, 200);
-    //     if (actionx === "play") {
-    //       audioRef.current.play();
-    //     } else if (actionx === "pause") {
-    //       intervalIds.forEach((id) => clearInterval(id));
-    //     }
-    //   }
-    // };
-
-    // timeDefiner(audioCommand.timex, audioCommand.beatx, audioCommand.actionx);
-
     // eslint-disable-next-line
   }, [audioCommand]);
 

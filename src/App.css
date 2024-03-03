@@ -1,10 +1,11 @@
 @import "./reset.css";
 @import "./styles/gameButton.css";
-@import "./styles/buttonGenerator.css";
+@import "./styles/buttonPanel.css";
 
 
 .App {
   background-color: #282c34;
+  overflow: hidden;
   min-height: 100vh;
   min-width: 100vw;
   max-height: 100vh;

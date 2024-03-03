@@ -43,8 +43,8 @@ const GameButton2 = ({ active, word }) => {
 
   useEffect(() => {
     if (active) {
-      let delayApproach = 1880;
-      let delayActive = 300;
+      let delayApproach = 1780;
+      let delayActive = 400;
       //   const buttonStartTimeOut = setTimeout(() => {
       setTimeout(() => {
         setButtonStyle("button2on");

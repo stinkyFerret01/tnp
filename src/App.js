@@ -5,7 +5,7 @@ import Control from "./Components/control";
 import Command from "./Components/command";
 import "./App.css";
 
-import BoutonGenerateur from "./Components/buttonGenerator";
+import ButtonPanel from "./Components/buttonPanel";
 
 function App() {
   const [currentTime, setCurrentTime] = useState(0);
@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <BoutonGenerateur beat={beat} setBeat={setBeat}></BoutonGenerateur>
+      <ButtonPanel beat={beat} setBeat={setBeat}></ButtonPanel>
       <AudioNBeat
         playing={playing}
         setPlaying={setPlaying}
