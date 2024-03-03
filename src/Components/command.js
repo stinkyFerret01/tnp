@@ -6,7 +6,7 @@ const Command = ({
   setMissedShots,
 }) => {
   const handlePlayButtonClick = () => {
-    setAudioCommand({ timex: 0, beatx: 2, actionx: "play" });
+    setAudioCommand({ timex: 0, beatx: 2 });
     setTimeout(() => {
       setPlaying(true);
     }, 200);
@@ -14,7 +14,7 @@ const Command = ({
 
   const handleSkipButtonClick = () => {
     setPlaying(false);
-    setAudioCommand({ timex: 48, beatx: 397, actionx: "play" });
+    setAudioCommand({ timex: 48, beatx: 401 });
     setTimeout(() => {
       setPlaying(true);
     }, 200);
@@ -24,7 +24,7 @@ const Command = ({
     setScore(0);
     setMissedShots([]);
     setPlaying(false);
-    setAudioCommand({ timex: 0, beatx: 0, actionx: "pause" });
+    setAudioCommand({ timex: 0, beatx: 0 });
   };
   return (
     <article>

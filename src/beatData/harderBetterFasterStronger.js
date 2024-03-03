@@ -41,14 +41,14 @@ const beatRule = [
   //   beat: 5,
   //   goodWords: null,
   // },
-  // {
-  //   beat: 6,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 7,
-  //   goodWords: null,
-  // },
+  {
+    beat: 6,
+    goodWords: null,
+  },
+  {
+    beat: 7,
+    goodWords: null,
+  },
   {
     beat: 8,
     goodWords: null,

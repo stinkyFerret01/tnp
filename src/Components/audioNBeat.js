@@ -29,6 +29,8 @@ const AudioNBeat = ({
   //---- MUSIC and BEATS INITIALIZERS ----
   useEffect(() => {
     if (playing) {
+      audioRef.current.play();
+      audioRef.current.pause();
       setTimeout(() => {
         audioRef.current.play();
 
@@ -44,7 +46,7 @@ const AudioNBeat = ({
         return () => {
           intervalIds.forEach((id) => clearInterval(id));
         };
-      }, 200);
+      }, 1000);
     } else {
       audioRef.current.pause();
 
