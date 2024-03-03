@@ -61,18 +61,25 @@ const AudioNBeat = ({
     if (playing) {
       audioRef.current.play();
     } else {
-      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      setCurrentTime(0);
+      setIntervalIds([]);
       intervalIds.forEach((id) => clearInterval(id));
+
+      audioRef.current.pause();
     }
 
     // eslint-disable-next-line
   }, [playing]);
 
   useEffect(() => {
-    // if (currentTime > 0 && Math.floor(currentTime * 10) <= 2) {
-    //   console.log(currentTime);
-    // }
-    if (currentTime > 0 && Math.floor(currentTime * 10) <= 2) {
+    if (
+      currentTime > 0 &&
+      Math.floor(currentTime * 10) <= 2 &&
+      Math.floor(currentTime * 100) > 1
+    ) {
+      console.log(currentTime);
+
       setTimeout(() => {
         let ids = [];
         let tempo = 121;
@@ -86,7 +93,7 @@ const AudioNBeat = ({
         return () => {
           intervalIds.forEach((id) => clearInterval(id));
         };
-      }, 1000);
+      }, 950);
     }
 
     // eslint-disable-next-line

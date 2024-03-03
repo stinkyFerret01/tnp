@@ -10,7 +10,7 @@ const Command = ({
     setBeat(11);
     setTimeout(() => {
       setPlaying(true);
-    }, 200);
+    }, 64);
   };
 
   const handleSkipButtonClick = () => {
@@ -25,7 +25,8 @@ const Command = ({
     setScore(0);
     setMissedShots([]);
     setPlaying(false);
-    setAudioCommand({ timex: 0, beatx: 0 });
+    setBeat(0);
+    // setAudioCommand({ timex: 0, beatx: 0 });
   };
   return (
     <article>
