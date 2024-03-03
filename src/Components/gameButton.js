@@ -2,7 +2,14 @@
 // il s'invoque avec une prop "word" qui défini sa valeur
 import { useEffect, useState } from "react";
 
-const GameButton2 = ({ active, word }) => {
+const GameButton2 = ({
+  active,
+  word,
+  score,
+  setScore,
+  missedShots,
+  setMissedShots,
+}) => {
   const [buttonStyle, setButtonStyle] = useState("button2off"); //---- V1 ----
   const [targetBlocker, setTargetBlocker] = useState(false);
   const [turnOffTimeoutId, setTurnOffTimeoutId] = useState(null);
@@ -20,6 +27,7 @@ const GameButton2 = ({ active, word }) => {
       setTargetBlocker(false);
     }, 200);
     if (buttonStyle === "button2on" && !targetBlocker) {
+      setScore((prevScore) => prevScore + 1);
       abortLost();
       setButtonStyle("button2hit");
       setTimeout(() => {
@@ -27,12 +35,14 @@ const GameButton2 = ({ active, word }) => {
       }, 242);
       console.log("OK");
     } else if (targetBlocker) {
+      setMissedShots((prevMissedShots) => prevMissedShots + 1);
       setButtonStyle("button2miss");
       setTimeout(() => {
         setButtonStyle("button2off");
       }, 150);
       console.log("BLOCK");
     } else {
+      setMissedShots((prevMissedShots) => prevMissedShots + 1);
       setButtonStyle("button2miss");
       setTimeout(() => {
         setButtonStyle("button2off");

@@ -23,7 +23,14 @@ const words = [
   { label: "Over" },
 ];
 
-const ButtonPanel = ({ beat, setBeat }) => {
+const ButtonPanel = ({
+  beat,
+  setBeat,
+  score,
+  setScore,
+  missedShots,
+  setMissedShots,
+}) => {
   const [beatWawes, setBeatWawes] = useState([]);
   const [goodWords, setGoodWords] = useState(null);
 
@@ -71,6 +78,10 @@ const ButtonPanel = ({ beat, setBeat }) => {
                 }
                 word={gridOpt.label}
                 goodWords={goodWords}
+                score={score}
+                setScore={setScore}
+                missedShots={missedShots}
+                setMissedShots={setMissedShots}
               ></GameButton>
             </div>
           );
