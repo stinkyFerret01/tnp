@@ -21,26 +21,26 @@ const AudioNBeat = ({
 
   //---- COMMANDS EXECUTER ----
   useEffect(() => {
-    const timeDefiner = (timex, beatx, actionx) => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        setTimeout(() => {
-          audioRef.current.currentTime = timex;
-          setBeat(beatx);
-          if (actionx === "play") {
-            audioRef.current.play();
-          }
-        }, 200);
-        if (actionx === "play") {
-          audioRef.current.play();
-        } else if (actionx === "pause") {
-          audioRef.current.pause();
-          intervalIds.forEach((id) => clearInterval(id));
-        }
-      }
-    };
+    audioRef.current.currentTime = audioCommand.timex;
+    setBeat(audioCommand.beatx);
+    // const timeDefiner = (timex, beatx, actionx) => {
+    //   if (audioRef.current) {
+    //     setTimeout(() => {
+    //       audioRef.current.currentTime = timex;
+    //       setBeat(beatx);
+    //       if (actionx === "play") {
+    //         audioRef.current.play();
+    //       }
+    //     }, 200);
+    //     if (actionx === "play") {
+    //       audioRef.current.play();
+    //     } else if (actionx === "pause") {
+    //       intervalIds.forEach((id) => clearInterval(id));
+    //     }
+    //   }
+    // };
 
-    timeDefiner(audioCommand.timex, audioCommand.beatx, audioCommand.actionx);
+    // timeDefiner(audioCommand.timex, audioCommand.beatx, audioCommand.actionx);
 
     // eslint-disable-next-line
   }, [audioCommand]);
@@ -49,7 +49,7 @@ const AudioNBeat = ({
   useEffect(() => {
     if (playing) {
       setTimeout(() => {
-        setAudioCommand({ timex: 0.95, beatx: 9, actionx: "play" });
+        audioRef.current.play();
 
         let ids = [];
         let tempo = 121;
@@ -64,6 +64,10 @@ const AudioNBeat = ({
           intervalIds.forEach((id) => clearInterval(id));
         };
       }, 200);
+    } else {
+      audioRef.current.pause();
+
+      intervalIds.forEach((id) => clearInterval(id));
     }
 
     // eslint-disable-next-line
