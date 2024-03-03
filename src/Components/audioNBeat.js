@@ -47,6 +47,7 @@ const AudioNBeat = ({
         return () => {
           clearInterval(beatIntervalId);
         };
+        // }, 1367);
       }, 880);
     }
 
