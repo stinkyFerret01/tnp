@@ -12,6 +12,7 @@ const AudioNBeat = ({
 }) => {
   const audioRef = useRef(null);
   const [intervalIds, setIntervalIds] = useState([]);
+  const [useEffectBlocker, setUseEffectBlocker] = useState(false);
 
   const handleTimeUpdate = () => {
     if (audioRef.current) {
@@ -27,13 +28,52 @@ const AudioNBeat = ({
   }, [audioCommand]);
 
   //---- MUSIC and BEATS INITIALIZERS ----
+  // useEffect(() => {
+  //   if (playing) {
+  //     audioRef.current.play();
+  //     audioRef.current.pause();
+  //     setTimeout(() => {
+  //       audioRef.current.play();
+
+  //       let ids = [];
+  //       let tempo = 121;
+
+  //       let beatIntervalId = setInterval(() => {
+  //         setBeat((prevBeat) => prevBeat + 1);
+  //       }, tempo);
+  //       ids.push(beatIntervalId);
+
+  //       setIntervalIds(ids);
+  //       return () => {
+  //         intervalIds.forEach((id) => clearInterval(id));
+  //       };
+  //     }, 1000);
+  //   } else {
+  //     audioRef.current.pause();
+
+  //     intervalIds.forEach((id) => clearInterval(id));
+  //   }
+
+  //   // eslint-disable-next-line
+  // }, [playing]);
+
   useEffect(() => {
     if (playing) {
       audioRef.current.play();
+    } else {
       audioRef.current.pause();
-      setTimeout(() => {
-        audioRef.current.play();
+      intervalIds.forEach((id) => clearInterval(id));
+    }
 
+    // eslint-disable-next-line
+  }, [playing]);
+
+  useEffect(() => {
+    // if (currentTime > 0 && Math.floor(currentTime * 10) <= 2) {
+    //   console.log(currentTime);
+    // }
+    if (currentTime > 0 && Math.floor(currentTime * 10) <= 2) {
+      setTimeout(() => {
         let ids = [];
         let tempo = 121;
 
@@ -47,14 +87,10 @@ const AudioNBeat = ({
           intervalIds.forEach((id) => clearInterval(id));
         };
       }, 1000);
-    } else {
-      audioRef.current.pause();
-
-      intervalIds.forEach((id) => clearInterval(id));
     }
 
     // eslint-disable-next-line
-  }, [playing]);
+  }, [currentTime]);
 
   return (
     <audio

@@ -46,6 +46,7 @@ function App() {
       ></AudioNBeat>
       <Command
         beat={beat}
+        setBeat={setBeat}
         setPlaying={setPlaying}
         setAudioCommand={setAudioCommand}
         setScore={setScore}
