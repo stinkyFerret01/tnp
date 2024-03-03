@@ -14,7 +14,7 @@ const Command = ({
 
   const handleSkipButtonClick = () => {
     setPlaying(false);
-    setAudioCommand({ timex: 48, beatx: 401 });
+    setAudioCommand({ timex: 48, beatx: 397 });
     setTimeout(() => {
       setPlaying(true);
     }, 200);
