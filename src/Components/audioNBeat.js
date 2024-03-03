@@ -30,8 +30,10 @@ const AudioNBeat = ({
     if (playing) {
       audioRef.current.play();
     } else {
-      audioRef.current.currentTime = 0;
+      audioRef.current.pause();
+
       setCurrentTime(0);
+      audioRef.current.currentTime = 0;
       setIntervalIds([]);
       intervalIds.forEach((id) => clearInterval(id));
 
