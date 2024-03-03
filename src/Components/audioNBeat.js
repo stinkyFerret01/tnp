@@ -25,11 +25,11 @@ const AudioNBeat = ({
       if (audioRef.current) {
         audioRef.current.pause();
         setTimeout(() => {
+          audioRef.current.currentTime = timex;
+          setBeat(beatx);
           if (actionx === "play") {
             audioRef.current.play();
           }
-          audioRef.current.currentTime = timex;
-          setBeat(beatx);
         }, 200);
         if (actionx === "play") {
           audioRef.current.play();

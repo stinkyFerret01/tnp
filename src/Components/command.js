@@ -4,7 +4,7 @@ const Command = ({ setPlaying, setAudioCommand }) => {
   };
 
   const handleSkipButtonClick = () => {
-    setAudioCommand({ timex: 49.5, beatx: 409 });
+    setAudioCommand({ timex: 49.5, beatx: 409, actionx: "play" });
   };
 
   const handleStopButtonClick = () => {
