@@ -1,6 +1,6 @@
 const Command = ({ setPlaying, setAudioCommand }) => {
   const handlePlayButtonClick = () => {
-    setAudioCommand({ timex: 0.95, beatx: 9, actionx: "play" });
+    setAudioCommand({ timex: 0.9, beatx: 9, actionx: "play" });
     setTimeout(() => {
       setPlaying(true);
     }, 200);
