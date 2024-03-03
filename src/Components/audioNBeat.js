@@ -44,6 +44,7 @@ const AudioNBeat = ({
   useEffect(() => {
     if (
       currentTime > 0 &&
+      intervalIds.length === 0 &&
       Math.floor(currentTime * 10) <= 2 &&
       Math.floor(currentTime * 100) > 1
     ) {
