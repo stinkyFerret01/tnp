@@ -10,7 +10,8 @@ import "./App.css";
 import ButtonPanel from "./Components/buttonPanel";
 
 function App() {
-  const [currentTime, setCurrentTime] = useState(0);
+  const [currentTime, setCurrentTime] = useState(false);
+
   const [beat, setBeat] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [score, setScore] = useState(0);

@@ -1,27 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 import beatRule from "../beatData/harderBetterFasterStronger";
+import labels from "../beatData/hsbfLabels";
 
 import GameButton from "./gameButton";
-
-const words = [
-  { label: "Work it" },
-  { label: "Make it" },
-  { label: "Do it" },
-  { label: "Makes us" },
-  { label: "Harder" },
-  { label: "Better" },
-  { label: "Faster" },
-  { label: "Stronger" },
-  { label: "More than" },
-  { label: "Hour" },
-  { label: "Never" },
-  { label: "" },
-  { label: "Ever" },
-  { label: "After" },
-  { label: "Work is" },
-  { label: "Over" },
-];
 
 const ButtonPanel = ({
   beat,
@@ -65,7 +47,7 @@ const ButtonPanel = ({
   return (
     <div className="button-grid-container">
       <div className="button-grid">
-        {words.map((gridOpt) => {
+        {labels.map((gridOpt) => {
           return (
             <div key={gridOpt.label} className="grid-option">
               <GameButton
@@ -89,7 +71,7 @@ const ButtonPanel = ({
       </div>
       {beatWawes.map((btn) => (
         <div key={btn.id} className="beat-grid">
-          {words.map((gridOpt) => {
+          {labels.map((gridOpt) => {
             return (
               <div
                 key={gridOpt.label}

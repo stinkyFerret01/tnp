@@ -10,20 +10,13 @@ const AudioNBeat = ({
   audioCommand,
 }) => {
   const audioRef = useRef(null);
-  const [intervalIds, setIntervalIds] = useState([]);
+  const [intervalId, setIntervalId] = useState(null);
 
   const handleTimeUpdate = () => {
-    if (audioRef.current) {
-      setCurrentTime(audioRef.current.currentTime);
+    if (audioRef.current.currentTime > 0) {
+      setCurrentTime(true);
     }
   };
-
-  //---- MUSIC and BEATS POSITION SETTERS ----
-  // useEffect(() => {
-  //   audioRef.current.currentTime = audioCommand.timex;
-  //   setBeat(audioCommand.beatx);
-  //   // eslint-disable-next-line
-  // }, [audioCommand]);
 
   //---- MUSIC and BEATS INITIALIZERS ----
   useEffect(() => {
@@ -31,39 +24,28 @@ const AudioNBeat = ({
       audioRef.current.play();
     } else {
       audioRef.current.pause();
-
-      setCurrentTime(0);
+      setCurrentTime(false);
       audioRef.current.currentTime = 0;
-      setIntervalIds([]);
-      intervalIds.forEach((id) => clearInterval(id));
-
-      audioRef.current.pause();
+      clearInterval(intervalId);
     }
 
     // eslint-disable-next-line
   }, [playing]);
 
   useEffect(() => {
-    if (
-      currentTime > 0 &&
-      intervalIds.length === 0 &&
-      Math.floor(currentTime * 10) <= 2 &&
-      Math.floor(currentTime * 100) > 1
-    ) {
-      console.log(currentTime);
-
+    if (currentTime) {
+      let id = null;
+      let tempo = 121;
       setTimeout(() => {
-        let ids = [];
-        let tempo = 121;
-
         let beatIntervalId = setInterval(() => {
           setBeat((prevBeat) => prevBeat + 1);
         }, tempo);
-        ids.push(beatIntervalId);
 
-        setIntervalIds(ids);
+        id = beatIntervalId;
+        setIntervalId(id);
+
         return () => {
-          intervalIds.forEach((id) => clearInterval(id));
+          clearInterval(beatIntervalId);
         };
       }, 880);
     }
