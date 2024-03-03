@@ -23,8 +23,14 @@ const AudioNBeat = ({
   useEffect(() => {
     const timeDefiner = (timex, beatx, actionx) => {
       if (audioRef.current) {
-        audioRef.current.currentTime = timex;
-        setBeat(beatx);
+        audioRef.current.pause();
+        setTimeout(() => {
+          if (actionx === "play") {
+            audioRef.current.play();
+          }
+          audioRef.current.currentTime = timex;
+          setBeat(beatx);
+        }, 200);
         if (actionx === "play") {
           audioRef.current.play();
         } else if (actionx === "pause") {
