@@ -32,6 +32,7 @@ function App() {
       ></AudioNBeat>
       <Control beat={beat} currentTime={currentTime}></Control>
       <Command
+        beat={beat}
         setPlaying={setPlaying}
         setAudioCommand={setAudioCommand}
       ></Command>

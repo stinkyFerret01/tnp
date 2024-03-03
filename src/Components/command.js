@@ -1,4 +1,4 @@
-const Command = ({ setPlaying, setAudioCommand }) => {
+const Command = ({ beat, setPlaying, setAudioCommand }) => {
   const handlePlayButtonClick = () => {
     setAudioCommand({ timex: 1, beatx: 10, actionx: "play" });
     setTimeout(() => {
@@ -20,7 +20,9 @@ const Command = ({ setPlaying, setAudioCommand }) => {
   };
   return (
     <article>
-      <button onClick={handleSkipButtonClick}>skip intro</button>
+      {beat < 350 && (
+        <button onClick={handleSkipButtonClick}>skip intro</button>
+      )}
       <button onClick={handleStopButtonClick}>Stop</button>
       <button onClick={handlePlayButtonClick}>Play</button>
     </article>
