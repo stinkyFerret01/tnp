@@ -7474,6 +7474,86 @@ const beatRule = [
     beat: 1844,
     goodWords: null,
   },
+  {
+    beat: 1842,
+    goodWords: null,
+  },
+  {
+    beat: 1843,
+    goodWords: null,
+  },
+  {
+    beat: 1844,
+    goodWords: null,
+  },
+  {
+    beat: 1844,
+    goodWords: null,
+  },
+  {
+    beat: 1842,
+    goodWords: null,
+  },
+  {
+    beat: 1843,
+    goodWords: null,
+  },
+  {
+    beat: 1844,
+    goodWords: null,
+  },
+  {
+    beat: 1844,
+    goodWords: null,
+  },
+  {
+    beat: 1842,
+    goodWords: null,
+  },
+  {
+    beat: 1843,
+    goodWords: null,
+  },
+  {
+    beat: 1844,
+    goodWords: null,
+  },
+  {
+    beat: 1844,
+    goodWords: null,
+  },
+  {
+    beat: 1842,
+    goodWords: null,
+  },
+  {
+    beat: 1843,
+    goodWords: null,
+  },
+  {
+    beat: 1844,
+    goodWords: null,
+  },
+  {
+    beat: 1844,
+    goodWords: null,
+  },
+  {
+    beat: 1842,
+    goodWords: null,
+  },
+  {
+    beat: 1843,
+    goodWords: null,
+  },
+  {
+    beat: 1844,
+    goodWords: null,
+  },
+  {
+    beat: 1844,
+    goodWords: null,
+  },
 ];
 
 export default beatRule;
