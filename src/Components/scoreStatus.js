@@ -15,7 +15,7 @@ const ScoreStatus = ({ score }) => {
     <div className="score-container">
       <div
         style={{
-          width: `${progress * 2}%`,
+          width: `${progress}%`,
           height: "3vh",
           backgroundColor: color,
         }}

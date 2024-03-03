@@ -8,11 +8,9 @@ const AudioNBeat = ({
   currentTime,
   setCurrentTime,
   audioCommand,
-  setAudioCommand,
 }) => {
   const audioRef = useRef(null);
   const [intervalIds, setIntervalIds] = useState([]);
-  const [useEffectBlocker, setUseEffectBlocker] = useState(false);
 
   const handleTimeUpdate = () => {
     if (audioRef.current) {
@@ -21,42 +19,13 @@ const AudioNBeat = ({
   };
 
   //---- MUSIC and BEATS POSITION SETTERS ----
-  useEffect(() => {
-    audioRef.current.currentTime = audioCommand.timex;
-    setBeat(audioCommand.beatx);
-    // eslint-disable-next-line
-  }, [audioCommand]);
+  // useEffect(() => {
+  //   audioRef.current.currentTime = audioCommand.timex;
+  //   setBeat(audioCommand.beatx);
+  //   // eslint-disable-next-line
+  // }, [audioCommand]);
 
   //---- MUSIC and BEATS INITIALIZERS ----
-  // useEffect(() => {
-  //   if (playing) {
-  //     audioRef.current.play();
-  //     audioRef.current.pause();
-  //     setTimeout(() => {
-  //       audioRef.current.play();
-
-  //       let ids = [];
-  //       let tempo = 121;
-
-  //       let beatIntervalId = setInterval(() => {
-  //         setBeat((prevBeat) => prevBeat + 1);
-  //       }, tempo);
-  //       ids.push(beatIntervalId);
-
-  //       setIntervalIds(ids);
-  //       return () => {
-  //         intervalIds.forEach((id) => clearInterval(id));
-  //       };
-  //     }, 1000);
-  //   } else {
-  //     audioRef.current.pause();
-
-  //     intervalIds.forEach((id) => clearInterval(id));
-  //   }
-
-  //   // eslint-disable-next-line
-  // }, [playing]);
-
   useEffect(() => {
     if (playing) {
       audioRef.current.play();
