@@ -49,22 +49,22 @@ const beatRule = [
   //   beat: 7,
   //   goodWords: null,
   // },
-  // {
-  //   beat: 8,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 9,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 10,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 11,
-  //   goodWords: null,
-  // },
+  {
+    beat: 8,
+    goodWords: null,
+  },
+  {
+    beat: 9,
+    goodWords: null,
+  },
+  {
+    beat: 10,
+    goodWords: null,
+  },
+  {
+    beat: 11,
+    goodWords: null,
+  },
   {
     beat: 12,
     goodWords: null,

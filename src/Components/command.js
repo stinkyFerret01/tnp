@@ -6,7 +6,7 @@ const Command = ({
   setMissedShots,
 }) => {
   const handlePlayButtonClick = () => {
-    setAudioCommand({ timex: 1, beatx: 10, actionx: "play" });
+    setAudioCommand({ timex: 0, beatx: 2, actionx: "play" });
     setTimeout(() => {
       setPlaying(true);
     }, 200);
