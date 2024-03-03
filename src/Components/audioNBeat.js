@@ -62,7 +62,7 @@ const AudioNBeat = ({
         return () => {
           intervalIds.forEach((id) => clearInterval(id));
         };
-      }, 950);
+      }, 880);
     }
 
     // eslint-disable-next-line
