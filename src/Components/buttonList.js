@@ -35,14 +35,19 @@ const ButtonList = ({ beat, setBeat }) => {
   }, [beat, setBeat]);
 
   return (
-    <div className="button-list">
-      {words.map((word, index) => {
+    <div className="button-grid">
+      {words.map((gridOpt) => {
         return (
-          <GameButton
-            word={word.label}
-            goodWords={goodWords}
-            key={index}
-          ></GameButton>
+          <div key={gridOpt.label} className="grid-option">
+            <button
+              // className={
+              //   checkActiveButtons(gridOpt.label) ? "button2on" : "button2off"
+              // }
+              className={"button2on"}
+            >
+              {gridOpt.label.toLocaleUpperCase()}
+            </button>
+          </div>
         );
       })}
     </div>

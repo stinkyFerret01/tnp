@@ -2,7 +2,7 @@
 // il s'invoque avec une prop "word" qui défini sa valeur
 import { useEffect, useState } from "react";
 
-const GameButton = ({ word, goodWords }) => {
+const GameButton2 = ({ word, goodWords }) => {
   const [targetStatus, setTargetStatus] = useState("target-approach"); //---- V1 ----
   const [targetBlocker, setTargetBlocker] = useState(false);
   const [turnOffTimeoutId, setTurnOffTimeoutId] = useState(null);
@@ -42,7 +42,7 @@ const GameButton = ({ word, goodWords }) => {
           setTargetStatus("target-lost");
           setTimeout(() => {
             setTargetStatus("target-off");
-          }, 350);
+          }, 100);
         }, delayActive);
         setTurnOffTimeoutId(turnTargetOff);
       }, delayApproach);
@@ -54,9 +54,9 @@ const GameButton = ({ word, goodWords }) => {
 
   return (
     <button className="game-button" onClick={() => handleShoot()}>
-      <article className={"target-off"}>{word.toUpperCase()}</article>
+      <article className={targetStatus}>{word.toUpperCase()}</article>
     </button>
   );
 };
 
-export default GameButton;
+export default GameButton2;

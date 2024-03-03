@@ -17,54 +17,54 @@
 // ]
 
 const beatRule = [
-  {
-    beat: 0,
-    goodWords: null,
-  },
-  {
-    beat: 1,
-    goodWords: null,
-  },
-  {
-    beat: 2,
-    goodWords: null,
-  },
-  {
-    beat: 3,
-    goodWords: null,
-  },
-  {
-    beat: 4,
-    goodWords: null,
-  },
-  {
-    beat: 5,
-    goodWords: null,
-  },
-  {
-    beat: 6,
-    goodWords: null,
-  },
-  {
-    beat: 7,
-    goodWords: null,
-  },
-  {
-    beat: 8,
-    goodWords: null,
-  },
-  {
-    beat: 9,
-    goodWords: null,
-  },
-  {
-    beat: 10,
-    goodWords: null,
-  },
-  {
-    beat: 11,
-    goodWords: null,
-  },
+  // {
+  //   beat: 0,
+  //   goodWords: null,
+  // },
+  // {
+  //   beat: 1,
+  //   goodWords: null,
+  // },
+  // {
+  //   beat: 2,
+  //   goodWords: null,
+  // },
+  // {
+  //   beat: 3,
+  //   goodWords: null,
+  // },
+  // {
+  //   beat: 4,
+  //   goodWords: null,
+  // },
+  // {
+  //   beat: 5,
+  //   goodWords: null,
+  // },
+  // {
+  //   beat: 6,
+  //   goodWords: null,
+  // },
+  // {
+  //   beat: 7,
+  //   goodWords: null,
+  // },
+  // {
+  //   beat: 8,
+  //   goodWords: null,
+  // },
+  // {
+  //   beat: 9,
+  //   goodWords: null,
+  // },
+  // {
+  //   beat: 10,
+  //   goodWords: null,
+  // },
+  // {
+  //   beat: 11,
+  //   goodWords: null,
+  // },
   {
     beat: 12,
     goodWords: null,

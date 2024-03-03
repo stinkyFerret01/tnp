@@ -3,50 +3,72 @@
   border-color: transparent;
   width: 22vw;
   height: 3rem;
-  /* border: solid 1px black; */
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.target-off {
-  visibility: hidden;
-  width: 2vw;
-  height: 1vh;
-}
-
-.target-start {
-  background-color: gold;
-  width: 2.3vw;
-  height: 0.8vh;
+.target-approach {
+  background-color: rgba(0, 255, 0, 0.2);
+  width: 23vw;
+  height: 18vh;
   opacity: 0;
   color: transparent;
-  animation: appear 0.97s;
+  animation: glow 2.420s;
 }
 
-@keyframes appear {
-  0% {
-    opacity: 0;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(10);
-  }
-}
-
-.target-on {
-  background-color: purple;
+.target-active {
+  opacity: inherit;
+  background-color: rgba(0, 255, 0, 0.6);
   width: 23vw;
-  height: 8vh;
+  height: 18vh;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 3vh; 
-  animation: bounce 0.3s ease;
 }
 
+@keyframes glow {
+  0% {
+    opacity: 0; 
+  }
+  86% {
+    opacity: 0.3;
+  }
+  87% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0; 
+  }
+}
+
+.target-down {
+  opacity: inherit;
+  background-color: cyan;
+  width: 23vw;
+  height: 18vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vh; 
+  /* animation: glow 2.420s; */
+}
+
+.target-lost {
+  opacity: inherit;
+  background-color: orange;
+  width: 23vw;
+  height: 18vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vh; 
+}
 @keyframes bounce {
   0% {
     transform: scale(1);
@@ -58,49 +80,3 @@
     transform: scale(1);
   }
 }
-
-.target-down {
-  background-color: lime;
-  width: 23vw;
-  height: 8vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3vh; 
-  animation: explode 0.3s ease;
-}
-
-
-@keyframes explode {
-  0% {
-    transform: scale(1);
-  }
-  60% {
-    transform: scale(2);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.target-lost {
-    background-color: red;
-    width: 23vw;
-    height: 8vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3vh; 
-    animation: disappear 0.3s ease;
-}
-
-@keyframes disappear {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-  }
-}
-
-
