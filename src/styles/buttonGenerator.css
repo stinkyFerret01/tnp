@@ -8,15 +8,6 @@
   height: 80vh;
 }
 
-.button-grid-container2 {
-  border: solid rgba(0, 255, 0, 0.5)  2px;
-  background-color: transparent;
-  position: absolute;
-  perspective: 1000px;
-  width: 100vw;
-  height: 80vh;
-}
-
 /* Bordure de grille statique */
 .button-grid {
   border: solid rgba(0, 255, 0, 0.5) 2px;
@@ -31,7 +22,7 @@
   box-sizing: border-box;
 }
 
-/* cases de bouton pour ghost-grid */
+/* Bouton de grille statique */
 .grid-option {
   border: solid rgba(0, 255, 0, 0.5) 2px;
   background-color: transparent;
@@ -42,68 +33,11 @@
   align-items: center;
 }
 
-/* boutton statique */
-.button2off {
-  background-color: rgba(173, 255, 47, 0.05);
-  border-width: 1rem;
-  border-color:rgba(0, 255, 0, 0.2) ;
-  color: rgba(0, 255, 0, 0.4) ;
-  font-size: 2rem;
-  width: 22vw;
-  height: 18vh;
-}
-
-.button2on {
-  /* background-color: rgba(0, 255, 0, 0.7) ; */
-  background-color: gold ;
-  border-width: 1rem;
-  border-color:rgba(0, 255, 0, 0.5) ;
-  color: rgba(0, 255, 0, 1) ;
-  font-size: 2rem;
-  width: 22vw;
-  height: 18vh;
-  animation: activation 2.420s;
-
-}
-
-@keyframes activation {
-  0% {
-    opacity: 0.4;
-  }
-  10% {
-    opacity: 0.3;
-  }
-  20% {
-    opacity: 0.4;
-  }
-  30% {
-    opacity: 0.3;
-  }
-  40% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.3;
-  }
-  60% {
-    opacity: 0.4;
-  }
-  70% {
-    opacity: 0.3;
-  }
-  80% {
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 0.8;
-  }
-}
-
 /* Grille approchant du fond */
 .beat-grid {
   border: solid rgba(173, 255, 47, 0.2) 1rem;
   background-color: transparent;
-
+  pointer-events: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -111,17 +45,6 @@
   position: absolute;
   box-sizing: border-box;
   animation: approach 2.420s ease-out forwards; 
-}
-
-/* cases de bouton pour button-grid) */
-.beat-grid-option {
-  border: solid rgba(173, 255, 47, 0.1) 2px;
-  background-color: transparent;
-  width: 22vw;
-  height: 18vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* Animation d'approche */
@@ -145,4 +68,25 @@
     transform: translateZ(1000px); 
     /* opacity: 0;  */
   }
+}
+
+/* cases de bouton pour beat-grid */
+.beat-grid-option {
+  border: solid rgba(173, 255, 47, 0.1) 2px;
+  background-color: transparent;
+  width: 22vw;
+  height: 18vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* WIP */
+.button-grid-container2 {
+  border: solid rgba(0, 255, 0, 0.5)  2px;
+  background-color: transparent;
+  position: absolute;
+  perspective: 1000px;
+  width: 100vw;
+  height: 80vh;
 }

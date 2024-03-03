@@ -2,8 +2,8 @@
 // il s'invoque avec une prop "word" qui défini sa valeur
 import { useEffect, useState } from "react";
 
-const GameButton2 = ({ word, goodWords }) => {
-  const [targetStatus, setTargetStatus] = useState("target-approach"); //---- V1 ----
+const GameButton2 = ({ active, word }) => {
+  const [buttonStyle, setButtonStyle] = useState("button2off"); //---- V1 ----
   const [targetBlocker, setTargetBlocker] = useState(false);
   const [turnOffTimeoutId, setTurnOffTimeoutId] = useState(null);
 
@@ -14,47 +14,54 @@ const GameButton2 = ({ word, goodWords }) => {
   };
 
   const handleShoot = () => {
+    console.log("CLICK");
     setTargetBlocker(true);
     setTimeout(() => {
       setTargetBlocker(false);
     }, 200);
-    if (targetStatus === "target-active" && !targetBlocker) {
+    if (buttonStyle === "button2on" && !targetBlocker) {
       abortLost();
-      setTargetStatus("target-down");
+      setButtonStyle("button2hit");
       setTimeout(() => {
-        setTargetStatus("target-off");
+        setButtonStyle("button2off");
       }, 242);
       console.log("OK");
     } else if (targetBlocker) {
+      setButtonStyle("button2miss");
+      setTimeout(() => {
+        setButtonStyle("button2off");
+      }, 150);
       console.log("BLOCK");
     } else {
+      setButtonStyle("button2miss");
+      setTimeout(() => {
+        setButtonStyle("button2off");
+      }, 150);
       console.log("BAD");
     }
   };
 
   useEffect(() => {
-    const styleDefiner = () => {
+    if (active) {
       let delayApproach = 1880;
       let delayActive = 300;
-      const buttonStartTimeOut = setTimeout(() => {
-        setTargetStatus("target-active");
+      //   const buttonStartTimeOut = setTimeout(() => {
+      setTimeout(() => {
+        setButtonStyle("button2on");
         const turnTargetOff = setTimeout(() => {
-          setTargetStatus("target-lost");
+          setButtonStyle("button2miss");
           setTimeout(() => {
-            setTargetStatus("target-off");
-          }, 100);
+            setButtonStyle("button2off");
+          }, 150);
         }, delayActive);
         setTurnOffTimeoutId(turnTargetOff);
       }, delayApproach);
-      return () => clearTimeout(buttonStartTimeOut);
-    };
-    styleDefiner();
-    // eslint-disable-next-line;
-  }, [goodWords]);
+    }
+  }, [active]);
 
   return (
-    <button className="game-button" onClick={() => handleShoot()}>
-      <article className={targetStatus}>{word.toUpperCase()}</article>
+    <button className={buttonStyle} onClick={() => handleShoot()}>
+      {word.toUpperCase()}
     </button>
   );
 };

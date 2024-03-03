@@ -1,82 +1,39 @@
-.game-button {
-  background-color: transparent;
-  border-color: transparent;
+/* boutton statique */
+.button2off {
+  background-color: rgba(173, 255, 47, 0.05);
+  border-width: 1rem;
+  border-color:rgba(0, 255, 0, 0.2) ;
+  color: rgba(0, 255, 0, 0.4) ;
+  font-size: 2rem;
   width: 22vw;
-  height: 3rem;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.target-approach {
-  background-color: rgba(0, 255, 0, 0.2);
-  width: 23vw;
   height: 18vh;
-  opacity: 0;
-  color: transparent;
-  animation: glow 2.420s;
 }
 
-.target-active {
-  opacity: inherit;
-  background-color: rgba(0, 255, 0, 0.6);
-  width: 23vw;
+.button2on {
+  background-color: lime ;
+  border-width: 1rem;
+  border-color:rgba(0, 255, 0, 0.5) ;
+  color: black ;
+  font-size: 2rem;
+  width: 22vw;
   height: 18vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3vh; 
+
 }
 
-@keyframes glow {
-  0% {
-    opacity: 0; 
-  }
-  86% {
-    opacity: 0.3;
-  }
-  87% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0; 
-  }
-}
-
-.target-down {
-  opacity: inherit;
-  background-color: cyan;
-  width: 23vw;
+.button2hit {
+  background-color: cyan; 
+  border-width: 1rem;
+  border-color:rgba(0, 255, 0, 0.2) ;
+  font-size: 2rem;
+  width: 22vw;
   height: 18vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3vh; 
-  /* animation: glow 2.420s; */
 }
 
-.target-lost {
-  opacity: inherit;
-  background-color: orange;
-  width: 23vw;
+.button2miss {
+  background-color: red;
+  border-width: 1rem;
+  border-color:red ;
+  font-size: 2rem;
+  width: 22vw;
   height: 18vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3vh; 
-}
-@keyframes bounce {
-  0% {
-    transform: scale(1);
-  }
-  60% {
-    transform: scale(1.4);
-  }
-  100% {
-    transform: scale(1);
-  }
 }

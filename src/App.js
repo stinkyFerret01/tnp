@@ -5,7 +5,6 @@ import Control from "./Components/control";
 import Command from "./Components/command";
 import "./App.css";
 
-// import ButtonList from "./Components/buttonList";
 import BoutonGenerateur from "./Components/buttonGenerator";
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
   return (
     <div className="App">
       <BoutonGenerateur beat={beat} setBeat={setBeat}></BoutonGenerateur>
-      {/* <ButtonList beat={beat} setBeat={setBeat}></ButtonList> */}
       <AudioNBeat
         playing={playing}
         setPlaying={setPlaying}
