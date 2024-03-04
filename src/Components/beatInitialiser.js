@@ -3,15 +3,13 @@ import { useState, useEffect } from "react";
 const BeatInitialiser = ({ isPlaying, beat, setBeat }) => {
   const [intervalId, setIntervalId] = useState(null);
 
-  const [dateCheckBeat, setDateCheckBeat] = useState(0);
+  const [initBeatDate, setInitBeatDate] = useState(0);
 
   // ---- BEATS INITIALIZER ----
   useEffect(() => {
     clearInterval(intervalId);
 
     if (isPlaying) {
-      setDateCheckBeat(Date.now());
-
       // console.log("isPlayingUseEffect:", Date.now()); //-- TEST PURPOSE -- synchro helper ----
       let id = null;
       let tempo = 121;
@@ -23,24 +21,27 @@ const BeatInitialiser = ({ isPlaying, beat, setBeat }) => {
 
         id = beatIntervalId;
         setIntervalId(id);
+        setInitBeatDate(Date.now());
 
         return () => {
           clearInterval(beatIntervalId);
         };
-      }, 128);
+      }, 384);
     } else {
       setBeat(0);
     }
 
     // eslint-disable-next-line
   }, [isPlaying]);
-  //-- TEST PURPOSE -- synchro helper ----
+
+  // -- TEST PURPOSE -- synchro helper ----
   // useEffect(() => {
   //   console.log("BEAT", beat, Date.now());
   // }, [beat]);
+
   return (
     <div style={{ backgroundColor: "white" }}>
-      {dateCheckBeat && <p>Beat: {dateCheckBeat}</p>}
+      {initBeatDate && <p>initBeatDate -----: {initBeatDate}</p>}
     </div>
   );
 };
