@@ -4,6 +4,7 @@ const AudioContext = ({ audioCommand, setBeat, setIsPlaying }) => {
   const [musicRef, setMusicRef] = useState(null);
 
   const [dateCheckAudio, setDateCheckAudio] = useState(0);
+  const [dateCheckStartAudio, setDateCheckStartAudio] = useState(0);
 
   const [checkTimeIntervalId, setCheckTimeIntervalId] = useState(null);
 
@@ -24,6 +25,7 @@ const AudioContext = ({ audioCommand, setBeat, setIsPlaying }) => {
 
       //---- EXECUTE start music ----
       if (audioCommand.actionX === "play") {
+        setDateCheckStartAudio(Date.now());
         source.start(0);
       }
       if (audioCommand.actionX === "stop") {
@@ -73,8 +75,15 @@ const AudioContext = ({ audioCommand, setBeat, setIsPlaying }) => {
 
   //-- TOCHECK --
   return (
-    <div style={{ backgroundColor: "red" }}>
-      {dateCheckAudio && <p>Audio: {dateCheckAudio}</p>}
+    <div>
+      <div style={{ backgroundColor: "blue" }}>
+        {" "}
+        {dateCheckStartAudio && <p>StartAudio: {dateCheckStartAudio}</p>}
+      </div>
+      <div style={{ backgroundColor: "red" }}>
+        {" "}
+        {dateCheckAudio && <p>Audio: {dateCheckAudio}</p>}
+      </div>
     </div>
   );
 };
