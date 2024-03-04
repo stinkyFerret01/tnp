@@ -1,51 +1,26 @@
-import { useEffect } from "react";
-
-const Command = ({
-  beat,
-  setBeat,
-  setPlaying,
-  setAudioCommand,
-  setScore,
-  setMissedShots,
-}) => {
+const Command = ({ setAudioCommand, setScore, setMissedShots }) => {
   const handlePlayButtonClick = () => {
-    // setBeat(20);
-    setTimeout(() => {
-      setPlaying(true);
-    }, 64);
+    setAudioCommand({
+      actionX: "play",
+      timex: 0,
+      beatx: 0,
+    });
   };
-
-  // const handleSkipButtonClick = () => {
-  //   setPlaying(false);
-  //   setAudioCommand({ timex: 48, beatx: 397 });
-  //   setTimeout(() => {
-  //     setPlaying(true);
-  //   }, 200);
-  // };
 
   const handleStopButtonClick = () => {
+    setAudioCommand({
+      actionX: "stop",
+      timex: 0,
+      beatx: 0,
+    });
     setScore(0);
     setMissedShots([]);
-    setPlaying(false);
-    setBeat(0);
   };
-
-  useEffect(() => {
-    // ---- v2 ----
-    if (beat === 500) {
-      console.log("second:", Date.now());
-    }
-
-    // eslint-disable-next-line
-  }, [beat]);
 
   return (
     <article>
-      {/* {beat < 350 && (
-        <button onClick={handleSkipButtonClick}>skip intro</button>
-      )} */}
-      <button onClick={handleStopButtonClick}>Stop</button>
-      <button onClick={handlePlayButtonClick}>Play</button>
+      <button onClick={handleStopButtonClick}>STOP</button>
+      <button onClick={handlePlayButtonClick}>PLAY</button>
     </article>
   );
 };

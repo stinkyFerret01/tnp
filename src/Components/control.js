@@ -1,7 +1,6 @@
-const Control = ({ beat, currentTime }) => {
+const Control = ({ beat }) => {
   return (
     <article>
-      <p>Current Time: {currentTime}</p>
       <p>Beat ----: {beat}</p>
       <button
         onClick={() => {
@@ -13,4 +12,5 @@ const Control = ({ beat, currentTime }) => {
     </article>
   );
 };
+
 export default Control;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import beatRule from "../beatData/harderBetterFasterStronger";
+import beatRule from "../beatData/hbfsBeatRule";
 import labels from "../beatData/hsbfLabels";
 
 import GameButton from "./gameButton";
@@ -80,11 +80,7 @@ const ButtonPanel = ({
                     ? "beat-grid-option-active"
                     : "beat-grid-option-off"
                 }
-              >
-                {/* {btn.word && gridOpt.label === btn.word && (
-                  <div className="targets">YOYOYO</div>
-                )} */}
-              </div>
+              ></div>
             );
           })}
         </div>

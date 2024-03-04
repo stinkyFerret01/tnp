@@ -1,31 +1,28 @@
 import { useState } from "react";
 
-import AudioNBeat from "./Components/audioNBeat";
+import BeatInitialiser from "./Components/beatInitialiser";
 import Control from "./Components/control";
-// import Command from "./Components/command";
+import Command from "./Components/command";
 import ScoreStatus from "./Components/scoreStatus";
 import MissedShotsStatus from "./Components/missedShotsStatus";
 
-import YourComponent from "./Components/audioContext";
+import AudioContext from "./Components/audioContext";
 
 import "./App.css";
 
 import ButtonPanel from "./Components/buttonPanel";
 
 function App() {
-  const [currentTime, setCurrentTime] = useState(false);
-
   const [beat, setBeat] = useState(0);
-  const [playing, setPlaying] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const [score, setScore] = useState(0);
   const [missedShots, setMissedShots] = useState([]);
 
   const [audioCommand, setAudioCommand] = useState({
+    actionX: null,
     timex: 0,
     beatx: 0,
-    actionx: "pause",
   });
 
   return (
@@ -40,32 +37,22 @@ function App() {
         missedShots={missedShots}
         setMissedShots={setMissedShots}
       ></ButtonPanel>
-      <YourComponent
-        setBeat={setBeat}
-        isPlaying={isPlaying}
-        setIsPlaying={setIsPlaying}
-      ></YourComponent>
-      <AudioNBeat
-        playing={playing}
-        setPlaying={setPlaying}
-        isPlaying={isPlaying}
-        setIsPlaying={setIsPlaying}
-        beat={beat}
-        setBeat={setBeat}
-        currentTime={currentTime}
-        setCurrentTime={setCurrentTime}
+      <AudioContext
         audioCommand={audioCommand}
-        setAudioCommand={setAudioCommand}
-      ></AudioNBeat>
-      {/* <Command
+        setBeat={setBeat}
+        setIsPlaying={setIsPlaying}
+      ></AudioContext>
+      <BeatInitialiser
+        isPlaying={isPlaying}
         beat={beat}
         setBeat={setBeat}
-        setPlaying={setPlaying}
+      ></BeatInitialiser>
+      <Command
         setAudioCommand={setAudioCommand}
         setScore={setScore}
         setMissedShots={setMissedShots}
-      ></Command> */}
-      <Control beat={beat} currentTime={currentTime}></Control>
+      ></Command>
+      <Control beat={beat}></Control>
     </div>
   );
 }
