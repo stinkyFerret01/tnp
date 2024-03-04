@@ -2,9 +2,12 @@ import { useState } from "react";
 
 import AudioNBeat from "./Components/audioNBeat";
 import Control from "./Components/control";
-import Command from "./Components/command";
+// import Command from "./Components/command";
 import ScoreStatus from "./Components/scoreStatus";
 import MissedShotsStatus from "./Components/missedShotsStatus";
+
+import YourComponent from "./Components/audioContext";
+
 import "./App.css";
 
 import ButtonPanel from "./Components/buttonPanel";
@@ -14,6 +17,8 @@ function App() {
 
   const [beat, setBeat] = useState(0);
   const [playing, setPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const [score, setScore] = useState(0);
   const [missedShots, setMissedShots] = useState([]);
 
@@ -35,9 +40,16 @@ function App() {
         missedShots={missedShots}
         setMissedShots={setMissedShots}
       ></ButtonPanel>
+      <YourComponent
+        setBeat={setBeat}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
+      ></YourComponent>
       <AudioNBeat
         playing={playing}
         setPlaying={setPlaying}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
         beat={beat}
         setBeat={setBeat}
         currentTime={currentTime}
@@ -45,14 +57,14 @@ function App() {
         audioCommand={audioCommand}
         setAudioCommand={setAudioCommand}
       ></AudioNBeat>
-      <Command
+      {/* <Command
         beat={beat}
         setBeat={setBeat}
         setPlaying={setPlaying}
         setAudioCommand={setAudioCommand}
         setScore={setScore}
         setMissedShots={setMissedShots}
-      ></Command>
+      ></Command> */}
       <Control beat={beat} currentTime={currentTime}></Control>
     </div>
   );

@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 const Command = ({
   beat,
   setBeat,
@@ -7,7 +9,7 @@ const Command = ({
   setMissedShots,
 }) => {
   const handlePlayButtonClick = () => {
-    setBeat(20);
+    // setBeat(20);
     setTimeout(() => {
       setPlaying(true);
     }, 64);
@@ -27,6 +29,15 @@ const Command = ({
     setPlaying(false);
     setBeat(0);
   };
+
+  useEffect(() => {
+    // ---- v2 ----
+    if (beat === 500) {
+      console.log("second:", Date.now());
+    }
+
+    // eslint-disable-next-line
+  }, [beat]);
 
   return (
     <article>
