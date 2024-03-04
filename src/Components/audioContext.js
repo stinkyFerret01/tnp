@@ -28,7 +28,7 @@ const AudioContext = ({ audioCommand, setBeat, isPlaying, setIsPlaying }) => {
       if (audioCommand.actionX === "play") {
         setDateCheckStartAudio(Date.now());
         source.start(0);
-        setCurrentTime(audioContext.currentTime);
+        setCurrentTime(audioContext.currentTime || 99999999);
 
         setTimeout(() => {
           setCurrentTime(audioContext.currentTime);
@@ -49,9 +49,9 @@ const AudioContext = ({ audioCommand, setBeat, isPlaying, setIsPlaying }) => {
       const checkTime = () => {
         //-- TOCHECK --
         // clearInterval(beatIntervalId);
-        const currentTime = audioContext.currentTime;
+        // const currentTime = audioContext.currentTime;
         // if (currentTime >= 3.05 && currentTime < 3.1) {
-        if (currentTime >= 3) {
+        if (audioContext.currentTime >= 3) {
           setDateCheckAudio(Date.now());
           console.log("checkTimeTrigged:", Date.now());
           setIsPlaying(true);
@@ -83,13 +83,13 @@ const AudioContext = ({ audioCommand, setBeat, isPlaying, setIsPlaying }) => {
   return (
     <div>
       <div style={{ backgroundColor: "blue" }}>
-        {dateCheckStartAudio && <p>StartAudio: {dateCheckStartAudio}</p>}
+        {<p>StartAudio: {dateCheckStartAudio}</p>}
       </div>
       <div style={{ backgroundColor: "green" }}>
-        {dateCheckAudio && <p>currentTime: {currentTime}</p>}
+        {<p>currentTime: {currentTime}</p>}
       </div>
       <div style={{ backgroundColor: "red" }}>
-        {dateCheckAudio && <p>Audio: {dateCheckAudio}</p>}
+        {<p>Audio: {dateCheckAudio}</p>}
       </div>
     </div>
   );
