@@ -26,7 +26,7 @@ const BeatInitialiser = ({ isPlaying, beat, setBeat }) => {
         return () => {
           clearInterval(beatIntervalId);
         };
-      }, 384);
+      }, 290);
     } else {
       setBeat(0);
     }
