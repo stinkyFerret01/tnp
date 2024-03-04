@@ -29,10 +29,6 @@ const AudioContext = ({ audioCommand, setBeat, isPlaying, setIsPlaying }) => {
         setDateCheckStartAudio(Date.now());
         source.start(0);
         setCurrentTime(audioContext.currentTime || 99999999);
-
-        setTimeout(() => {
-          setCurrentTime(audioContext.currentTime);
-        }, 1000);
       }
       if (audioCommand.actionX === "stop") {
         clearInterval(checkTimeIntervalId);
@@ -64,10 +60,19 @@ const AudioContext = ({ audioCommand, setBeat, isPlaying, setIsPlaying }) => {
           };
         }
       };
-      if (audioCommand.actionX === "play" && !isPlaying) {
-        const initCheckTimeInterval = setInterval(checkTime, 1);
-        setCheckTimeIntervalId(initCheckTimeInterval);
-      }
+
+      audioContext.onstatechange = () => {
+        console.log(audioContext.state);
+        setIsPlaying(!isPlaying);
+        setTimeout(() => {
+          setBeat(0);
+        }, 804);
+      };
+
+      // if (audioCommand.actionX === "play" && !isPlaying) {
+      //   const initCheckTimeInterval = setInterval(checkTime, 1);
+      //   setCheckTimeIntervalId(initCheckTimeInterval);
+      // }
     };
 
     loadAudio();
