@@ -1,9 +1,16 @@
 import { useState, useEffect } from "react";
 
-const BeatInitialiser = ({ isPlaying, beat, setBeat }) => {
+const BeatInitialiser = ({
+  isPlaying,
+  beat,
+  setBeat,
+  currentTime,
+  setCurrentTime,
+}) => {
   const [intervalId, setIntervalId] = useState(null);
 
   const [initBeatDate, setInitBeatDate] = useState(0);
+  const [currentTimeMarker, setCurrentTimeMarker] = useState(0);
 
   // ---- BEATS INITIALIZER ----
   useEffect(() => {
@@ -22,6 +29,7 @@ const BeatInitialiser = ({ isPlaying, beat, setBeat }) => {
         id = beatIntervalId;
         setIntervalId(id);
         setInitBeatDate(Date.now());
+        setCurrentTimeMarker(currentTime);
 
         return () => {
           clearInterval(beatIntervalId);
@@ -40,8 +48,13 @@ const BeatInitialiser = ({ isPlaying, beat, setBeat }) => {
   // }, [beat]);
 
   return (
-    <div style={{ backgroundColor: "white" }}>
-      {initBeatDate && <p>initBeatDate -----: {initBeatDate}</p>}
+    <div>
+      <div style={{ backgroundColor: "yellow" }}>
+        <p>initBeatDate -----: {initBeatDate}</p>
+      </div>
+      <div style={{ backgroundColor: "orange" }}>
+        <p>currentTimeMarker -----: {currentTimeMarker}</p>
+      </div>
     </div>
   );
 };

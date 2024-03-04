@@ -13,6 +13,8 @@ import "./App.css";
 import ButtonPanel from "./Components/buttonPanel";
 
 function App() {
+  const [currentTime, setCurrentTime] = useState(0);
+
   const [beat, setBeat] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -38,11 +40,15 @@ function App() {
         setMissedShots={setMissedShots}
       ></ButtonPanel>
       <AudioContext
+        currentTime={currentTime}
+        setCurrentTime={setCurrentTime}
         audioCommand={audioCommand}
         setBeat={setBeat}
         setIsPlaying={setIsPlaying}
       ></AudioContext>
       <BeatInitialiser
+        currentTime={currentTime}
+        setCurrentTime={setCurrentTime}
         isPlaying={isPlaying}
         beat={beat}
         setBeat={setBeat}
