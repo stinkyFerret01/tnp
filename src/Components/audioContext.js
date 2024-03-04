@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const AudioContext = ({ audioCommand, setBeat, setIsPlaying }) => {
+const AudioContext = ({ audioCommand, setBeat, isPlaying, setIsPlaying }) => {
   const [musicRef, setMusicRef] = useState(null);
 
   const [dateCheckAudio, setDateCheckAudio] = useState(0);
@@ -27,7 +27,9 @@ const AudioContext = ({ audioCommand, setBeat, setIsPlaying }) => {
       //---- EXECUTE start music ----
       if (audioCommand.actionX === "play") {
         setDateCheckStartAudio(Date.now());
-        source.start(1);
+        source.start(0);
+        setCurrentTime(audioContext.currentTime);
+
         setTimeout(() => {
           setCurrentTime(audioContext.currentTime);
         }, 1000);
@@ -48,8 +50,8 @@ const AudioContext = ({ audioCommand, setBeat, setIsPlaying }) => {
         //-- TOCHECK --
         // clearInterval(beatIntervalId);
         const currentTime = audioContext.currentTime;
-        if (currentTime >= 4.05 && currentTime < 4.1) {
-          // if (currentTime >= 10.05 && currentTime < 10.1) {
+        // if (currentTime >= 3.05 && currentTime < 3.1) {
+        if (currentTime >= 3) {
           setDateCheckAudio(Date.now());
           console.log("checkTimeTrigged:", Date.now());
           setIsPlaying(true);
@@ -62,7 +64,7 @@ const AudioContext = ({ audioCommand, setBeat, setIsPlaying }) => {
           };
         }
       };
-      if (audioCommand.actionX === "play") {
+      if (audioCommand.actionX === "play" && !isPlaying) {
         const initCheckTimeInterval = setInterval(checkTime, 1);
         setCheckTimeIntervalId(initCheckTimeInterval);
       }
