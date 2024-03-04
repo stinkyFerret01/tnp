@@ -1,14 +1,15 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 
 const AudioContext = ({ audioCommand, setBeat, isPlaying, setIsPlaying }) => {
   // const [musicRef, setMusicRef] = useState(null);
   // const audioRef = "../Audio/HBFSp04.mp3";
-  const audioRef = useRef("../Audio/HBFSp04.mp3");
+  // const audioRef = useRef("../Audio/HBFSp04.mp3");
+  const audioRef = useRef(null);
 
-  const [startAudioDate, setStartAudioDate] = useState(0);
-  const [startAudioDatePlus, setStartAudioDatePlus] = useState(0);
+  // const [startAudioDate, setStartAudioDate] = useState(0);
+  // const [startAudioDatePlus, setStartAudioDatePlus] = useState(0);
 
-  const [checkTimeIntervalId, setCheckTimeIntervalId] = useState(null);
+  // const [checkTimeIntervalId, setCheckTimeIntervalId] = useState(null);
 
   // useEffect(() => {
   //   clearInterval(checkTimeIntervalId);
@@ -90,12 +91,12 @@ const AudioContext = ({ audioCommand, setBeat, isPlaying, setIsPlaying }) => {
   // -- TOCHECK --
   return (
     <div>
-      <div style={{ backgroundColor: "blue" }}>
+      {/* <div style={{ backgroundColor: "blue" }}>
         {<p>StartAudio ------: {startAudioDate}</p>}
-      </div>
-      <div style={{ backgroundColor: "green" }}>
+      </div> */}
+      {/* <div style={{ backgroundColor: "green" }}>
         {<p>startAudioDatePlus: {startAudioDatePlus}</p>}
-      </div>
+      </div> */}
       {/* <div style={{ backgroundColor: "red" }}>
         {<p>settingBeatDate --: {settingBeatDate}</p>}
       </div> */}
