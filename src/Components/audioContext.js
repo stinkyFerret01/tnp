@@ -40,7 +40,7 @@ const AudioContext = ({ audioCommand, setBeat, setIsPlaying }) => {
         //-- TOCHECK --
         // clearInterval(beatIntervalId);
         const currentTime = audioContext.currentTime;
-        if (currentTime >= 3.05 && currentTime < 3.06) {
+        if (currentTime >= 3.05 && currentTime < 3.07) {
           console.log("checkTimeTrigged:", Date.now());
           setIsPlaying(true);
           setTimeout(() => {
