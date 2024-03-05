@@ -21,6 +21,13 @@ const Command = ({ setAudioCommand, setScore, setMissedShots }) => {
     <article>
       <button onClick={handleStopButtonClick}>STOP</button>
       <button onClick={handlePlayButtonClick}>PLAY</button>
+      <button
+        onClick={() => {
+          console.log(Date.now() / 1000);
+        }}
+      >
+        date
+      </button>
     </article>
   );
 };

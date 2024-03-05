@@ -9,79 +9,67 @@ const AudioContext = ({
   setCurrentTime,
 }) => {
   const [musicRef, setMusicRef] = useState(null);
-  const [startCurrentTimeMarker, setStartCurrentTimeMarker] =
-    useState(1111111111);
-  const [startCurrentTimeMarker2, setStartCurrentTimeMarker2] =
-    useState(1111111111);
+  const [startCurrentTimeMarker, setStartCurrentTimeMarker] = useState(null);
+  // const [startCurrentTimeMarker2, setStartCurrentTimeMarker2] = useState(null);
 
-  // const [audioContext, setAudioContext] = useState(null);
-
-  const [startAudioDate, setStartAudioDate] = useState(1111111111);
-  const [startAudioDatePlus, setStartAudioDatePlus] = useState(1111111111);
+  const [startAudioDate, setStartAudioDate] = useState(null);
+  // const [startAudioDatePlus, setStartAudioDatePlus] = useState(null);
 
   const [checkTimeIntervalId, setCheckTimeIntervalId] = useState(null);
 
   useEffect(() => {
-    console.log("CHECKTIMECLEAR:", checkTimeIntervalId);
+    //---- TOREWORK ---
     clearInterval(checkTimeIntervalId);
-    console.log(audioCommand);
+    console.log("COMMAND:", audioCommand);
     if (audioCommand.actionX === "play") {
       const audioContext = new (window.AudioContext ||
         window.webkitAudioContext)();
 
       const loadAudio = async () => {
         const response = await fetch("../Audio/HBFSp04.mp3");
-        setStartCurrentTimeMarker(audioContext.currentTime);
         const audioData = await response.arrayBuffer();
 
         //---- decoding audioData takes a long time
         const audioBuffer = await audioContext.decodeAudioData(audioData);
-
-        setStartCurrentTimeMarker2(audioContext.currentTime);
 
         const source = audioContext.createBufferSource();
 
         source.buffer = audioBuffer;
 
         source.connect(audioContext.destination);
-        console.log("1", audioContext.state);
 
         //---- EXECUTE start music ----
-        let executeAudioStart = Date.now();
-        setStartCurrentTimeMarker2(audioContext.currentTime);
         source.start(0);
-        setStartAudioDate(executeAudioStart);
 
         setMusicRef(source);
 
         //---- TRIGGER isPlaying ----
+        let checkTimeInterval;
         const checkTime = () => {
-          // console.log(s);
-          let time = Date.now() - 1900;
-          let dif = time - executeAudioStart;
           let musicTime = audioContext.currentTime;
           setCurrentTime(musicTime);
-
-          if (dif >= -2 && dif <= 2) {
-            setStartAudioDatePlus(Date.now());
+          if (musicTime > 1.98) {
             console.log(audioContext.currentTime);
-            // console.log(dif);
-            clearInterval(checkTimeIntervalId);
-            setIsPlaying(true);
-            setTimeout(() => {
-              setBeat(20);
-            }, 320);
+            console.log(Date.now());
 
-            return () => {
-              audioContext.close();
-            };
+            clearInterval(checkTimeInterval);
+
+            setStartAudioDate(Date.now());
+            setStartCurrentTimeMarker(musicTime);
+
+            setTimeout(() => {
+              setIsPlaying(true);
+              // setTimeout(() => {
+              //   setBeat(16);
+              // }, 320);
+            }, 100);
           }
         };
 
-        const interval = setInterval(() => {
+        checkTimeInterval = setInterval(() => {
           checkTime();
         }, 1);
-        setCheckTimeIntervalId(interval);
+        setCheckTimeIntervalId(checkTimeInterval);
       };
 
       loadAudio();
@@ -97,9 +85,9 @@ const AudioContext = ({
     // eslint-disable-next-line
   }, [audioCommand]);
 
-  useEffect(() => {
-    console.log(currentTime);
-  }, [currentTime]);
+  // useEffect(() => {
+  //   console.log(currentTime);
+  // }, [currentTime]);
 
   // -- TOCHECK --
   return (
@@ -123,12 +111,12 @@ const AudioContext = ({
       <div style={{ backgroundColor: "blue" }}>
         {<p>StartAudio ------: {startAudioDate}</p>}
       </div>
-      <div style={{ backgroundColor: "blue" }}>
+      {/* <div style={{ backgroundColor: "blue" }}>
         {<p>startCurrentTimeMarker2 ------: {startCurrentTimeMarker2}</p>}
-      </div>
-      <div style={{ backgroundColor: "green" }}>
+      </div> */}
+      {/* <div style={{ backgroundColor: "green" }}>
         {<p>startAudioDatePlus: {startAudioDatePlus}</p>}
-      </div>
+      </div> */}
       {/* <div style={{ backgroundColor: "red" }}>
         {<p>settingBeatDate --: {settingBeatDate}</p>}
       </div> */}

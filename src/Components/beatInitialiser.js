@@ -22,21 +22,18 @@ const BeatInitialiser = ({
       let tempo = 121;
       setTimeout(() => {
         // console.log("initBeatInterval", Date.now()); //-- TEST PURPOSE -- synchro helper ----
-        let beatIntervalId = setInterval(() => {
-          setBeat((prevBeat) => prevBeat + 1);
-        }, tempo);
-
-        id = beatIntervalId;
-        setIntervalId(id);
         setInitBeatDate(Date.now());
         setCurrentTimeMarker(currentTime);
 
-        //sync cheats
-        if (currentTime > 3) {
-          setTimeout(() => {
-            setBeat((prevBeat) => prevBeat - 5);
-          }, 2000);
-        }
+        let beatIntervalId = setInterval(() => {
+          setBeat((prevBeat) => prevBeat + 1);
+        }, tempo);
+        id = beatIntervalId;
+        setIntervalId(id);
+
+        setTimeout(() => {
+          setBeat(33);
+        }, 2000);
 
         return () => {
           clearInterval(beatIntervalId);
