@@ -9,6 +9,9 @@ const AudioContext = ({
   setCurrentTime,
 }) => {
   const [musicRef, setMusicRef] = useState(null);
+  const [startCurrentTimeMarker, setStartCurrentTimeMarker] = useState(null);
+  const [startCurrentTimeMarker2, setStartCurrentTimeMarker2] = useState(null);
+
   // const [audioContext, setAudioContext] = useState(null);
 
   const [startAudioDate, setStartAudioDate] = useState(0);
@@ -27,17 +30,24 @@ const AudioContext = ({
       const loadAudio = async () => {
         const response = await fetch("../Audio/HBFSp04.mp3");
         const audioData = await response.arrayBuffer();
+        setStartCurrentTimeMarker(audioContext.currentTime);
+
+        //---- decoding audioData takes a long time
         const audioBuffer = await audioContext.decodeAudioData(audioData);
 
+        setStartCurrentTimeMarker2(audioContext.currentTime);
+
         const source = audioContext.createBufferSource();
+
         source.buffer = audioBuffer;
 
         source.connect(audioContext.destination);
         console.log("1", audioContext.state);
 
         //---- EXECUTE start music ----
-        source.start(0);
         let executeAudioStart = Date.now();
+        setStartCurrentTimeMarker2(audioContext.currentTime);
+        source.start(0);
         setStartAudioDate(Date.now());
 
         setMusicRef(source);
@@ -52,7 +62,8 @@ const AudioContext = ({
 
           if (dif >= -2 && dif <= 2) {
             setStartAudioDatePlus(Date.now());
-            console.log(dif);
+            console.log(audioContext.currentTime);
+            // console.log(dif);
             clearInterval(checkTimeIntervalId);
             setIsPlaying(true);
             setTimeout(() => {
@@ -105,7 +116,13 @@ const AudioContext = ({
         skip
       </button>
       <div style={{ backgroundColor: "blue" }}>
+        {<p>startCurrentTimeMarker ------: {startCurrentTimeMarker}</p>}
+      </div>
+      <div style={{ backgroundColor: "blue" }}>
         {<p>StartAudio ------: {startAudioDate}</p>}
+      </div>
+      <div style={{ backgroundColor: "blue" }}>
+        {<p>startCurrentTimeMarker2 ------: {startCurrentTimeMarker2}</p>}
       </div>
       <div style={{ backgroundColor: "green" }}>
         {<p>startAudioDatePlus: {startAudioDatePlus}</p>}
