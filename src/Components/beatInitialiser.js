@@ -38,14 +38,13 @@ const BeatInitialiser = ({
         setIntervalId(id);
 
         setTimeout(() => {
-          setBeat(17);
-          // setBeat(63);
+          setBeat(21);
         }, 2000);
 
         return () => {
           clearInterval(beatIntervalId);
         };
-      }, 290);
+      }, 100);
     } else {
       setBeat(0);
     }

@@ -33,9 +33,7 @@ const AudioContext = ({
         source.connect(audioContext.destination);
 
         //---- EXECUTE start music ----
-        setTimeout(() => {
-          source.start(0, 0);
-        }, 487);
+        source.start(0, 0);
 
         //---- setting MusicRef ----
         setMusicRef(source);
@@ -44,14 +42,14 @@ const AudioContext = ({
         let checkCurrentTimeInterval;
 
         const checkTime = () => {
-          // let musicTime = audioContext.currentTime;
-          let musicTime = source.context.outputLatency;
+          let musicTime = audioContext.currentTime;
+          let outputLatency = Math.floor(source.context.outputLatency * 1000);
 
           if (musicTime > 0) {
-            console.log(musicTime);
-            setStartCurrentTimeMarker(musicTime);
-            clearInterval(checkCurrentTimeInterval);
-            setIsPlaying(true);
+            setStartCurrentTimeMarker(outputLatency);
+            setTimeout(() => {
+              setIsPlaying(true);
+            }, outputLatency);
           }
           // console.log(musicTime);
           if (musicTime > 10) {
