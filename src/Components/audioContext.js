@@ -48,7 +48,7 @@ const AudioContext = ({
         const checkTime = () => {
           let musicTime = audioContext.currentTime;
           setCurrentTime(musicTime);
-          if (musicTime > 1.98) {
+          if (musicTime > 1.98 + 3.63) {
             console.log(audioContext.currentTime);
             console.log(Date.now());
 
