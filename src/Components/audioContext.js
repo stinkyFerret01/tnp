@@ -2,24 +2,16 @@ import React, { useState, useEffect } from "react";
 
 const AudioContext = ({
   audioCommand,
-  setBeat,
-  isPlaying,
   setIsPlaying,
-  currentTime,
   setCurrentTime,
+  checkCurrentTimeIntervalId,
+  setCheckCurrentTimeIntervalId,
 }) => {
   const [musicRef, setMusicRef] = useState(null);
-  const [startCurrentTimeMarker, setStartCurrentTimeMarker] = useState(null);
-  // const [startCurrentTimeMarker2, setStartCurrentTimeMarker2] = useState(null);
-
-  const [startAudioDate, setStartAudioDate] = useState(null);
-  // const [startAudioDatePlus, setStartAudioDatePlus] = useState(null);
-
-  const [checkTimeIntervalId, setCheckTimeIntervalId] = useState(null);
 
   useEffect(() => {
     //---- TOREWORK ---
-    clearInterval(checkTimeIntervalId);
+    clearInterval(checkCurrentTimeIntervalId);
     console.log("COMMAND:", audioCommand);
     if (audioCommand.actionX === "play") {
       const audioContext = new (window.AudioContext ||
@@ -44,32 +36,22 @@ const AudioContext = ({
         setMusicRef(source);
 
         //---- TRIGGER isPlaying ----
-        let checkTimeInterval;
+        let checkCurrentTimeInterval;
+
         const checkTime = () => {
           let musicTime = audioContext.currentTime;
+          console.log(musicTime);
           setCurrentTime(musicTime);
-          if (musicTime > 1.98 + 3.63) {
-            console.log(audioContext.currentTime);
-            console.log(Date.now());
-
-            clearInterval(checkTimeInterval);
-
-            setStartAudioDate(Date.now());
-            setStartCurrentTimeMarker(musicTime);
-
-            setTimeout(() => {
-              setIsPlaying(true);
-              // setTimeout(() => {
-              //   setBeat(16);
-              // }, 320);
-            }, 100);
+          if (musicTime > 6) {
+            clearInterval(checkCurrentTimeInterval);
           }
         };
 
-        checkTimeInterval = setInterval(() => {
+        checkCurrentTimeInterval = setInterval(() => {
           checkTime();
-        }, 1);
-        setCheckTimeIntervalId(checkTimeInterval);
+        }, 10);
+
+        setCheckCurrentTimeIntervalId(checkCurrentTimeInterval);
       };
 
       loadAudio();
@@ -85,43 +67,8 @@ const AudioContext = ({
     // eslint-disable-next-line
   }, [audioCommand]);
 
-  // useEffect(() => {
-  //   console.log(currentTime);
-  // }, [currentTime]);
-
   // -- TOCHECK --
-  return (
-    <div>
-      <button
-        onClick={() => {
-          for (
-            let i = checkTimeIntervalId - 100;
-            i < checkTimeIntervalId;
-            i++
-          ) {
-            clearInterval(i);
-          }
-        }}
-      >
-        skip
-      </button>
-      <div style={{ backgroundColor: "blue" }}>
-        {<p>startCurrentTimeMarker ------: {startCurrentTimeMarker}</p>}
-      </div>
-      <div style={{ backgroundColor: "blue" }}>
-        {<p>StartAudio ------: {startAudioDate}</p>}
-      </div>
-      {/* <div style={{ backgroundColor: "blue" }}>
-        {<p>startCurrentTimeMarker2 ------: {startCurrentTimeMarker2}</p>}
-      </div> */}
-      {/* <div style={{ backgroundColor: "green" }}>
-        {<p>startAudioDatePlus: {startAudioDatePlus}</p>}
-      </div> */}
-      {/* <div style={{ backgroundColor: "red" }}>
-        {<p>settingBeatDate --: {settingBeatDate}</p>}
-      </div> */}
-    </div>
-  );
+  return <div></div>;
 };
 
 export default AudioContext;

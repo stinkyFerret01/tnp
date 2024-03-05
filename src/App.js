@@ -14,6 +14,8 @@ import ButtonPanel from "./Components/buttonPanel";
 
 function App() {
   const [currentTime, setCurrentTime] = useState(0);
+  const [checkCurrentTimeIntervalId, setCheckCurrentTimeIntervalId] =
+    useState(null);
 
   const [beat, setBeat] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -42,6 +44,8 @@ function App() {
       <AudioContext
         currentTime={currentTime}
         setCurrentTime={setCurrentTime}
+        checkCurrentTimeIntervalId={checkCurrentTimeIntervalId}
+        setCheckCurrentTimeIntervalId={setCheckCurrentTimeIntervalId}
         audioCommand={audioCommand}
         setBeat={setBeat}
         setIsPlaying={setIsPlaying}
@@ -49,7 +53,9 @@ function App() {
       <BeatInitialiser
         currentTime={currentTime}
         setCurrentTime={setCurrentTime}
+        setCheckCurrentTimeIntervalId={setCheckCurrentTimeIntervalId}
         isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
         beat={beat}
         setBeat={setBeat}
       ></BeatInitialiser>

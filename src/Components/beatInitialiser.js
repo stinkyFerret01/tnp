@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 
 const BeatInitialiser = ({
-  isPlaying,
-  beat,
-  setBeat,
   currentTime,
   setCurrentTime,
+  isPlaying,
+  setIsPlaying,
+  setBeat,
 }) => {
   const [intervalId, setIntervalId] = useState(null);
 
@@ -13,6 +13,12 @@ const BeatInitialiser = ({
   const [currentTimeMarker, setCurrentTimeMarker] = useState(0);
 
   // ---- BEATS INITIALIZER ----
+  useEffect(() => {
+    if (currentTime > 5.56 && currentTime < 5.6) {
+      setIsPlaying(true);
+    }
+  }, [currentTime, setIsPlaying]);
+
   useEffect(() => {
     clearInterval(intervalId);
 
@@ -46,11 +52,6 @@ const BeatInitialiser = ({
 
     // eslint-disable-next-line
   }, [isPlaying]);
-
-  // -- TEST PURPOSE -- synchro helper ----
-  // useEffect(() => {
-  //   console.log("BEAT", beat, Date.now());
-  // }, [beat]);
 
   return (
     <div>
