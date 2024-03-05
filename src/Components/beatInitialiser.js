@@ -34,7 +34,7 @@ const BeatInitialiser = ({
         //sync cheats
         if (currentTime > 3) {
           setTimeout(() => {
-            setBeat((prevBeat) => prevBeat - 16);
+            setBeat((prevBeat) => prevBeat - 10);
           }, 2000);
         }
 
