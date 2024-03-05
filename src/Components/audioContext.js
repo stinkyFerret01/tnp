@@ -9,6 +9,8 @@ const AudioContext = ({
 }) => {
   const [musicRef, setMusicRef] = useState(null);
 
+  const [startCurrentTimeMarker, setStartCurrentTimeMarker] = useState(null);
+
   useEffect(() => {
     //---- TOREWORK ---
     clearInterval(checkCurrentTimeIntervalId);
@@ -40,9 +42,13 @@ const AudioContext = ({
 
         const checkTime = () => {
           let musicTime = audioContext.currentTime;
-          console.log(musicTime);
-          setCurrentTime(musicTime);
-          if (musicTime > 6) {
+          if (musicTime > 0) {
+            console.log(musicTime);
+            setStartCurrentTimeMarker(musicTime);
+            clearInterval(checkCurrentTimeInterval);
+          }
+          // console.log(musicTime);
+          if (musicTime > 10) {
             clearInterval(checkCurrentTimeInterval);
           }
         };
@@ -68,7 +74,13 @@ const AudioContext = ({
   }, [audioCommand]);
 
   // -- TOCHECK --
-  return <div></div>;
+  return (
+    <div>
+      <div style={{ backgroundColor: "green" }}>
+        <p>startCurrentTimeMarker: {startCurrentTimeMarker}</p>
+      </div>
+    </div>
+  );
 };
 
 export default AudioContext;
