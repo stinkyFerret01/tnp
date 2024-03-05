@@ -9,13 +9,15 @@ const AudioContext = ({
   setCurrentTime,
 }) => {
   const [musicRef, setMusicRef] = useState(null);
-  const [startCurrentTimeMarker, setStartCurrentTimeMarker] = useState(null);
-  const [startCurrentTimeMarker2, setStartCurrentTimeMarker2] = useState(null);
+  const [startCurrentTimeMarker, setStartCurrentTimeMarker] =
+    useState(1111111111);
+  const [startCurrentTimeMarker2, setStartCurrentTimeMarker2] =
+    useState(1111111111);
 
   // const [audioContext, setAudioContext] = useState(null);
 
-  const [startAudioDate, setStartAudioDate] = useState(0);
-  const [startAudioDatePlus, setStartAudioDatePlus] = useState(0);
+  const [startAudioDate, setStartAudioDate] = useState(1111111111);
+  const [startAudioDatePlus, setStartAudioDatePlus] = useState(1111111111);
 
   const [checkTimeIntervalId, setCheckTimeIntervalId] = useState(null);
 
@@ -29,8 +31,8 @@ const AudioContext = ({
 
       const loadAudio = async () => {
         const response = await fetch("../Audio/HBFSp04.mp3");
-        const audioData = await response.arrayBuffer();
         setStartCurrentTimeMarker(audioContext.currentTime);
+        const audioData = await response.arrayBuffer();
 
         //---- decoding audioData takes a long time
         const audioBuffer = await audioContext.decodeAudioData(audioData);
@@ -48,7 +50,7 @@ const AudioContext = ({
         let executeAudioStart = Date.now();
         setStartCurrentTimeMarker2(audioContext.currentTime);
         source.start(0);
-        setStartAudioDate(Date.now());
+        setStartAudioDate(executeAudioStart);
 
         setMusicRef(source);
 
