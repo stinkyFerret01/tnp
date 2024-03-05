@@ -5,66 +5,55 @@
 // }));
 // console.log(objets);
 
-// [
-//   "More than",
-//   "Hour",
-//   "Never",
-//   "",
-//   "Ever",
-//   "After",
-//   "Work is",
-//   "Over",
-// ]
-
 const beatRule = [
-  // {
-  //   beat: 0,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 1,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 2,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 3,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 4,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 5,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 6,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 7,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 8,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 9,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 10,
-  //   goodWords: null,
-  // },
-  // {
-  //   beat: 11,
-  //   goodWords: null,
-  // },
+  // //   // {
+  // //   //   beat: 0,
+  // //   //   goodWords: null,
+  // //   // },
+  // //   // {
+  // //   //   beat: 1,
+  // //   //   goodWords: null,
+  // //   // },
+  // //   // {
+  // //   //   beat: 2,
+  // //   //   goodWords: null,
+  // //   // },
+  // //   // {
+  // //   //   beat: 3,
+  // //   //   goodWords: null,
+  // //   // },
+  // //   // {
+  // //   //   beat: 4,
+  // //   //   goodWords: null,
+  // //   // },
+  // //   // {
+  // //   //   beat: 5,
+  // //   //   goodWords: null,
+  // //   // },
+  // //   // {
+  // //   //   beat: 6,
+  // //   //   goodWords: null,
+  // //   // },
+  // //   // {
+  // //   //   beat: 7,
+  // //   //   goodWords: null,
+  // //   // },
+  // //   // {
+  // //   //   beat: 8,
+  // //   //   goodWords: null,
+  // //   // },
+  // //   // {
+  // //   //   beat: 9,
+  // //   //   goodWords: null,
+  // //   // },
+  // //   // {
+  // //   //   beat: 10,
+  // //   //   goodWords: null,
+  // //   // },
+  // //   // {
+  // //   //   beat: 11,
+  // //   //   goodWords: null,
+  // //   // },
   {
     beat: 12,
     goodWords: null,
@@ -7555,5 +7544,95 @@ const beatRule = [
     goodWords: null,
   },
 ];
+
+// beatRuleBuilder:
+// wordsPosition
+// const wordsPosition = [
+// {
+//   label: "Work it",
+//   beats: [419],
+// },
+// {
+//   label: "Make it",
+//   beats: [423],
+// },
+// {
+//   label: "Do it",
+//   beats: [427],
+// },
+// {
+//   label: "Makes us",
+//   beats: [431],
+// },
+// {
+//   label: "Harder",
+//   beats: [],
+// },
+// {
+//   label: "Better",
+//   beats: [],
+// },
+// {
+//   label: "Faster",
+//   beats: [],
+// },
+// {
+//   label: "Stronger",
+//   beats: [],
+// },
+// {
+//   label: "More than",
+//   beats: [],
+// },
+// {
+//   label: "Hour",
+//   beats: [],
+// },
+// {
+//   label: "Never",
+//   beats: [],
+// },
+// {
+//   label: "",
+//   beats: [],
+// },
+// {
+//   label: "Ever",
+//   beats: [],
+// },
+// {
+//   label: "After",
+//   beats: [],
+// },
+// {
+//   label: "Work is",
+//   beats: [],
+// },
+// {
+//   label: "Over",
+//   beats: [],
+// },
+// ];
+
+// const beatRuleBuilder = () => {
+//   let beatRuleWIP = [];
+//   for (let i = 0; i < 1880; i++) {
+//     let beatToCheck = i;
+//     let beat = { beat: i, goodWords: [] };
+//     for (let j = 0; j < wordsPosition; j++) {
+//       let labelToCheck = wordsPosition[j];
+//       if (labelToCheck.beats.includes(beatToCheck)) {
+//         beat.goodWords.push(labelToCheck.label);
+//       }
+//     }
+//     if (beat.goodWords.length === 0) {
+//       beat.goodWords = null;
+//     }
+//     beatRuleWIP.push(beat);
+//   }
+//   return beatRuleWIP;
+// };
+
+// const beatRule = beatRuleBuilder();
 
 export default beatRule;
