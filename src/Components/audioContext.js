@@ -33,8 +33,11 @@ const AudioContext = ({
         source.connect(audioContext.destination);
 
         //---- EXECUTE start music ----
-        source.start(0);
+        setTimeout(() => {
+          source.start(0, 0);
+        }, 487);
 
+        //---- setting MusicRef ----
         setMusicRef(source);
 
         //---- TRIGGER isPlaying ----
