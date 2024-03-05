@@ -44,7 +44,9 @@ const AudioContext = ({
         let checkCurrentTimeInterval;
 
         const checkTime = () => {
-          let musicTime = audioContext.currentTime;
+          // let musicTime = audioContext.currentTime;
+          let musicTime = source.context.outputLatency;
+
           if (musicTime > 0) {
             console.log(musicTime);
             setStartCurrentTimeMarker(musicTime);
