@@ -31,6 +31,11 @@ const BeatInitialiser = ({
         setInitBeatDate(Date.now());
         setCurrentTimeMarker(currentTime);
 
+        //sync cheats
+        if (currentTime > 3) {
+          setBeat((prevBeat) => prevBeat - 16);
+        }
+
         return () => {
           clearInterval(beatIntervalId);
         };
