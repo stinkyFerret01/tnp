@@ -46,6 +46,7 @@ const AudioContext = ({
             console.log(musicTime);
             setStartCurrentTimeMarker(musicTime);
             clearInterval(checkCurrentTimeInterval);
+            setIsPlaying(true);
           }
           // console.log(musicTime);
           if (musicTime > 10) {

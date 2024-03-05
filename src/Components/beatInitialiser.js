@@ -38,8 +38,8 @@ const BeatInitialiser = ({
         setIntervalId(id);
 
         setTimeout(() => {
-          // setBeat(33);
-          setBeat(63);
+          setBeat(17);
+          // setBeat(63);
         }, 2000);
 
         return () => {
