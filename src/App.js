@@ -1,33 +1,40 @@
 import { useState } from "react";
+import "./App.css";
 
-import BeatInitialiser from "./Components/beatInitialiser";
-import Control from "./Components/control";
+//==> starts and stops the game, triggs the AudiContext
 import Command from "./Components/command";
+
+//==> load and plays the music, triggs the BeatInitializer
+import AudioContext from "./Components/audioContext";
+
+//==> set a beats loop synchronised with the music
+import BeatInitialiser from "./Components/beatInitialiser";
+
+//==> the game, buttons, score status an danimations
+import ButtonPanel from "./Components/buttonPanel";
 import ScoreStatus from "./Components/scoreStatus";
 import MissedShotsStatus from "./Components/missedShotsStatus";
 
-import AudioContext from "./Components/audioContext";
-
-import "./App.css";
-
-import ButtonPanel from "./Components/buttonPanel";
+//==> controls game mechanics value (test purpose)
+import Control from "./Components/control";
 
 function App() {
-  const [currentTime, setCurrentTime] = useState(0);
-  const [checkCurrentTimeIntervalId, setCheckCurrentTimeIntervalId] =
-    useState(null);
-
-  const [beat, setBeat] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const [score, setScore] = useState(0);
-  const [missedShots, setMissedShots] = useState([]);
-
+  //==> stores the infos to trig music and beats mechanics
   const [audioCommand, setAudioCommand] = useState({
     actionX: null,
     timex: 0,
     beatx: 0,
   });
+
+  //==> triggs or stops the beat intializer from the music
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  //==> stores the beat value that triggs buttons and animations activation
+  const [beat, setBeat] = useState(0);
+
+  //==> stores the scores events and status
+  const [score, setScore] = useState(0);
+  const [missedShots, setMissedShots] = useState([]);
 
   return (
     <div className="App">
@@ -42,20 +49,11 @@ function App() {
         setMissedShots={setMissedShots}
       ></ButtonPanel>
       <AudioContext
-        currentTime={currentTime}
-        setCurrentTime={setCurrentTime}
-        checkCurrentTimeIntervalId={checkCurrentTimeIntervalId}
-        setCheckCurrentTimeIntervalId={setCheckCurrentTimeIntervalId}
         audioCommand={audioCommand}
-        setBeat={setBeat}
         setIsPlaying={setIsPlaying}
       ></AudioContext>
       <BeatInitialiser
-        currentTime={currentTime}
-        setCurrentTime={setCurrentTime}
-        setCheckCurrentTimeIntervalId={setCheckCurrentTimeIntervalId}
         isPlaying={isPlaying}
-        setIsPlaying={setIsPlaying}
         beat={beat}
         setBeat={setBeat}
       ></BeatInitialiser>

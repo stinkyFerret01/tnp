@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-const AudioContext = ({
-  audioCommand,
-  setIsPlaying,
-  setCurrentTime,
-  checkCurrentTimeIntervalId,
-  setCheckCurrentTimeIntervalId,
-}) => {
+const AudioContext = ({ audioCommand, setIsPlaying }) => {
+  //==> stores the musicContext to make it reachable for the code
   const [musicRef, setMusicRef] = useState(null);
 
-  const [startCurrentTimeMarker, setStartCurrentTimeMarker] = useState(null);
+  //==> stores the intervall that checks the context for the moment the music time is running
+  const [checkCurrentTimeIntervalId, setCheckCurrentTimeIntervalId] =
+    useState(null);
+
+  //==> stores values to display on devices whithout navigator inspector (test purpose)
+  // const [outputLatency, setOuputLatency] = useState(null);
 
   useEffect(() => {
-    //---- TOREWORK ---
     clearInterval(checkCurrentTimeIntervalId);
-    console.log("COMMAND:", audioCommand);
+    // console.log("COMMAND:", audioCommand);
     if (audioCommand.actionX === "play") {
       const audioContext = new (window.AudioContext ||
         window.webkitAudioContext)();
@@ -46,26 +45,20 @@ const AudioContext = ({
           let outputLatency = Math.floor(source.context.outputLatency * 1000);
 
           if (musicTime > 0) {
-            setStartCurrentTimeMarker(outputLatency);
+            // setOuputLatency(outputLatency); //---- (test purpose) ----)
             if (Number.isNaN(outputLatency)) {
-              setTimeout(() => {
-                setIsPlaying(true);
-              }, 40);
-            } else {
-              setTimeout(() => {
-                setIsPlaying(true);
-              }, outputLatency);
+              outputLatency = 40;
             }
-          }
-          if (musicTime > 10) {
-            clearInterval(checkCurrentTimeInterval);
+            setTimeout(() => {
+              setIsPlaying(true);
+              clearInterval(checkCurrentTimeInterval);
+            }, outputLatency);
           }
         };
 
         checkCurrentTimeInterval = setInterval(() => {
           checkTime();
         }, 10);
-
         setCheckCurrentTimeIntervalId(checkCurrentTimeInterval);
       };
 
@@ -74,22 +67,25 @@ const AudioContext = ({
       return () => {
         audioContext.close();
       };
-    } else if (musicRef) {
+    } else if (musicRef && audioCommand.actionX === "stop") {
+      // } else if (musicRef) {
       musicRef.stop();
-      setIsPlaying(false);
+      setTimeout(() => {
+        setIsPlaying(false);
+      }, 100);
     }
 
     // eslint-disable-next-line
   }, [audioCommand]);
 
-  // -- TOCHECK --
-  return (
-    <div>
-      <div style={{ backgroundColor: "green" }}>
-        <p>startCurrentTimeMarker: {startCurrentTimeMarker}</p>
-      </div>
-    </div>
-  );
+  // ---- (test purpose) ----
+  // return (
+  //   <div>
+  //     <div style={{ backgroundColor: "green" }}>
+  //       <p>outPut latency: {outputLatency}</p>
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default AudioContext;
