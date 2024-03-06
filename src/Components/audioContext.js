@@ -47,11 +47,16 @@ const AudioContext = ({
 
           if (musicTime > 0) {
             setStartCurrentTimeMarker(outputLatency);
-            setTimeout(() => {
-              setIsPlaying(true);
-            }, outputLatency);
+            if (Number.isNaN(outputLatency)) {
+              setTimeout(() => {
+                setIsPlaying(true);
+              }, 1000);
+            } else {
+              setTimeout(() => {
+                setIsPlaying(true);
+              }, outputLatency);
+            }
           }
-          // console.log(musicTime);
           if (musicTime > 10) {
             clearInterval(checkCurrentTimeInterval);
           }

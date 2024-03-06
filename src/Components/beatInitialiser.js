@@ -5,6 +5,7 @@ const BeatInitialiser = ({
   setCurrentTime,
   isPlaying,
   setIsPlaying,
+  beat,
   setBeat,
 }) => {
   const [intervalId, setIntervalId] = useState(null);
@@ -12,12 +13,24 @@ const BeatInitialiser = ({
   const [initBeatDate, setInitBeatDate] = useState(0);
   const [currentTimeMarker, setCurrentTimeMarker] = useState(0);
 
+  const [controlBeat1, setControlBeat1] = useState(null);
+  const [controlBeat2, setControlBeat2] = useState(null);
+  const [beatDif, setBeatDif] = useState(null);
+
   // ---- BEATS INITIALIZER ----
   useEffect(() => {
-    if (currentTime > 5.56 && currentTime < 5.6) {
-      setIsPlaying(true);
+    let beatDate = Date.now();
+    if (beat === 120) {
+      console.log(beatDate);
+      setControlBeat1(beatDate);
+    } else if (beat === 220) {
+      console.log(beatDate - 12100);
+      setControlBeat2(beatDate);
+      setBeatDif(beatDate - controlBeat1);
     }
-  }, [currentTime, setIsPlaying]);
+
+    // eslint-disable-next-line
+  }, [beat]);
 
   useEffect(() => {
     clearInterval(intervalId);
@@ -59,6 +72,15 @@ const BeatInitialiser = ({
       </div>
       <div style={{ backgroundColor: "orange" }}>
         <p>currentTimeMarker -----: {currentTimeMarker}</p>
+      </div>
+      <div style={{ backgroundColor: "pink" }}>
+        <p>controlBeat1 -----: {controlBeat1}</p>
+      </div>
+      <div style={{ backgroundColor: "pink" }}>
+        <p>controlBeat2 -----: {controlBeat2}</p>
+      </div>
+      <div style={{ backgroundColor: "pink" }}>
+        <p>beatDif -----: {beatDif}</p>
       </div>
     </div>
   );
