@@ -1,8 +1,14 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import "./App.css";
 
+//==> pages
+import HomePage from "./Components/homePage";
+import GamePage from "./Components/gamePage";
+
 //==> starts and stops the game, triggs the AudiContext
-import Command from "./Components/command";
+// import Command from "./Components/command";
 
 //==> load and plays the music, triggs the BeatInitializer
 import AudioContext from "./Components/audioContext";
@@ -10,10 +16,10 @@ import AudioContext from "./Components/audioContext";
 //==> set a beats loop synchronised with the music
 import BeatInitialiser from "./Components/beatInitialiser";
 
-//==> the game, buttons, score status an danimations
-import ButtonPanel from "./Components/buttonPanel";
-import ScoreStatus from "./Components/scoreStatus";
-import MissedShotsStatus from "./Components/missedShotsStatus";
+//==> the game, buttons, score status and animations
+// import ButtonPanel from "./Components/buttonPanel";
+// import ScoreStatus from "./Components/scoreStatus";
+// import MissedShotsStatus from "./Components/missedShotsStatus";
 
 //==> controls game mechanics value (test purpose)
 import Control from "./Components/control";
@@ -33,12 +39,44 @@ function App() {
   const [beat, setBeat] = useState(0);
 
   //==> stores the scores events and status
-  const [score, setScore] = useState(0);
-  const [missedShots, setMissedShots] = useState([]);
+  // const [score, setScore] = useState(0);
+  // const [missedShots, setMissedShots] = useState([]);
+
+  //==> control
+  const [timeJumps, setTimeJumps] = useState([]);
+  const [outputLatency, setOutputLatency] = useState(null);
 
   return (
     <div className="App">
-      <ScoreStatus score={score}></ScoreStatus>
+      <AudioContext
+        audioCommand={audioCommand}
+        setIsPlaying={setIsPlaying}
+        setOutputLatency={setOutputLatency}
+      ></AudioContext>
+      <BeatInitialiser
+        isPlaying={isPlaying}
+        beat={beat}
+        setBeat={setBeat}
+      ></BeatInitialiser>
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={<HomePage setAudioCommand={setAudioCommand} />}
+          />
+          <Route
+            path="/game"
+            element={
+              <GamePage
+                setAudioCommand={setAudioCommand}
+                beat={beat}
+                setBeat={setBeat}
+              />
+            }
+          />
+        </Routes>
+      </Router>
+      {/* <ScoreStatus score={score}></ScoreStatus>
       <MissedShotsStatus missedShots={missedShots}></MissedShotsStatus>
       <ButtonPanel
         beat={beat}
@@ -47,22 +85,15 @@ function App() {
         setScore={setScore}
         missedShots={missedShots}
         setMissedShots={setMissedShots}
-      ></ButtonPanel>
-      <AudioContext
-        audioCommand={audioCommand}
-        setIsPlaying={setIsPlaying}
-      ></AudioContext>
-      <BeatInitialiser
+      ></ButtonPanel> */}
+      {/* <Command setAudioCommand={setAudioCommand}></Command> */}
+      <Control
         isPlaying={isPlaying}
+        outputLatency={outputLatency}
         beat={beat}
-        setBeat={setBeat}
-      ></BeatInitialiser>
-      <Command
-        setAudioCommand={setAudioCommand}
-        setScore={setScore}
-        setMissedShots={setMissedShots}
-      ></Command>
-      <Control beat={beat}></Control>
+        timeJumps={timeJumps}
+        setTimeJumps={setTimeJumps}
+      ></Control>
     </div>
   );
 }

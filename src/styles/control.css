@@ -1,0 +1,33 @@
+.toggle-control-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.control-container {
+    border: solid blue 4px;
+    box-sizing: border-box;
+    position: absolute;
+}
+
+.output-latency {
+    background-color: aquamarine;
+}
+
+.beat-dif-container {
+    background-color: aqua;
+    display: flex;
+}
+
+.beat-dif-element {
+    border: solid blue 2PX;
+}
+
+.time-jumps-container {
+    background-color: yellow;
+    display: flex;
+}
+
+.time-jump {
+    border: solid red 2px;
+}

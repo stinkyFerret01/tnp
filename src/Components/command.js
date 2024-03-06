@@ -1,4 +1,4 @@
-const Command = ({ setAudioCommand, setScore, setMissedShots }) => {
+const Command = ({ setAudioCommand }) => {
   const handlePlayButtonClick = () => {
     setAudioCommand({
       actionX: "play",
@@ -13,21 +13,12 @@ const Command = ({ setAudioCommand, setScore, setMissedShots }) => {
       timex: 0,
       beatx: 0,
     });
-    setScore(0);
-    setMissedShots([]);
   };
 
   return (
     <article>
       <button onClick={handleStopButtonClick}>STOP</button>
       <button onClick={handlePlayButtonClick}>PLAY</button>
-      <button
-        onClick={() => {
-          console.log(Date.now() / 1000);
-        }}
-      >
-        date
-      </button>
     </article>
   );
 };

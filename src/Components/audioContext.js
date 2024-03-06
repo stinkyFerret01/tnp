@@ -1,15 +1,12 @@
 import { useState, useEffect } from "react";
 
-const AudioContext = ({ audioCommand, setIsPlaying }) => {
+const AudioContext = ({ audioCommand, setIsPlaying, setOutputLatency }) => {
   //==> stores the musicContext to make it reachable for the code
   const [musicRef, setMusicRef] = useState(null);
 
   //==> stores the intervall that checks the context for the moment the music time is running
   const [checkCurrentTimeIntervalId, setCheckCurrentTimeIntervalId] =
     useState(null);
-
-  //==> stores values to display on devices whithout navigator inspector (test purpose)
-  // const [outputLatency, setOuputLatency] = useState(null);
 
   useEffect(() => {
     clearInterval(checkCurrentTimeIntervalId);
@@ -42,17 +39,18 @@ const AudioContext = ({ audioCommand, setIsPlaying }) => {
 
         const checkTime = () => {
           let musicTime = audioContext.currentTime;
-          let outputLatency = Math.floor(source.context.outputLatency * 1000);
-
+          let contextOutputLatency = Math.floor(
+            source.context.outputLatency * 1000
+          );
           if (musicTime > 0) {
-            // setOuputLatency(outputLatency); //---- (test purpose) ----)
-            if (Number.isNaN(outputLatency)) {
-              outputLatency = 40;
+            setOutputLatency(contextOutputLatency); //---- (control purpose) ----
+            if (Number.isNaN(contextOutputLatency)) {
+              contextOutputLatency = 40;
             }
             setTimeout(() => {
               setIsPlaying(true);
               clearInterval(checkCurrentTimeInterval);
-            }, outputLatency);
+            }, contextOutputLatency);
           }
         };
 
@@ -68,7 +66,6 @@ const AudioContext = ({ audioCommand, setIsPlaying }) => {
         audioContext.close();
       };
     } else if (musicRef && audioCommand.actionX === "stop") {
-      // } else if (musicRef) {
       musicRef.stop();
       setTimeout(() => {
         setIsPlaying(false);

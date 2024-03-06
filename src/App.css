@@ -1,18 +1,20 @@
 @import "./reset.css";
-@import "./styles/gameButton.css";
-@import "./styles/buttonPanel.css";
 @import "./styles/ScoreStatus.css";
+@import "./styles/buttonPanel.css";
+@import "./styles/gameButton.css";
+@import "./styles/control.css";
 
 
 .App {
   background-color: #282c34;
   overflow: hidden;
-  min-height: 100vh;
   min-width: 100vw;
-  /* max-height: 100vh; */
+  min-height: 100vh;
   max-width: 100vw;
-}
-
-.audioPlayer {
-  visibility: hidden;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
 }
