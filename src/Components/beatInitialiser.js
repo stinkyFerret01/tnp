@@ -19,7 +19,8 @@ const BeatInitialiser = ({
 
   // ---- BEATS INITIALIZER ----
   useEffect(() => {
-    let beatDate = Date.now();
+    // let beatDate = Date.now();
+    let beatDate = performance.now();
     if (beat === 120) {
       console.log(beatDate);
       setControlBeat1(beatDate);
