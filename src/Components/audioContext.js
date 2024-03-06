@@ -50,7 +50,7 @@ const AudioContext = ({
             if (Number.isNaN(outputLatency)) {
               setTimeout(() => {
                 setIsPlaying(true);
-              }, 1000);
+              }, 40);
             } else {
               setTimeout(() => {
                 setIsPlaying(true);
