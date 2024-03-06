@@ -92,7 +92,7 @@ const ButtonPanel = ({
     const beatRuleBuilder = () => {
       let beatRuleWIP = [];
       for (let i = 0; i < 1880; i++) {
-        let beatToCheck = i - 420;
+        let beatToCheck = i - 416;
         let beat = { beat: i, goodWords: [] };
         for (let j = 0; j < wordsPosition.length; j++) {
           let labelToCheck = wordsPosition[j];
