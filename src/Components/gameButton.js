@@ -1,8 +1,8 @@
-// Game button est l'element principal du jeux, le bouton à click
-// il s'invoque avec une prop "word" qui défini sa valeur
+//==> Game button est l'element principal du jeux pour le Player
+//==> il s'invoque avec une prop "word" qui défini sa valeur
 import { useEffect, useState } from "react";
 
-const GameButton2 = ({
+const GameButton = ({
   active,
   word,
   score,
@@ -10,7 +10,7 @@ const GameButton2 = ({
   missedShots,
   setMissedShots,
 }) => {
-  const [buttonStyle, setButtonStyle] = useState("button2off"); //---- V1 ----
+  const [buttonStyle, setButtonStyle] = useState("button2off");
   const [targetBlocker, setTargetBlocker] = useState(false);
   const [turnOffTimeoutId, setTurnOffTimeoutId] = useState(null);
 
@@ -21,7 +21,6 @@ const GameButton2 = ({
   };
 
   const handleShoot = () => {
-    console.log("CLICK");
     setTargetBlocker(true);
     setTimeout(() => {
       setTargetBlocker(false);
@@ -33,7 +32,6 @@ const GameButton2 = ({
       setTimeout(() => {
         setButtonStyle("button2off");
       }, 242);
-      console.log("OK");
     } else if (targetBlocker) {
       if (missedShots.length < 10) {
         setMissedShots((prevMissedShots) => [...prevMissedShots, Date.now()]);
@@ -44,7 +42,6 @@ const GameButton2 = ({
       }, 150);
       console.log("BLOCK");
     } else {
-      console.log("miss");
       if (missedShots.length < 10) {
         setMissedShots((prevMissedShots) => [...prevMissedShots, Date.now()]);
       }
@@ -52,7 +49,6 @@ const GameButton2 = ({
       setTimeout(() => {
         setButtonStyle("button2off");
       }, 150);
-      console.log("BAD");
     }
   };
 
@@ -60,7 +56,6 @@ const GameButton2 = ({
     if (active) {
       let delayApproach = 1780;
       let delayActive = 400;
-      //   const buttonStartTimeOut = setTimeout(() => {
       setTimeout(() => {
         setButtonStyle("button2on");
         const turnTargetOff = setTimeout(() => {
@@ -81,4 +76,4 @@ const GameButton2 = ({
   );
 };
 
-export default GameButton2;
+export default GameButton;

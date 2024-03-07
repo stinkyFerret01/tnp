@@ -7,25 +7,17 @@ import "./App.css";
 import HomePage from "./Components/homePage";
 import GamePage from "./Components/gamePage";
 
-//==> starts and stops the game, triggs the AudiContext
-// import Command from "./Components/command";
-
 //==> load and plays the music, triggs the BeatInitializer
 import AudioContext from "./Components/audioContext";
 
 //==> set a beats loop synchronised with the music
 import BeatInitialiser from "./Components/beatInitialiser";
 
-//==> the game, buttons, score status and animations
-// import ButtonPanel from "./Components/buttonPanel";
-// import ScoreStatus from "./Components/scoreStatus";
-// import MissedShotsStatus from "./Components/missedShotsStatus";
-
-//==> controls game mechanics value (test purpose)
+//==> controls game mechanics value (control purpose)
 import Control from "./Components/control";
 
 function App() {
-  //==> stores the infos to trig music and beats mechanics
+  //==> stores the infos that triggs music and beats mechanics
   const [audioCommand, setAudioCommand] = useState({
     actionX: null,
     timex: 0,
@@ -37,10 +29,6 @@ function App() {
 
   //==> stores the beat value that triggs buttons and animations activation
   const [beat, setBeat] = useState(0);
-
-  //==> stores the scores events and status
-  // const [score, setScore] = useState(0);
-  // const [missedShots, setMissedShots] = useState([]);
 
   //==> control
   const [timeJumps, setTimeJumps] = useState([]);
@@ -62,13 +50,19 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<HomePage setAudioCommand={setAudioCommand} />}
+            element={
+              <HomePage
+                setAudioCommand={setAudioCommand}
+                isPlaying={isPlaying}
+              />
+            }
           />
           <Route
             path="/game"
             element={
               <GamePage
                 setAudioCommand={setAudioCommand}
+                isPlaying={isPlaying}
                 beat={beat}
                 setBeat={setBeat}
               />
@@ -76,17 +70,6 @@ function App() {
           />
         </Routes>
       </Router>
-      {/* <ScoreStatus score={score}></ScoreStatus>
-      <MissedShotsStatus missedShots={missedShots}></MissedShotsStatus>
-      <ButtonPanel
-        beat={beat}
-        setBeat={setBeat}
-        score={score}
-        setScore={setScore}
-        missedShots={missedShots}
-        setMissedShots={setMissedShots}
-      ></ButtonPanel> */}
-      {/* <Command setAudioCommand={setAudioCommand}></Command> */}
       <Control
         isPlaying={isPlaying}
         outputLatency={outputLatency}

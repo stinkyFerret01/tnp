@@ -5,27 +5,35 @@ import ScoreStatus from "./scoreStatus";
 import MissedShotsStatus from "./missedShotsStatus";
 import ButtonPanel from "./buttonPanel";
 
-const GamePage = ({ setAudioCommand, beat, setBeat }) => {
+const GamePage = ({ setAudioCommand, isPlaying, beat, setBeat }) => {
+  //==> stores the current game scores value
   const [score, setScore] = useState(0);
   const [missedShots, setMissedShots] = useState([]);
 
   const navigate = useNavigate();
 
+  //--> stops the game and navigates back to home
   const handleStopButtonClick = () => {
     setAudioCommand({
       actionX: "stop",
       timex: 0,
       beatx: 0,
     });
-    navigate("/");
   };
 
+  //--> resets the scores for a new game
   useEffect(() => {
     if (beat === 0) {
       setMissedShots([]);
       setScore(0);
     }
   }, [beat]);
+
+  useEffect(() => {
+    if (!isPlaying) {
+      navigate("/");
+    }
+  }, [isPlaying, navigate]);
 
   return (
     <div>
@@ -39,7 +47,7 @@ const GamePage = ({ setAudioCommand, beat, setBeat }) => {
         missedShots={missedShots}
         setMissedShots={setMissedShots}
       ></ButtonPanel>
-      <button onClick={handleStopButtonClick}>HOME</button>
+      <button onClick={handleStopButtonClick}>STOP</button>
     </div>
   );
 };

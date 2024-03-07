@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 
-import dateFormatter from "../utils/dateFormatter";
+//---- (control purpose -- LOG ONLY) ----
+//--> checks if the delay is negative
+import delayControler from "../utils/logs/delayControlerLog";
+
+import hsbfGameData from "../beatData/hbfsGameData";
 
 const BeatInitialiser = ({ isPlaying, beat, setBeat }) => {
   //==> stores the date from when the beats will be synchronised
@@ -10,13 +14,12 @@ const BeatInitialiser = ({ isPlaying, beat, setBeat }) => {
   useEffect(() => {
     //--> calculates delay before next beat
     let mult = beat + 1;
-    let target = initBeatDate + 121 * mult;
+    let target = initBeatDate + hsbfGameData.tempo * mult;
     let beatDate = Date.now();
     let delay = target - beatDate;
-    if (delay < 0 && delay > -10000) {
-      console.log("PROBLEM", dateFormatter());
-      console.log("next beat delay -(", delay, "ms )- should not be negative");
-    }
+
+    //---- (control purpose -- LOG ONLY) ----
+    delayControler(delay);
 
     //--> sets next beat
     if (initBeatDate > 0 && beat < 1879) {

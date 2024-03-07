@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 
 import dateFormatter from "../utils/dateFormatter";
 
+//---- (control purpose -- LOG ONLY) ----
+import timejumpControlerLog from "../utils/logs/timeJumpControlerLog";
+
 //==> you can set the control beat difference parameter here
 const controlBeatDifData = {
   from: 50,
@@ -32,12 +35,15 @@ const Control = ({
   const [dateMarker, setDateMarker] = useState(0);
 
   //==> sets the timeJumps values (wip)
-  const addTimeJump = (delay) => {
+  const addTimeJump = (dif) => {
     const newTimeJumps = [
       ...timeJumps,
-      { when: dateFormatter(), howMuchMs: delay },
+      { when: dateFormatter(), howMuchMs: dif },
     ];
     setTimeJumps(newTimeJumps);
+
+    //---- (control purpose -- LOG ONLY) ----
+    timejumpControlerLog(dif);
   };
 
   //---- TIMEJUMPS CHECKER (wip) ----
@@ -48,8 +54,6 @@ const Control = ({
       let dif = newDateMarker - (dateMarker + 50);
       if (dateMarker > 0 && (dif > 30 || dif < -30)) {
         addTimeJump(dif);
-        console.log("PROBLEM", dateFormatter());
-        console.log("reference time has jumped a -(", dif, "ms )- timejump");
       }
       setTimeout(() => {
         setDateMarker(newDateMarker);
