@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 //==> pages
-import HomePage from "./Components/homePage";
-import GamePage from "./Components/gamePage";
+import HomePage from "./Pages/homePage";
+import GamePage from "./Pages/gamePage";
 
 //==> load and plays the music, triggs the BeatInitializer
 import AudioContext from "./Components/audioContext";
@@ -32,6 +32,7 @@ function App() {
 
   //==> control
   const [timeJumps, setTimeJumps] = useState([]);
+  const [negDelays, setNegDelays] = useState([]);
   const [outputLatency, setOutputLatency] = useState(null);
 
   return (
@@ -45,6 +46,8 @@ function App() {
         isPlaying={isPlaying}
         beat={beat}
         setBeat={setBeat}
+        negDelays={negDelays}
+        setNegDelays={setNegDelays}
       ></BeatInitialiser>
       <Router>
         <Routes>
@@ -76,6 +79,8 @@ function App() {
         beat={beat}
         timeJumps={timeJumps}
         setTimeJumps={setTimeJumps}
+        negDelays={negDelays}
+        setNegDelays={setNegDelays}
       ></Control>
     </div>
   );

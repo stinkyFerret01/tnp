@@ -5,20 +5,12 @@ const HomePage = ({ setAudioCommand, isPlaying }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (isPlaying) {
-      navigate("/game");
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 4000);
-    }
-  }, [isPlaying, navigate]);
-
-  //--> starts the game and navigates to gamePage when isPlaying trigged
+  //--> triggs the game commands to start the audio process
   const handlePlayButtonClick = () => {
     setIsLoading(true);
   };
 
+  //--> starts the game (trigging isPlaying when audio is starting)
   useEffect(() => {
     if (isLoading) {
       setAudioCommand({
@@ -28,6 +20,16 @@ const HomePage = ({ setAudioCommand, isPlaying }) => {
       });
     }
   }, [isLoading, setAudioCommand]);
+
+  //--> navigates to gamePage when isPlaying gets trigged
+  useEffect(() => {
+    if (isPlaying) {
+      navigate("/game");
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 4000);
+    }
+  }, [isPlaying, navigate]);
 
   return !isLoading ? (
     <div>

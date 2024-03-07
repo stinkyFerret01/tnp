@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import ScoreStatus from "./scoreStatus";
-import MissedShotsStatus from "./missedShotsStatus";
-import ButtonPanel from "./buttonPanel";
+import ScoreStatus from "../Components/scoreStatus";
+import MissedShotsStatus from "../Components/missedShotsStatus";
+import ButtonPanel from "../Components/buttonPanel";
 
 const GamePage = ({ setAudioCommand, isPlaying, beat, setBeat }) => {
   //==> stores the current game scores value

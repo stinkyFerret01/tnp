@@ -16,7 +16,7 @@ const ButtonPanel = ({
   setMissedShots,
 }) => {
   //==> stores the array with the goodWords data
-  const [beatRule, setBeatRule] = useState([]);
+  const [beatRule, setBeatRule] = useState(null);
 
   //==> stores the objects taht generate laser animation for goodWords
   const [beatWawes, setBeatWawes] = useState([]);
@@ -51,7 +51,7 @@ const ButtonPanel = ({
 
   //---- GOODWORDS SETTER ----
   useEffect(() => {
-    if (beatRule.length > 0 && beat <= 1850) {
+    if (beatRule) {
       setGoodWords(beatRule[beat].goodWords);
     } else {
       setBeat(0);
@@ -59,7 +59,7 @@ const ButtonPanel = ({
   }, [beat, setBeat, beatRule]);
 
   return (
-    beatRule.length > 0 && (
+    beatRule && (
       <div className="button-grid-container">
         <div className="button-grid">
           {hsbfGameData.wordsPosition.map((gridOpt) => {

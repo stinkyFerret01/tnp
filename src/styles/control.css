@@ -8,6 +8,7 @@
     border: solid blue 4px;
     box-sizing: border-box;
     position: absolute;
+    bottom: 0;
 }
 
 .output-latency {

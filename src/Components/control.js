@@ -30,41 +30,21 @@ const Control = ({
   const [beatDifMarker1, setBeatDifMarker1] = useState(null);
   const [beatDif, setBeatDif] = useState(null);
 
-  //---- TIMEJUMPS CHECKER (wip) ----
+  //---- TIMEJUMPS CHECKER (control purpose) ----
   //==> stores the date to be compared with a new one some short time later
   const [dateMarker, setDateMarker] = useState(0);
 
-  //==> sets the timeJumps values (wip)
-  const addTimeJump = (dif) => {
-    const newTimeJumps = [
-      ...timeJumps,
-      { when: dateFormatter(), howMuchMs: dif },
-    ];
-    setTimeJumps(newTimeJumps);
-
-    //---- (control purpose -- LOG ONLY) ----
-    timejumpControlerLog(dif);
-  };
-
-  //---- TIMEJUMPS CHECKER (wip) ----
-  //--> checks date.now every Number ms to detect time jumps on the reference
-  useEffect(() => {
-    if (isPlaying) {
-      let newDateMarker = Date.now();
-      let dif = newDateMarker - (dateMarker + 50);
-      if (dateMarker > 0 && (dif > 30 || dif < -30)) {
-        addTimeJump(dif);
-      }
-      setTimeout(() => {
-        setDateMarker(newDateMarker);
-      }, 50);
-    } else {
-      setTimeJumps([]);
-      setDateMarker(0);
+  //--> checks a regularly calculated delay based on 2 date.now() values
+  const timeJumpsControler = (dif) => {
+    if (dateMarker > 0 && (dif > 30 || dif < -30)) {
+      const newTimeJumps = [
+        ...timeJumps,
+        { when: dateFormatter(), howMuchMs: dif },
+      ];
+      setTimeJumps(newTimeJumps);
+      timejumpControlerLog(dif);
     }
-
-    // eslint-disable-next-line
-  }, [dateMarker, isPlaying]);
+  };
 
   //---- BEATDIF CHECKER (control purpose) ----
   //--> measures the time interval between two defined beats
@@ -77,6 +57,24 @@ const Control = ({
       setBeatDif(newBeatDifMarker - beatDifMarker1);
     }
   }, [beat, beatDifMarker1]);
+
+  //---- TIMEJUMPS CHECKER (control purpose) ----
+  //--> checks date.now every Number ms to detect time jumps on the reference
+  useEffect(() => {
+    if (isPlaying) {
+      let newDateMarker = Date.now();
+      let dif = newDateMarker - (dateMarker + 50);
+      timeJumpsControler(dif);
+      setTimeout(() => {
+        setDateMarker(newDateMarker);
+      }, 50);
+    } else {
+      setTimeJumps([]);
+      setDateMarker(0);
+    }
+
+    // eslint-disable-next-line
+  }, [dateMarker, isPlaying]);
 
   return isActive ? (
     <div className="control-container">

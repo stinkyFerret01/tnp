@@ -67,9 +67,7 @@ const AudioContext = ({ audioCommand, setIsPlaying, setOutputLatency }) => {
       };
     } else if (musicRef && audioCommand.actionX === "stop") {
       musicRef.stop();
-      setTimeout(() => {
-        setIsPlaying(false);
-      }, 100);
+      setIsPlaying(false);
     }
 
     // eslint-disable-next-line
