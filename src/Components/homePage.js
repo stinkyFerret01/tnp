@@ -6,11 +6,11 @@ const HomePage = ({ setAudioCommand, isPlaying }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
     if (isPlaying) {
       navigate("/game");
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 4000);
     }
   }, [isPlaying, navigate]);
 
