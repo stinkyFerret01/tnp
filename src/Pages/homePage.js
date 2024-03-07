@@ -31,12 +31,14 @@ const HomePage = ({ setAudioCommand, isPlaying }) => {
     }
   }, [isPlaying, navigate]);
 
-  return !isLoading ? (
-    <div>
-      <button onClick={handlePlayButtonClick}>PLAY</button>
-    </div>
-  ) : (
-    <div>LOADING</div>
+  return (
+    <main className="home-page">
+      {!isLoading ? (
+        <button onClick={handlePlayButtonClick}>PLAY</button>
+      ) : (
+        <div>LOADING</div>
+      )}
+    </main>
   );
 };
 

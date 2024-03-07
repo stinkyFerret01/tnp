@@ -1,0 +1,24 @@
+.game-page {
+    border: 1rem solid lime;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.button-panel {
+    border: solid rgba(0, 255, 0, 0.5)  2px;
+    background-color: transparent;
+  
+    width: 100%;
+    height: 80%;
+
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+  }

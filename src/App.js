@@ -8,13 +8,13 @@ import HomePage from "./Pages/homePage";
 import GamePage from "./Pages/gamePage";
 
 //==> load and plays the music, triggs the BeatInitializer
-import AudioContext from "./Components/audioContext";
+import AudioContext from "./Components/musicAndBeats/audioContext";
 
 //==> set a beats loop synchronised with the music
-import BeatInitialiser from "./Components/beatInitialiser";
+import BeatInitialiser from "./Components/musicAndBeats/beatInitialiser";
 
 //==> controls game mechanics value (control purpose)
-import Control from "./Components/control";
+import Control from "./Components/control/control";
 
 function App() {
   //==> stores the infos that triggs music and beats mechanics

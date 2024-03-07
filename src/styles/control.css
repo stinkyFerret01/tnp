@@ -1,7 +1,7 @@
 .toggle-control-button {
     position: absolute;
     right: 0;
-    top: 0;
+    bottom: 0;
 }
 
 .control-container {

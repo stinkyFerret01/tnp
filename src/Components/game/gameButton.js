@@ -10,13 +10,49 @@ const GameButton = ({
   missedShots,
   setMissedShots,
 }) => {
-  const [buttonStyle, setButtonStyle] = useState("button2off");
+  //==> stores the button status
+  const [buttonStatus, setButtonStatus] = useState("button-off");
+
+  //==> block Player's click when true (anti-spam)
   const [targetBlocker, setTargetBlocker] = useState(false);
+
+  //==> stores the time out from "on" to "miss"
   const [turnOffTimeoutId, setTurnOffTimeoutId] = useState(null);
 
-  const abortLost = () => {
+  //--> cuts the turnOffTimeout
+  const missCanceler = () => {
     if (turnOffTimeoutId) {
       clearTimeout(turnOffTimeoutId);
+    }
+  };
+
+  //-->
+
+  //-->
+  const shootResultDefiner = () => {
+    if (buttonStatus === "button-on" && !targetBlocker) {
+      setScore((prevScore) => prevScore + 1);
+      missCanceler();
+      setButtonStatus("button-hit");
+      setTimeout(() => {
+        setButtonStatus("button-off");
+      }, 242);
+    } else if (targetBlocker) {
+      if (missedShots.length < 10) {
+        setMissedShots((prevMissedShots) => [...prevMissedShots, Date.now()]);
+      }
+      setButtonStatus("button-miss");
+      setTimeout(() => {
+        setButtonStatus("button-off");
+      }, 150);
+    } else {
+      if (missedShots.length < 10) {
+        setMissedShots((prevMissedShots) => [...prevMissedShots, Date.now()]);
+      }
+      setButtonStatus("button-miss");
+      setTimeout(() => {
+        setButtonStatus("button-off");
+      }, 150);
     }
   };
 
@@ -25,31 +61,7 @@ const GameButton = ({
     setTimeout(() => {
       setTargetBlocker(false);
     }, 200);
-    if (buttonStyle === "button2on" && !targetBlocker) {
-      setScore((prevScore) => prevScore + 1);
-      abortLost();
-      setButtonStyle("button2hit");
-      setTimeout(() => {
-        setButtonStyle("button2off");
-      }, 242);
-    } else if (targetBlocker) {
-      if (missedShots.length < 10) {
-        setMissedShots((prevMissedShots) => [...prevMissedShots, Date.now()]);
-      }
-      setButtonStyle("button2miss");
-      setTimeout(() => {
-        setButtonStyle("button2off");
-      }, 150);
-      console.log("BLOCK");
-    } else {
-      if (missedShots.length < 10) {
-        setMissedShots((prevMissedShots) => [...prevMissedShots, Date.now()]);
-      }
-      setButtonStyle("button2miss");
-      setTimeout(() => {
-        setButtonStyle("button2off");
-      }, 150);
-    }
+    shootResultDefiner();
   };
 
   useEffect(() => {
@@ -57,11 +69,11 @@ const GameButton = ({
       let delayApproach = 1780;
       let delayActive = 400;
       setTimeout(() => {
-        setButtonStyle("button2on");
+        setButtonStatus("button-on");
         const turnTargetOff = setTimeout(() => {
-          setButtonStyle("button2miss");
+          setButtonStatus("button-miss");
           setTimeout(() => {
-            setButtonStyle("button2off");
+            setButtonStatus("button-off");
           }, 150);
         }, delayActive);
         setTurnOffTimeoutId(turnTargetOff);
@@ -70,7 +82,7 @@ const GameButton = ({
   }, [active]);
 
   return (
-    <button className={buttonStyle} onClick={() => handleShoot()}>
+    <button className={buttonStatus} onClick={() => handleShoot()}>
       {word.toUpperCase()}
     </button>
   );

@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 
-import dateFormatter from "../utils/dateFormatter";
+import dateFormatter from "../../utils/dateFormatter";
 
 //---- (control purpose -- LOG ONLY) ----
 //--> checks if the delay is negative
-import delayControlerLog from "../utils/logs/delayControlerLog";
+import delayControlerLog from "../../utils/logs/delayControlerLog";
 
-import hsbfGameData from "../beatData/hbfsGameData";
+import hsbfGameData from "../../beatData/hbfsGameData";
 
 const BeatInitialiser = ({
   isPlaying,

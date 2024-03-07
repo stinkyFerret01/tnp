@@ -72,15 +72,6 @@ const AudioContext = ({ audioCommand, setIsPlaying, setOutputLatency }) => {
 
     // eslint-disable-next-line
   }, [audioCommand]);
-
-  // ---- (test purpose) ----
-  // return (
-  //   <div>
-  //     <div style={{ backgroundColor: "green" }}>
-  //       <p>outPut latency: {outputLatency}</p>
-  //     </div>
-  //   </div>
-  // );
 };
 
 export default AudioContext;
