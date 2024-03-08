@@ -1,5 +1,5 @@
 .game-page {
-    border: solid rgba(0, 255, 0, 1)  0.6vh;
+    /* border: solid rgba(0, 255, 0, 1)  0.6vh; */
 
     width: 100vw;
     height: 100vh;
@@ -12,7 +12,7 @@
 }
 
 .game-page-top {
-    border-bottom: solid rgba(0, 255, 0, 1)  0.6vh;
+    /* border-bottom: solid rgba(0, 255, 0, 1)  0.6vh; */
 
     width: 100%;
     min-height: 14%;
@@ -38,7 +38,7 @@
 }
 
 .game-page-bottom {
-    border-top: solid rgba(0, 255, 0, 1)  0.6vh;
+    /* border-top: solid rgba(0, 255, 0, 1)  0.6vh; */
 
     width: 100%;
     min-height: 14%;

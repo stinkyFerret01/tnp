@@ -1,8 +1,10 @@
+import hsbfGameData from "../beatData/hbfsGameData";
+
 const beatRuleBuilder = (musicGameData) => {
   let wordsPosition = musicGameData.wordsPosition;
   let beatRuleWIP = [];
   for (let i = 0; i < 1880; i++) {
-    let beatToCheck = i - 416;
+    let beatToCheck = i - hsbfGameData.beatMod;
     let beat = { beat: i, goodWords: [] };
     for (let j = 0; j < wordsPosition.length; j++) {
       let labelToCheck = wordsPosition[j];

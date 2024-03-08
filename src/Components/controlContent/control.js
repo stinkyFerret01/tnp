@@ -10,19 +10,20 @@ const controlBeatDifData = {
   from: 50,
   range: 512,
 };
-
-const alertLevelStles = {
-  warning: { background: "yellow" },
-  alert: { background: "orange" },
-  waredAlertning: { background: "red" },
-};
-
 const expectedBeatDif = controlBeatDifData.range * 121;
+
+const alertLevelStyles = {
+  warning: { backgroundColor: "yellow" },
+  alert: { backgroundColor: "orange" },
+  redAlert: { backgroundColor: "red" },
+};
 
 const Control = ({
   isPlaying,
   outputLatency,
+  setOutputLatency,
   audioContextState,
+  setAudioContextState,
   beat,
   timeJumps,
   setTimeJumps,
@@ -31,13 +32,12 @@ const Control = ({
 }) => {
   //==> displays or hide the control panel
   const [isActive, setIsActive] = useState(false);
-
   const toggleControlPanel = () => {
     setIsActive(!isActive);
   };
 
   //---- BEATDIF CHECKER (control purpose) ----
-  //==> stores the beatDif values to display on devices without navigator inspector
+  //==> stores the beatDif values
   const [beatDifMarker1, setBeatDifMarker1] = useState(null);
   const [beatDif, setBeatDif] = useState(null);
 
@@ -85,8 +85,10 @@ const Control = ({
       setNegDelays([]);
       setDateMarker(0);
       setBeatDif(null);
+      setOutputLatency(null);
+      setAudioContextState(null);
     }
-
+    console.log(audioContextState);
     // eslint-disable-next-line
   }, [dateMarker, isPlaying]);
 
@@ -95,14 +97,20 @@ const Control = ({
       <div className="audio-context-control-container">
         <div
           className="audio-context-control-element"
-          style={isNaN(outputLatency) ? alertLevelStles.warning : {}}
+          style={
+            isPlaying && (!outputLatency || isNaN(outputLatency))
+              ? alertLevelStyles.warning
+              : {}
+          }
         >
           Output Latency: {outputLatency}
         </div>
         <div
           className="audio-context-control-element"
           style={
-            audioContextState !== "running" ? alertLevelStles.redAllert : {}
+            isPlaying && audioContextState !== "running"
+              ? alertLevelStyles.redAlert
+              : {}
           }
         >
           AudioContext State: {audioContextState}
@@ -121,7 +129,7 @@ const Control = ({
           style={
             beatDif &&
             (beatDif > expectedBeatDif + 80 || beatDif < expectedBeatDif - 80)
-              ? alertLevelStles.alert
+              ? alertLevelStyles.alert
               : {}
           }
         >

@@ -1,6 +1,7 @@
 const hsbfGameData = {
   tempo: 121,
-  beatMod: 416,
+  // beatMod: 416,
+  beatMod: 393,
   skipTimePosition: 49,
   wordsPosition: [
     {
@@ -50,8 +51,10 @@ const hsbfGameData = {
       beats: [152, 472, 568],
     },
     {
-      label: "",
-      beats: [-32, -64, -96, -128, -160, -192, -224, -256],
+      label: "test",
+      beats: [
+        -32, -64, -96, -128, -160, -192, -224, -256, -288, -320, -352, -384,
+      ],
     },
     {
       label: "Ever",

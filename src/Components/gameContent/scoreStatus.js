@@ -6,41 +6,44 @@ const ScoreStatus = ({ score, missedTargets }) => {
   const progress = Math.min(Math.max(score, 0), 100);
 
   //--> sets an animation when score increases
-  const [color, setColor] = useState(null);
-  const [colorAlt, setColorAlt] = useState(null);
-
-  //--> sets an animation when score increases
-  useEffect(() => {
-    setColor("rgba(255, 215, 0, 0.8)");
-    setTimeout(() => {
-      setColor("rgba(255,215,0,0.5)");
-    }, 200);
-  }, [score]);
+  const [scoreAlt, setScoreAlt] = useState("score-bar-active");
+  const [missedTargetsBarAlt, setMissedTargetsBarAlt] =
+    useState("missed-targets-bar");
 
   //--> sets an animation when missedTargets increases
   useEffect(() => {
-    setColorAlt("rgba(255, 0, 255, 0.8)");
+    setScoreAlt("score-bar-active");
     setTimeout(() => {
-      setColorAlt("rgba(255, 0, 255, 0.5)");
+      setScoreAlt("score-bar");
+    }, 200);
+  }, [score]);
+
+  //--> sets an animation when score increases
+  useEffect(() => {
+    setMissedTargetsBarAlt("missed-targets-bar-active");
+    setTimeout(() => {
+      setMissedTargetsBarAlt("missed-targets-bar");
     }, 200);
   }, [missedTargets]);
 
   return (
-    <div className="score-container">
-      <div
-        style={{
-          width: `${(progress * 100) / hsbfGameData.wordsNumber}%`,
-          height: "3vh",
-          backgroundColor: color,
-        }}
-      ></div>
-      <div
-        style={{
-          width: `${(missedTargets * 100) / hsbfGameData.wordsNumber}%`,
-          height: "3vh",
-          backgroundColor: colorAlt,
-        }}
-      ></div>
+    <div className="score-status">
+      {progress}
+      <div className="score-container">
+        <div
+          className={scoreAlt}
+          style={{
+            width: `${(progress * 100) / hsbfGameData.wordsNumber}%`,
+          }}
+        ></div>
+        <div
+          className={missedTargetsBarAlt}
+          style={{
+            width: `${(missedTargets * 100) / hsbfGameData.wordsNumber}%`,
+          }}
+        ></div>
+      </div>
+      {hsbfGameData.wordsNumber}
     </div>
   );
 };

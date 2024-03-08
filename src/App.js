@@ -33,9 +33,7 @@ function App() {
   //==> control
   const [timeJumps, setTimeJumps] = useState([]);
   const [negDelays, setNegDelays] = useState([]);
-  const [outputLatency, setOutputLatency] = useState(null);
-
-  //==> test
+  const [outputLatency, setOutputLatency] = useState(NaN);
   const [audioContextState, setAudioContextState] = useState(null);
 
   return (
@@ -80,7 +78,9 @@ function App() {
       <Control
         isPlaying={isPlaying}
         outputLatency={outputLatency}
+        setOutputLatency={setOutputLatency}
         audioContextState={audioContextState}
+        setAudioContextState={setAudioContextState}
         beat={beat}
         timeJumps={timeJumps}
         setTimeJumps={setTimeJumps}

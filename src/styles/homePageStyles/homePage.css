@@ -9,5 +9,11 @@
 }
 
 .start-button {
-    background-color: aqua;
+    background-color: gold;
+    box-shadow: 0 0 5px gold,
+    0 0 25px gold,
+    0 0 50px gold,
+    0 0 200px gold;
+    -webkit-box-reflect: below 1px linear-gradient(transparent gold);
 }
+  
