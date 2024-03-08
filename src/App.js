@@ -14,7 +14,7 @@ import AudioContext from "./Components/musicAndBeats/audioContext";
 import BeatInitialiser from "./Components/musicAndBeats/beatInitialiser";
 
 //==> controls game mechanics value (control purpose)
-import Control from "./Components/control/control";
+import Control from "./Components/controlContent/control";
 
 function App() {
   //==> stores the infos that triggs music and beats mechanics

@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import StartButton from "../Components/homeContent/startButton";
+
 const HomePage = ({ setAudioCommand, isPlaying }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   //--> triggs the game commands to start the audio process
-  const handlePlayButtonClick = () => {
-    setIsLoading(true);
-  };
+  // const handlePlayButtonClick = () => {
+  //   setIsLoading(true);
+  // };
 
   //--> starts the game (trigging isPlaying when audio is starting)
   useEffect(() => {
@@ -33,11 +35,10 @@ const HomePage = ({ setAudioCommand, isPlaying }) => {
 
   return (
     <main className="home-page">
-      {!isLoading ? (
-        <button onClick={handlePlayButtonClick}>PLAY</button>
-      ) : (
-        <div>LOADING</div>
-      )}
+      <StartButton
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
+      ></StartButton>
     </main>
   );
 };

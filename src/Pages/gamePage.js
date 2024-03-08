@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import ScreenTop from "../Components/game/gamePageTop";
-import ButtonPanel from "../Components/game/buttonPanel";
-import GamePageBottom from "../Components/game/gamePageBottom";
+import GamePageTop from "../Components/gameContent/gamePageTop";
+import ButtonPanel from "../Components/gameContent/buttonPanel";
+import GamePageBottom from "../Components/gameContent/gamePageBottom";
 
 const GamePage = ({ setAudioCommand, isPlaying, beat, setBeat }) => {
   //==> stores the current game scores value
   const [score, setScore] = useState(0);
+  const [missedTargets, setMissedTargets] = useState(0);
   const [missedShots, setMissedShots] = useState([]);
 
   const navigate = useNavigate();
@@ -15,8 +16,9 @@ const GamePage = ({ setAudioCommand, isPlaying, beat, setBeat }) => {
   //--> resets the scores for a new game
   useEffect(() => {
     if (beat === 0) {
-      setMissedShots([]);
       setScore(0);
+      setMissedTargets(0);
+      setMissedShots([]);
     }
   }, [beat]);
 
@@ -28,12 +30,17 @@ const GamePage = ({ setAudioCommand, isPlaying, beat, setBeat }) => {
 
   return (
     <main className="game-page">
-      <ScreenTop score={score} missedShots={missedShots}></ScreenTop>
+      <GamePageTop
+        score={score}
+        missedShots={missedShots}
+        missedTargets={missedTargets}
+      ></GamePageTop>
       <ButtonPanel
         beat={beat}
         setBeat={setBeat}
         score={score}
         setScore={setScore}
+        setMissedTargets={setMissedTargets}
         missedShots={missedShots}
         setMissedShots={setMissedShots}
       ></ButtonPanel>
