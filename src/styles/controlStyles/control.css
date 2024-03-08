@@ -6,29 +6,43 @@
 
 .control-container {
     border: solid blue 4px;
-    box-sizing: border-box;
+
+    width: 100%;
+
     position: absolute;
     bottom: 0;
+    box-sizing: border-box;
 }
 
-.output-latency {
-    background-color: aquamarine;
-}
-
-.beat-dif-container {
+.audio-context-control-container {
     background-color: aqua;
     display: flex;
+    justify-content: space-around;
+}
+
+/* .audio-context-element {
+} */
+
+.beat-dif-container {
+    background-color: aquamarine;
+
+    display: flex;
+    justify-content: space-around;
 }
 
 .beat-dif-element {
-    border: solid blue 2PX;
+    min-width: 15%;
+
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .time-jumps-container {
-    background-color: yellow;
+    background-color: pink;
     display: flex;
 }
 
 .time-jump {
-    border: solid red 2px;
+    border: solid purple 2px;
 }

@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 
-const AudioContext = ({ audioCommand, setIsPlaying, setOutputLatency }) => {
+const AudioContext = ({
+  audioCommand,
+  setIsPlaying,
+  setOutputLatency,
+  setAudioContextState,
+}) => {
   //==> stores the musicContext to make it reachable for the code
   const [musicRef, setMusicRef] = useState(null);
 
@@ -28,11 +33,14 @@ const AudioContext = ({ audioCommand, setIsPlaying, setOutputLatency }) => {
 
         source.connect(audioContext.destination);
 
-        //---- EXECUTE start music ----
-        source.start(0, 0);
-
         //---- setting MusicRef ----
         setMusicRef(source);
+
+        //---- EXECUTE start music ----
+        source.start();
+
+        //--> (control purpose) ----
+        setAudioContextState(audioContext.state);
 
         //---- TRIGGER isPlaying ----
         let checkCurrentTimeInterval;

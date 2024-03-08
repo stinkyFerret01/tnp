@@ -11,9 +11,18 @@ const controlBeatDifData = {
   range: 512,
 };
 
+const alertLevelStles = {
+  warning: { background: "yellow" },
+  alert: { background: "orange" },
+  waredAlertning: { background: "red" },
+};
+
+const expectedBeatDif = controlBeatDifData.range * 121;
+
 const Control = ({
   isPlaying,
   outputLatency,
+  audioContextState,
   beat,
   timeJumps,
   setTimeJumps,
@@ -71,9 +80,11 @@ const Control = ({
         setDateMarker(newDateMarker);
       }, 50);
     } else {
+      //-->resets all control values
       setTimeJumps([]);
       setNegDelays([]);
       setDateMarker(0);
+      setBeatDif(null);
     }
 
     // eslint-disable-next-line
@@ -81,7 +92,22 @@ const Control = ({
 
   return isActive ? (
     <div className="control-container">
-      <div className="output-latency">Output Latency: {outputLatency}</div>
+      <div className="audio-context-control-container">
+        <div
+          className="audio-context-control-element"
+          style={isNaN(outputLatency) ? alertLevelStles.warning : {}}
+        >
+          Output Latency: {outputLatency}
+        </div>
+        <div
+          className="audio-context-control-element"
+          style={
+            audioContextState !== "running" ? alertLevelStles.redAllert : {}
+          }
+        >
+          AudioContext State: {audioContextState}
+        </div>
+      </div>
       <div className="beat-dif-container">
         <div className="beat-dif-element">
           From beat: {controlBeatDifData.from}
@@ -89,14 +115,21 @@ const Control = ({
         <div className="beat-dif-element">
           To beat: {controlBeatDifData.from + controlBeatDifData.range}
         </div>
-        <div className="beat-dif-element">
+
+        <div
+          className="beat-dif-element"
+          style={
+            beatDif &&
+            (beatDif > expectedBeatDif + 80 || beatDif < expectedBeatDif - 80)
+              ? alertLevelStles.alert
+              : {}
+          }
+        >
           Measured: {beatDif ? beatDif : "measuring..."}
         </div>
-        <div className="beat-dif-element">
-          Expected: {controlBeatDifData.range * 121}
-        </div>
+
+        <div className="beat-dif-element">Expected: {expectedBeatDif}</div>
         <div className="beat-dif-element">Beat: {beat}</div>
-        <button onClick={toggleControlPanel}>close control</button>
       </div>
       {timeJumps.length > 0 && (
         <div className="time-jumps-container">
@@ -120,6 +153,7 @@ const Control = ({
           })}
         </div>
       )}
+      <button onClick={toggleControlPanel}>close control</button>
     </div>
   ) : (
     <button className="toggle-control-button" onClick={toggleControlPanel}>

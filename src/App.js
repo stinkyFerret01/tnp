@@ -35,12 +35,16 @@ function App() {
   const [negDelays, setNegDelays] = useState([]);
   const [outputLatency, setOutputLatency] = useState(null);
 
+  //==> test
+  const [audioContextState, setAudioContextState] = useState(null);
+
   return (
     <div className="App">
       <AudioContext
         audioCommand={audioCommand}
         setIsPlaying={setIsPlaying}
         setOutputLatency={setOutputLatency}
+        setAudioContextState={setAudioContextState}
       ></AudioContext>
       <BeatInitialiser
         isPlaying={isPlaying}
@@ -76,6 +80,7 @@ function App() {
       <Control
         isPlaying={isPlaying}
         outputLatency={outputLatency}
+        audioContextState={audioContextState}
         beat={beat}
         timeJumps={timeJumps}
         setTimeJumps={setTimeJumps}
