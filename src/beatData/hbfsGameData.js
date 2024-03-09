@@ -75,15 +75,16 @@ const hsbfGameData = {
 };
 
 //--> calculates the number of words in the all song and adds it to data
-const wordsNumberCalculater = (gameData) => {
+const wordsNumberCalculator = (gameData) => {
   let totalLength = 0;
   gameData.wordsPosition.forEach((word) => {
-    totalLength += word.beats.length;
+    const filteredBeats = word.beats.filter((beat) => beat >= 0);
+    totalLength += filteredBeats.length;
   });
   hsbfGameData.wordsNumber = totalLength;
   return totalLength;
 };
 
-wordsNumberCalculater(hsbfGameData);
+wordsNumberCalculator(hsbfGameData);
 
 export default hsbfGameData;

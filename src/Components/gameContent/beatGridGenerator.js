@@ -17,7 +17,6 @@ const BeatGridGenerator = ({ beat, goodWords, beatWawes, setBeatWawes }) => {
           prevBeatWawes.filter((btn) => btn.id !== newBeatWawe.id)
         );
       }, 4940);
-      // }, 2420);
     }
 
     // eslint-disable-next-line

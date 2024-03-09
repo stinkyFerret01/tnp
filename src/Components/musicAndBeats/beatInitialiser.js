@@ -4,7 +4,7 @@ import dateFormatter from "../../utils/dateFormatter";
 
 //---- (control purpose -- LOG ONLY) ----
 //--> checks if the delay is negative
-import delayControlerLog from "../../utils/logs/delayControlerLog";
+// import delayControlerLog from "../../utils/logs/delayControlerLog";
 
 import hsbfGameData from "../../beatData/hbfsGameData";
 
@@ -27,7 +27,7 @@ const BeatInitialiser = ({
         { when: dateFormatter(), howMuchMs: delay },
       ];
       setNegDelays(newNegDelays);
-      delayControlerLog(delay);
+      // delayControlerLog(delay);
     }
   };
 

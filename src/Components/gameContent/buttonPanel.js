@@ -18,6 +18,7 @@ const ButtonPanel = ({
   setMissedTargets,
   missedShots,
   setMissedShots,
+  buttonActivationTimeOutIds,
   setButtonActivationTimeOutIds,
   beatWawes,
   setBeatWawes,
@@ -48,11 +49,13 @@ const ButtonPanel = ({
       <div className="button-panel">
         <ButtonGrid
           beatRule={beatRule}
+          beat={beat}
           goodWords={goodWords}
           setScore={setScore}
           setMissedTargets={setMissedTargets}
           missedShots={missedShots}
           setMissedShots={setMissedShots}
+          buttonActivationTimeOutIds={buttonActivationTimeOutIds}
           setButtonActivationTimeOutIds={setButtonActivationTimeOutIds}
         ></ButtonGrid>
         <BeatGridGenerator

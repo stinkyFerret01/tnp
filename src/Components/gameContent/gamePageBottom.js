@@ -23,7 +23,10 @@ const GamePageBottom = ({
   //--> navigates back to home
   const handleStopButtonClick = () => {
     if (isPlaying) {
-      buttonActivationTimeOutIds.forEach(clearTimeout);
+      buttonActivationTimeOutIds.forEach((timeout) =>
+        clearTimeout(timeout.timeoutId)
+      );
+
       setButtonActivationTimeOutIds([]);
       setBeatWawes([]);
       setAudioCommand({
@@ -37,7 +40,10 @@ const GamePageBottom = ({
   //--> navigates back to home
   const handleSkipButtonClick = () => {
     if (isPlaying) {
-      buttonActivationTimeOutIds.forEach(clearTimeout);
+      buttonActivationTimeOutIds.forEach((timeout) =>
+        clearTimeout(timeout.timeoutId)
+      );
+
       setButtonActivationTimeOutIds([]);
       setBeatWawes([]);
       setAudioCommand({

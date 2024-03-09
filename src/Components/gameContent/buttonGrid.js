@@ -4,11 +4,13 @@ import GameButton from "./gameButton";
 
 const ButtonGrid = ({
   beatRule,
+  beat,
   goodWords,
   setScore,
   setMissedTargets,
   missedShots,
   setMissedShots,
+  buttonActivationTimeOutIds,
   setButtonActivationTimeOutIds,
 }) => {
   return (
@@ -20,11 +22,13 @@ const ButtonGrid = ({
               <GameButton
                 key={gridOpt.label}
                 label={gridOpt.label}
+                beat={beat}
                 goodWords={goodWords}
                 setScore={setScore}
                 setMissedTargets={setMissedTargets}
                 missedShots={missedShots}
                 setMissedShots={setMissedShots}
+                buttonActivationTimeoutIds={buttonActivationTimeOutIds}
                 setButtonActivationTimeOutIds={setButtonActivationTimeOutIds}
               ></GameButton>
             </div>

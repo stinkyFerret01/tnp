@@ -44,6 +44,7 @@ const GamePage = ({ setAudioCommand, isPlaying, isLoading, beat, setBeat }) => {
         setMissedTargets={setMissedTargets}
         missedShots={missedShots}
         setMissedShots={setMissedShots}
+        buttonActivationTimeOutIds={buttonActivationTimeOutIds}
         setButtonActivationTimeOutIds={setButtonActivationTimeOutIds}
         beatWawes={beatWawes}
         setBeatWawes={setBeatWawes}

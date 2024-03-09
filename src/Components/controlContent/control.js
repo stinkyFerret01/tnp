@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import dateFormatter from "../../utils/dateFormatter";
 
 //---- (control purpose -- LOG ONLY) ----
-import timejumpControlerLog from "../../utils/logs/timeJumpControlerLog";
+// import timejumpControlerLog from "../../utils/logs/timeJumpControlerLog";
 
 //==> you can set the control beat difference parameter here
 const controlBeatDifData = {
@@ -53,7 +53,7 @@ const Control = ({
         { when: dateFormatter(), howMuchMs: dif },
       ];
       setTimeJumps(newTimeJumps);
-      timejumpControlerLog(dif);
+      // timejumpControlerLog(dif);
     }
   };
 
