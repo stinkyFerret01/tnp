@@ -7,7 +7,9 @@ const GameButton = ({
   goodWords,
   setScore,
   setMissedTargets,
+  missedShots,
   setMissedShots,
+  setButtonActivationTimeOutIds,
 }) => {
   //==> stores the button status
   const [buttonStatus, setButtonStatus] = useState("button-off");
@@ -23,7 +25,7 @@ const GameButton = ({
     // let delayApproach = 1780;
     let delayApproach = 4520;
     let delayActive = 400;
-    setTimeout(() => {
+    const buttonActivationTimeOut = setTimeout(() => {
       setButtonStatus("button-on");
       const turnTargetOff = setTimeout(() => {
         setButtonStatus("button-off");
@@ -31,6 +33,10 @@ const GameButton = ({
       }, delayActive);
       setTurnOffTimeoutId(turnTargetOff);
     }, delayApproach);
+    setButtonActivationTimeOutIds((prevIdsArray) => [
+      ...prevIdsArray,
+      buttonActivationTimeOut,
+    ]);
   };
 
   //--> cuts the turnOffTimeout
@@ -50,7 +56,9 @@ const GameButton = ({
         setButtonStatus("button-off");
       }, 242);
     } else {
-      setMissedShots((prevMissedShots) => [...prevMissedShots, Date.now()]);
+      if (missedShots.length < 16) {
+        setMissedShots((prevMissedShots) => [...prevMissedShots, Date.now()]);
+      }
       setButtonStatus("button-miss");
       setTimeout(() => {
         setButtonStatus("button-off");
@@ -77,7 +85,10 @@ const GameButton = ({
   }, [label, goodWords]);
 
   return (
-    <button className={buttonStatus} onClick={() => handleShoot()}>
+    <button
+      className={`game-button ${buttonStatus}`}
+      onClick={() => handleShoot()}
+    >
       {label.toUpperCase()}
     </button>
   );

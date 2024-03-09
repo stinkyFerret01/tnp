@@ -1,11 +1,23 @@
 import ScoreStatus from "./scoreStatus";
-import MissedShotsStatus from "./missedShotsStatus";
 
-const GamePageTop = ({ score, missedShots, missedTargets }) => {
+const GamePageTop = ({
+  isPlaying,
+  isRunning,
+  beat,
+  score,
+  missedShots,
+  missedTargets,
+}) => {
   return (
     <div className="game-page-top">
-      <ScoreStatus score={score} missedTargets={missedTargets}></ScoreStatus>
-      <MissedShotsStatus missedShots={missedShots}></MissedShotsStatus>
+      <ScoreStatus
+        isPlaying={isPlaying}
+        isRunning={isRunning}
+        beat={beat}
+        score={score}
+        missedTargets={missedTargets}
+        missedShots={missedShots}
+      ></ScoreStatus>
     </div>
   );
 };

@@ -1,17 +1,23 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 import GamePageTop from "../Components/gameContent/gamePageTop";
 import ButtonPanel from "../Components/gameContent/buttonPanel";
 import GamePageBottom from "../Components/gameContent/gamePageBottom";
 
 const GamePage = ({ setAudioCommand, isPlaying, beat, setBeat }) => {
+  const [isRunning, setIsRunning] = useState(true);
+
+  //==> stores the timeoutIds so they can be cleared if Player stops game
+  const [buttonActivationTimeOutIds, setButtonActivationTimeOutIds] = useState(
+    []
+  );
+  //==> stores the objects taht generate laser animation for goodWords
+  const [beatWawes, setBeatWawes] = useState([]);
+
   //==> stores the current game scores value
   const [score, setScore] = useState(0);
   const [missedTargets, setMissedTargets] = useState(0);
   const [missedShots, setMissedShots] = useState([]);
-
-  const navigate = useNavigate();
 
   //--> resets the scores for a new game
   useEffect(() => {
@@ -22,15 +28,12 @@ const GamePage = ({ setAudioCommand, isPlaying, beat, setBeat }) => {
     }
   }, [beat]);
 
-  useEffect(() => {
-    if (!isPlaying) {
-      navigate("/");
-    }
-  }, [isPlaying, navigate]);
-
   return (
     <main className="game-page">
       <GamePageTop
+        isPlaying={isPlaying}
+        isRunning={isRunning}
+        beat={beat}
         score={score}
         missedShots={missedShots}
         missedTargets={missedTargets}
@@ -43,8 +46,18 @@ const GamePage = ({ setAudioCommand, isPlaying, beat, setBeat }) => {
         setMissedTargets={setMissedTargets}
         missedShots={missedShots}
         setMissedShots={setMissedShots}
+        setButtonActivationTimeOutIds={setButtonActivationTimeOutIds}
+        beatWawes={beatWawes}
+        setBeatWawes={setBeatWawes}
       ></ButtonPanel>
-      <GamePageBottom setAudioCommand={setAudioCommand}></GamePageBottom>
+      <GamePageBottom
+        setAudioCommand={setAudioCommand}
+        setIsRunning={setIsRunning}
+        buttonActivationTimeOutIds={buttonActivationTimeOutIds}
+        setButtonActivationTimeOutIds={setButtonActivationTimeOutIds}
+        isRunning={isRunning}
+        setBeatWawes={setBeatWawes}
+      ></GamePageBottom>
     </main>
   );
 };

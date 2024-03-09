@@ -23,6 +23,14 @@
 
   position: relative;
   overflow: hidden;
+
+  /* FONT */
+  /* <uniquifier>: Use a unique and descriptive class name */
+  /* <weight>: Use a value from 200 to 900 */
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
 }
 
 main {

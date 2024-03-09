@@ -7,21 +7,16 @@ const HomePage = ({ setAudioCommand, isPlaying }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  //--> triggs the game commands to start the audio process
-  // const handlePlayButtonClick = () => {
-  //   setIsLoading(true);
-  // };
-
   //--> starts the game (trigging isPlaying when audio is starting)
   useEffect(() => {
-    if (isLoading) {
+    if (isLoading && !isPlaying) {
       setAudioCommand({
         actionX: "play",
         timex: 0,
         beatx: 0,
       });
     }
-  }, [isLoading, setAudioCommand]);
+  }, [isLoading, isPlaying, setAudioCommand]);
 
   //--> navigates to gamePage when isPlaying gets trigged
   useEffect(() => {

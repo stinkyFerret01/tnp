@@ -7,7 +7,9 @@ const ButtonGrid = ({
   goodWords,
   setScore,
   setMissedTargets,
+  missedShots,
   setMissedShots,
+  setButtonActivationTimeOutIds,
 }) => {
   return (
     beatRule && (
@@ -21,7 +23,9 @@ const ButtonGrid = ({
                 goodWords={goodWords}
                 setScore={setScore}
                 setMissedTargets={setMissedTargets}
+                missedShots={missedShots}
                 setMissedShots={setMissedShots}
+                setButtonActivationTimeOutIds={setButtonActivationTimeOutIds}
               ></GameButton>
             </div>
           );

@@ -18,6 +18,9 @@ const ButtonPanel = ({
   setMissedTargets,
   missedShots,
   setMissedShots,
+  setButtonActivationTimeOutIds,
+  beatWawes,
+  setBeatWawes,
 }) => {
   //==> stores the array with the goodWords data
   const [beatRule, setBeatRule] = useState(null);
@@ -48,11 +51,15 @@ const ButtonPanel = ({
           goodWords={goodWords}
           setScore={setScore}
           setMissedTargets={setMissedTargets}
+          missedShots={missedShots}
           setMissedShots={setMissedShots}
+          setButtonActivationTimeOutIds={setButtonActivationTimeOutIds}
         ></ButtonGrid>
         <BeatGridGenerator
           beat={beat}
           goodWords={goodWords}
+          beatWawes={beatWawes}
+          setBeatWawes={setBeatWawes}
         ></BeatGridGenerator>
       </div>
     )

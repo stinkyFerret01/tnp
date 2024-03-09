@@ -1,11 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 import hsbfGameData from "../../beatData/hbfsGameData";
 
-const BeatGridGenerator = ({ beat, goodWords }) => {
-  //==> stores the objects taht generate laser animation for goodWords
-  const [beatWawes, setBeatWawes] = useState([]);
-
+const BeatGridGenerator = ({ beat, goodWords, beatWawes, setBeatWawes }) => {
   //---- BEATWAWES INITIALIZER ----
   useEffect(() => {
     if (goodWords !== null) {

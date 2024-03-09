@@ -1,6 +1,5 @@
 .game-page {
-    /* border: solid rgba(0, 255, 0, 1)  0.6vh; */
-
+    padding: 1%;
     width: 100vw;
     height: 100vh;
 
@@ -11,9 +10,35 @@
     box-sizing: border-box;
 }
 
-.game-page-top {
-    /* border-bottom: solid rgba(0, 255, 0, 1)  0.6vh; */
+.game-element-container {
+    background-color: rgba(0, 255, 0, 0.1);
+    border: solid rgba(0, 255, 0, 0.6) 2px;
+    color: lime;
 
+    padding: 2px;
+    margin: 1%;
+    height: 3vh;
+    font-size: 1.1rem;
+
+    display: flex;
+    align-items: center;
+
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.2),
+    0 0 8px rgba(0, 255, 0, 0.2),
+    0 0 18px rgba(0, 255, 0, 0.2),
+    0 0 60px rgba(0, 255, 0, 0.2);
+    -webkit-box-reflect: below 1px linear-gradient(transparent lime);
+
+    font-family: "Source Code Pro", monospace;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.game-page-top {
+    /* border: solid rgba(0, 255, 0, 1)  0.6vh; */
+
+    padding: 0 1.5% 0 1.5%;
     width: 100%;
     min-height: 14%;
 
@@ -26,9 +51,10 @@
 }
 
 .button-panel {
+    /* border: solid rgba(0, 255, 0, 1)  0.6vh; */
+
     background-color: transparent;
   
-    margin: 0 8px 0 8px;
     width: 100%;
     height: 72%;
 
@@ -40,6 +66,7 @@
 .game-page-bottom {
     /* border-top: solid rgba(0, 255, 0, 1)  0.6vh; */
 
+    padding: 0 1.5% 0 1.5%;
     width: 100%;
     min-height: 14%;
 
