@@ -102,16 +102,7 @@ const ScoreStatus = ({
             }}
           ></div>
         </div>
-        {/* <div
-          style={{
-            width: "30%",
-            margin: "0.6%",
-            display: "flex",
-            justifyContent: "end",
-          }}
-        > */}
         <div className="game-element-container gec-beat">{beatDisplayed}</div>
-        {/* </div> */}
       </div>
       <div className="score-status-bottom-line">
         <div className="game-element-container gec-missed-shots">
