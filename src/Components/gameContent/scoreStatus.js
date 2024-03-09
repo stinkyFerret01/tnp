@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import hsbfGameData from "../../beatData/hbfsGameData";
 
 const missedShotsColorDefiner = (index) => {
+  console.log(index);
   if (index < 8) {
     return 1;
   } else if (index > 12) {
@@ -53,6 +54,7 @@ const ScoreStatus = ({
 
   //--> sets an animation when a missed shot is added
   useEffect(() => {
+    console.log(missedShots);
     setMissedShotOpacity(1);
     setTimeout(() => {
       setMissedShotOpacity(0.5);
@@ -75,7 +77,7 @@ const ScoreStatus = ({
   return (
     <div className="score-status">
       <div className="score-status-top-line">
-        <div style={{ display: "flex", width: "30%", margin: "0.6%" }}>
+        <div style={{ display: "flex", margin: "0.6%" }}>
           <div className="game-element-container gec-num">{score}</div>
           <div
             className="game-element-container gec-num"
@@ -83,32 +85,6 @@ const ScoreStatus = ({
           >
             {hsbfGameData.wordsNumber}
           </div>
-        </div>
-        <div className="game-element-container gec-game-state">{gameState}</div>
-        <div
-          style={{
-            width: "30%",
-            margin: "0.6%",
-            display: "flex",
-            justifyContent: "end",
-          }}
-        >
-          <div className="game-element-container gec-beat">{beatDisplayed}</div>
-        </div>
-      </div>
-      <div className="score-status-bottom-line">
-        <div className="game-element-container gec-missed-shots">
-          {missedShots.map((shot, index) => {
-            return (
-              <div
-                key={shot}
-                className={`missed-shot gec-${missedShotsColorDefiner(index)}`}
-                style={{
-                  opacity: `${missedShotOpacity}`,
-                }}
-              ></div>
-            );
-          })}
         </div>
         <div className="game-element-container gec-score">
           <div
@@ -126,6 +102,33 @@ const ScoreStatus = ({
             }}
           ></div>
         </div>
+        {/* <div
+          style={{
+            width: "30%",
+            margin: "0.6%",
+            display: "flex",
+            justifyContent: "end",
+          }}
+        > */}
+        <div className="game-element-container gec-beat">{beatDisplayed}</div>
+        {/* </div> */}
+      </div>
+      <div className="score-status-bottom-line">
+        <div className="game-element-container gec-missed-shots">
+          {missedShots.map((shot, index) => {
+            return (
+              <div
+                key={shot}
+                // className={`missed-shot gec-${missedShotsColorDefiner(index)}`}
+                className={`missed-shot m-s-${missedShotsColorDefiner(index)}`}
+                style={{
+                  opacity: `${missedShotOpacity}`,
+                }}
+              ></div>
+            );
+          })}
+        </div>
+        <div className="game-element-container gec-game-state">{gameState}</div>
       </div>
     </div>
   );

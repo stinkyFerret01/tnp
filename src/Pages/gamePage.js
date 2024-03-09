@@ -21,12 +21,12 @@ const GamePage = ({ setAudioCommand, isPlaying, beat, setBeat }) => {
 
   //--> resets the scores for a new game
   useEffect(() => {
-    if (beat === 0) {
+    if (!isPlaying || beat === 0) {
       setScore(0);
       setMissedTargets(0);
       setMissedShots([]);
     }
-  }, [beat]);
+  }, [isPlaying, beat]);
 
   return (
     <main className="game-page">
