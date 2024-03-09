@@ -88,7 +88,7 @@ const Control = ({
       setOutputLatency(null);
       setAudioContextState(null);
     }
-    console.log(audioContextState);
+
     // eslint-disable-next-line
   }, [dateMarker, isPlaying]);
 

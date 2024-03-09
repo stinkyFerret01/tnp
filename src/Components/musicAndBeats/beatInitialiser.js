@@ -9,6 +9,7 @@ import delayControlerLog from "../../utils/logs/delayControlerLog";
 import hsbfGameData from "../../beatData/hbfsGameData";
 
 const BeatInitialiser = ({
+  audioCommand,
   isPlaying,
   beat,
   setBeat,
@@ -62,14 +63,17 @@ const BeatInitialiser = ({
 
   // ---- BEAT INITIALISER ----
   useEffect(() => {
-    if (isPlaying) {
+    if (isPlaying && audioCommand.actionX === "play") {
       //--> stores beat initialization date (triggs BEAT INITIALISER useEffect loop)
       setInitBeatDate(Date.now());
+    } else if (isPlaying && audioCommand.actionX === "skip") {
+      setInitBeatDate(Date.now() - 46400);
+      setBeat(380);
     } else {
       //--> resets beats values (stops BEAT INITIALISER useEffect loop)
       setInitBeatDate(0);
     }
-  }, [isPlaying, setBeat, setInitBeatDate]);
+  }, [audioCommand, isPlaying, setBeat, setInitBeatDate]);
 };
 
 export default BeatInitialiser;

@@ -5,6 +5,7 @@ const AudioContext = ({
   setIsPlaying,
   setOutputLatency,
   setAudioContextState,
+  setBeat,
 }) => {
   //==> stores the musicContext to make it reachable for the code
   const [musicRef, setMusicRef] = useState(null);
@@ -15,8 +16,8 @@ const AudioContext = ({
 
   useEffect(() => {
     clearInterval(checkCurrentTimeIntervalId);
-    // console.log("COMMAND:", audioCommand);
-    if (audioCommand.actionX === "play") {
+    console.log("COMMAND:", audioCommand);
+    if (audioCommand.actionX === "play" || audioCommand.actionX === "skip") {
       const audioContext = new (window.AudioContext ||
         window.webkitAudioContext)();
 
@@ -37,7 +38,11 @@ const AudioContext = ({
         setMusicRef(source);
 
         //---- EXECUTE start music ----
-        source.start();
+        if (audioCommand.actionX === "play") {
+          source.start();
+        } else {
+          source.start(0, audioCommand.timex);
+        }
 
         //--> (control purpose) ----
         setAudioContextState(audioContext.state);

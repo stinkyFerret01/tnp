@@ -4,6 +4,7 @@ const GamePageBottom = ({
   setAudioCommand,
   isRunning,
   setIsRunning,
+  beat,
   buttonActivationTimeOutIds,
   setButtonActivationTimeOutIds,
   setBeatWawes,
@@ -37,6 +38,20 @@ const GamePageBottom = ({
     }
   };
 
+  //--> navigates back to home
+  const handleSkipButtonClick = () => {
+    if (isRunning) {
+      buttonActivationTimeOutIds.forEach(clearTimeout);
+      setButtonActivationTimeOutIds([]);
+      setBeatWawes([]);
+      setAudioCommand({
+        actionX: "skip",
+        timex: 47,
+        beatx: 0,
+      });
+    }
+  };
+
   //--> restart the game
   const handleRestartButtonClick = () => {
     if (!isRunning) {
@@ -64,6 +79,13 @@ const GamePageBottom = ({
         onClick={handleStopButtonClick}
       >
         STOP
+      </button>
+      <button
+        className="game-element-container gec-command"
+        style={{ opacity: !isRunning ? "0.4" : "1" }}
+        onClick={handleSkipButtonClick}
+      >
+        SKIP
       </button>
       <button
         className="game-element-container gec-command"

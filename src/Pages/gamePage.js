@@ -53,6 +53,7 @@ const GamePage = ({ setAudioCommand, isPlaying, beat, setBeat }) => {
       <GamePageBottom
         setAudioCommand={setAudioCommand}
         setIsRunning={setIsRunning}
+        beat={beat}
         buttonActivationTimeOutIds={buttonActivationTimeOutIds}
         setButtonActivationTimeOutIds={setButtonActivationTimeOutIds}
         isRunning={isRunning}

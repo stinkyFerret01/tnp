@@ -36,7 +36,7 @@ const ButtonPanel = ({
 
   //---- GOODWORDS SETTER ----
   useEffect(() => {
-    if (beatRule) {
+    if (beatRule && beat) {
       setGoodWords(beatRule[beat].goodWords);
     } else {
       setBeat(0);

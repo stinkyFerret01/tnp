@@ -43,8 +43,10 @@ function App() {
         setIsPlaying={setIsPlaying}
         setOutputLatency={setOutputLatency}
         setAudioContextState={setAudioContextState}
+        setBeat={setBeat}
       ></AudioContext>
       <BeatInitialiser
+        audioCommand={audioCommand}
         isPlaying={isPlaying}
         beat={beat}
         setBeat={setBeat}

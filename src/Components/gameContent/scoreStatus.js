@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import hsbfGameData from "../../beatData/hbfsGameData";
 
 const missedShotsColorDefiner = (index) => {
-  console.log(index);
   if (index < 8) {
     return 1;
   } else if (index > 12) {
@@ -54,7 +53,6 @@ const ScoreStatus = ({
 
   //--> sets an animation when a missed shot is added
   useEffect(() => {
-    console.log(missedShots);
     setMissedShotOpacity(1);
     setTimeout(() => {
       setMissedShotOpacity(0.5);
