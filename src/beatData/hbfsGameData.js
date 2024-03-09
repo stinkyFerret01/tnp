@@ -1,7 +1,7 @@
 const hsbfGameData = {
   tempo: 121,
   beatMod: 393,
-  skipTimePosition: 49,
+  skipTimePosition: 47,
   wordsPosition: [
     {
       label: "Work it",

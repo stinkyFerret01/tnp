@@ -67,7 +67,7 @@ const BeatInitialiser = ({
       //--> stores beat initialization date (triggs BEAT INITIALISER useEffect loop)
       setInitBeatDate(Date.now());
     } else if (isPlaying && audioCommand.actionX === "skip") {
-      setInitBeatDate(Date.now() - 46400);
+      setInitBeatDate(Date.now() - hsbfGameData.skipTimePosition * 1000);
       setBeat(380);
     } else {
       //--> resets beats values (stops BEAT INITIALISER useEffect loop)

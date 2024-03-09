@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
+import hsbfGameData from "../../beatData/hbfsGameData";
+
 const GamePageBottom = ({
   setAudioCommand,
   isRunning,
@@ -46,7 +48,7 @@ const GamePageBottom = ({
       setBeatWawes([]);
       setAudioCommand({
         actionX: "skip",
-        timex: 47,
+        timex: hsbfGameData.skipTimePosition,
         beatx: 0,
       });
     }

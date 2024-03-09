@@ -18,6 +18,7 @@ const AudioContext = ({
     clearInterval(checkCurrentTimeIntervalId);
     console.log("COMMAND:", audioCommand);
     if (audioCommand.actionX === "play" || audioCommand.actionX === "skip") {
+      let loadLatencyMarker1 = Date.now();
       const audioContext = new (window.AudioContext ||
         window.webkitAudioContext)();
 
@@ -41,7 +42,9 @@ const AudioContext = ({
         if (audioCommand.actionX === "play") {
           source.start();
         } else {
-          source.start(0, audioCommand.timex);
+          let loadLatencyMarker2 = Date.now();
+          let loadLatency = (loadLatencyMarker2 - loadLatencyMarker1) / 1000;
+          source.start(0, audioCommand.timex + loadLatency);
         }
 
         //--> (control purpose) ----
