@@ -1,4 +1,4 @@
-const StartButton = ({ isLoading, setIsLoading }) => {
+const StartButton = ({ isLoading, setIsLoading, isPlaying }) => {
   //--> triggs the game commands to start the audio process
   const handlePlayButtonClick = () => {
     setIsLoading(true);
@@ -6,7 +6,7 @@ const StartButton = ({ isLoading, setIsLoading }) => {
 
   return (
     <div>
-      {!isLoading ? (
+      {!isLoading || !isPlaying ? (
         <button className="start-button" onClick={handlePlayButtonClick}>
           PLAY
         </button>

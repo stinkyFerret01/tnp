@@ -31,6 +31,7 @@ const HomePage = ({ setAudioCommand, isPlaying, isLoading, setIsLoading }) => {
     <main className="home-page">
       <StartButton
         isLoading={isLoading}
+        isPlaying={isPlaying}
         setIsLoading={setIsLoading}
       ></StartButton>
     </main>
