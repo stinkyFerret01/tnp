@@ -1,10 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import GamePageTop from "../Components/gameContent/gamePageTop/gamePageTop";
 import ButtonPanel from "../Components/gameContent/buttonPanel";
 import GamePageBottom from "../Components/gameContent/gamePageBottom";
 
-const GamePage = ({ setAudioCommand, isPlaying, isLoading, beat, setBeat }) => {
+const GamePage = ({
+  setAudioCommand,
+  isPlaying,
+  isLoading,
+  setIsLoading,
+  beat,
+  setBeat,
+}) => {
   //==> stores the timeoutIds so they can be cleared if Player stops game
   const [buttonActivationTimeOutIds, setButtonActivationTimeOutIds] = useState(
     []
@@ -16,15 +23,6 @@ const GamePage = ({ setAudioCommand, isPlaying, isLoading, beat, setBeat }) => {
   const [score, setScore] = useState(0);
   const [missedTargets, setMissedTargets] = useState(0);
   const [missedShots, setMissedShots] = useState([]);
-
-  //--> resets the scores for a new game
-  useEffect(() => {
-    if (!isPlaying || beat === 0) {
-      setScore(0);
-      setMissedTargets(0);
-      setMissedShots([]);
-    }
-  }, [isPlaying, beat]);
 
   return (
     <main className="game-page">
@@ -53,10 +51,14 @@ const GamePage = ({ setAudioCommand, isPlaying, isLoading, beat, setBeat }) => {
         setAudioCommand={setAudioCommand}
         isPlaying={isPlaying}
         isLoading={isLoading}
+        setIsLoading={setIsLoading}
         beat={beat}
         buttonActivationTimeOutIds={buttonActivationTimeOutIds}
         setButtonActivationTimeOutIds={setButtonActivationTimeOutIds}
         setBeatWawes={setBeatWawes}
+        setScore={setScore}
+        setMissedTargets={setMissedTargets}
+        setMissedShots={setMissedShots}
       ></GamePageBottom>
     </main>
   );

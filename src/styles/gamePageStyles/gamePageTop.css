@@ -56,15 +56,8 @@
 }
 
 .score-bar {
-    background-color: rgba(255,215,0,1);
-
     height: 3vh;
-
-    box-shadow: 0 0 5px rgba(255,215,0,0.6),
-    0 0 8px rgba(255,215,0,0.6),
-    0 0 18px rgba(255,215,0,0.6),
-    0 0 100px rgba(255,215,0,0.6);
-    -webkit-box-reflect: below 1px linear-gradient(transparent rgba(255,215,0,1));
+    /* shares colors with m-s-1 */
 }
 
 /* MISSED TARGETS */

@@ -17,7 +17,7 @@ const AudioContext = ({
     clearInterval(checkCurrentTimeIntervalId);
     // console.log("COMMAND:", audioCommand);
     if (audioCommand.actionX === "play" || audioCommand.actionX === "skip") {
-      setIsLoading(true);
+      setIsLoading(10);
 
       const audioContext = new (window.AudioContext ||
         window.webkitAudioContext)();
@@ -29,8 +29,11 @@ const AudioContext = ({
       const loadAudio = async () => {
         //--> sets audio context
         const response = await fetch("../Audio/HBFSp04.mp3");
+        setIsLoading(20);
         const audioData = await response.arrayBuffer();
+        setIsLoading(25);
         const audioBuffer = await audioContext.decodeAudioData(audioData);
+        setIsLoading(60);
 
         const source = audioContext.createBufferSource();
 
@@ -63,7 +66,7 @@ const AudioContext = ({
             0,
             audioCommand.timex + loadLatency + contextOutputLatency / 1000
           );
-          setIsLoading(false);
+          setIsLoading(100);
         }
 
         //-- checks if audio is ready to trigg the BeatInitialiser
@@ -76,8 +79,9 @@ const AudioContext = ({
             if (musicTime > 0) {
               setTimeout(() => {
                 setIsPlaying(true);
+                setIsLoading(99);
                 setTimeout(() => {
-                  setIsLoading(false);
+                  setIsLoading(100);
                 }, 1000);
                 clearInterval(checkCurrentTimeInterval);
               }, contextOutputLatency);
@@ -99,6 +103,7 @@ const AudioContext = ({
     } else if (musicRef && audioCommand.actionX === "stop") {
       musicRef.stop();
       setIsPlaying(false);
+      setIsLoading(0);
     }
 
     // eslint-disable-next-line

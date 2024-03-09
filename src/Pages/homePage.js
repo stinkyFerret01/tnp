@@ -8,28 +8,26 @@ const HomePage = ({ setAudioCommand, isPlaying, isLoading, setIsLoading }) => {
 
   //--> starts the game (trigging isPlaying when audio is starting)
   useEffect(() => {
-    if (isLoading && !isPlaying) {
+    if (isLoading === 5 && !isPlaying) {
       setAudioCommand({
         actionX: "play",
-        timex: 0,
-        beatx: 0,
       });
     }
   }, [isLoading, isPlaying, setAudioCommand]);
 
   //--> navigates to gamePage when isPlaying gets trigged
   useEffect(() => {
-    if (isPlaying) {
+    if (isLoading === 100) {
       navigate("/game");
     }
-  }, [isPlaying, navigate, setIsLoading]);
+  }, [isLoading, navigate]);
 
   return (
     <main className="home-page">
       <StartButton
         isLoading={isLoading}
-        isPlaying={isPlaying}
         setIsLoading={setIsLoading}
+        isPlaying={isPlaying}
       ></StartButton>
     </main>
   );

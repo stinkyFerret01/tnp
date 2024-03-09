@@ -24,13 +24,13 @@ function App() {
 
   //==> triggs or stops the beat intializer from the music
   const [isPlaying, setIsPlaying] = useState(false);
-  //==> true when music is loading but not playing
-  const [isLoading, setIsLoading] = useState(false);
+  //==> 0 to 100 when music is loading but not playing
+  const [isLoading, setIsLoading] = useState(0);
 
   //==> stores the beat value that triggs buttons and animations activation
   const [beat, setBeat] = useState(0);
 
-  //==> control
+  //==> stores control synchronisation values
   const [timeJumps, setTimeJumps] = useState([]);
   const [negDelays, setNegDelays] = useState([]);
   const [outputLatency, setOutputLatency] = useState(NaN);
@@ -72,6 +72,7 @@ function App() {
                 setAudioCommand={setAudioCommand}
                 isPlaying={isPlaying}
                 isLoading={isLoading}
+                setIsLoading={setIsLoading}
                 beat={beat}
                 setBeat={setBeat}
               />

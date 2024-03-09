@@ -5,10 +5,10 @@ const GameStateBar = ({ isLoading, isPlaying }) => {
 
   //--> sets the gameState
   useEffect(() => {
-    if (isPlaying && !isLoading) {
+    if (isPlaying && isLoading === 100) {
       setGameState("-Playing...");
     } else {
-      if (isLoading) {
+      if (isLoading > 0 && isLoading < 100) {
         setGameState("-Loading...");
       } else {
         setGameState("-Off");

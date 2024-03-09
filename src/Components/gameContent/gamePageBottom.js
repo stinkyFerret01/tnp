@@ -10,17 +10,20 @@ const GamePageBottom = ({
   buttonActivationTimeOutIds,
   setButtonActivationTimeOutIds,
   setBeatWawes,
+  setScore,
+  setMissedTargets,
+  setMissedShots,
 }) => {
   const navigate = useNavigate();
 
-  //--> stops the game
+  //--> navigates back to home
   const handleBackButtonClick = () => {
-    if (!isLoading) {
+    if (isLoading === 0) {
       navigate("/");
     }
   };
 
-  //--> navigates back to home
+  //--> stops the game
   const handleStopButtonClick = () => {
     if (isPlaying) {
       buttonActivationTimeOutIds.forEach((timeout) =>
@@ -31,13 +34,11 @@ const GamePageBottom = ({
       setBeatWawes([]);
       setAudioCommand({
         actionX: "stop",
-        timex: 0,
-        beatx: 0,
       });
     }
   };
 
-  //--> navigates back to home
+  //--> skips the intro
   const handleSkipButtonClick = () => {
     if (isPlaying) {
       buttonActivationTimeOutIds.forEach((timeout) =>
@@ -49,27 +50,29 @@ const GamePageBottom = ({
       setAudioCommand({
         actionX: "skip",
         timex: hsbfGameData.skipTimePosition,
-        beatx: 0,
       });
     }
   };
 
-  //--> restart the game
+  //--> restarts the game
   const handleRestartButtonClick = () => {
-    if (!isLoading && !isPlaying) {
+    if (isLoading === 0 && !isPlaying) {
       setAudioCommand({
         actionX: "play",
-        timex: 0,
-        beatx: 0,
       });
     }
+
+    //--> resets the scores for a new game
+    setScore(0);
+    setMissedTargets(0);
+    setMissedShots([]);
   };
 
   return (
     <div className="game-page-bottom">
       <button
         className="game-element-container gec-command"
-        style={{ opacity: isLoading || isPlaying ? "0.4" : "1" }}
+        style={{ opacity: isLoading > 0 || isPlaying ? "0.4" : "1" }}
         onClick={handleBackButtonClick}
       >
         BACK
@@ -83,17 +86,19 @@ const GamePageBottom = ({
       </button>
       <button
         className="game-element-container gec-command"
-        style={{ opacity: !isPlaying ? "0.4" : "1" }}
+        style={{
+          opacity: !isPlaying || beat > hsbfGameData.beatMod - 32 ? "0.4" : "1",
+        }}
         onClick={handleSkipButtonClick}
       >
         SKIP
       </button>
       <button
         className="game-element-container gec-command"
-        style={{ opacity: isLoading || isPlaying ? "0.4" : "1" }}
+        style={{ opacity: isLoading > 0 || isPlaying ? "0.4" : "1" }}
         onClick={handleRestartButtonClick}
       >
-        RESTART
+        RESET
       </button>
     </div>
   );

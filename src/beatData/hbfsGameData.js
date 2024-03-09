@@ -35,41 +35,37 @@ const hsbfGameData = {
       label: "Stronger",
       beats: [92, 348, 412, 540, 604, 668, 732],
     },
-
-    // 2nd
     {
       label: "More than",
-      beats: [128, 448, 544],
+      beats: [128, 448, 544, 608, 672, 736],
     },
     {
       label: "Hour",
-      beats: [136, 144, 456, 464, 552, 560],
+      beats: [136, 144, 456, 464, 552, 560, 616, 624, 680, 688, 744, 752],
     },
     {
       label: "Never",
-      beats: [152, 472, 568],
+      beats: [152, 472, 568, 632, 696, 760],
     },
     {
       label: "check synchro",
-      beats: [
-        -32, -64, -96, -128, -160, -192, -224, -256, -288, -320, -352, -384,
-      ],
+      beats: [-64, -96, -128, -160, -192, -224, -256, -288, -320],
     },
     {
       label: "Ever",
-      beats: [196, 452, 548],
+      beats: [196, 452, 548, 612, 676, 740],
     },
     {
       label: "After",
-      beats: [204, 460, 556],
+      beats: [204, 460, 556, 620, 684, 748],
     },
     {
       label: "Work is",
-      beats: [212, 468, 564],
+      beats: [212, 468, 564, 628, 692, 756],
     },
     {
       label: "Over",
-      beats: [220, 476, 572],
+      beats: [220, 476, 572, 636, 700, 764],
     },
   ],
 };
@@ -78,6 +74,7 @@ const hsbfGameData = {
 const wordsNumberCalculator = (gameData) => {
   let totalLength = 0;
   gameData.wordsPosition.forEach((word) => {
+    //--> filters the check synchro beats
     const filteredBeats = word.beats.filter((beat) => beat >= 0);
     totalLength += filteredBeats.length;
   });

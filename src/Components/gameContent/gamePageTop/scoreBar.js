@@ -26,7 +26,7 @@ const ScoreBar = ({ score, missedTargets }) => {
   return (
     <div className="game-element-container gec-score">
       <div
-        className="score-bar"
+        className="score-bar m-s-1"
         style={{
           width: `${(score * 100) / hsbfGameData.wordsNumber}%`,
           opacity: `${scoreOpacity}`,
