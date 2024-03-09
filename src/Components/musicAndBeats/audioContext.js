@@ -39,12 +39,20 @@ const AudioContext = ({
         setMusicRef(source);
 
         //---- EXECUTE start music ----
+        let contextOutputLatency = Math.floor(
+          source.context.outputLatency * 1000
+        );
+        console.log("contextOutputLatency", contextOutputLatency);
+
         if (audioCommand.actionX === "play") {
           source.start();
         } else {
           let loadLatencyMarker2 = Date.now();
           let loadLatency = (loadLatencyMarker2 - loadLatencyMarker1) / 1000;
-          source.start(0, audioCommand.timex + loadLatency);
+          source.start(
+            0,
+            audioCommand.timex + loadLatency + contextOutputLatency / 1000
+          );
         }
 
         //--> (control purpose) ----
@@ -55,9 +63,7 @@ const AudioContext = ({
 
         const checkTime = () => {
           let musicTime = audioContext.currentTime;
-          let contextOutputLatency = Math.floor(
-            source.context.outputLatency * 1000
-          );
+
           if (musicTime > 0) {
             setOutputLatency(contextOutputLatency); //---- (control purpose) ----
             if (Number.isNaN(contextOutputLatency)) {
