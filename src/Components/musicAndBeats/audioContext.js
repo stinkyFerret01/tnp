@@ -54,7 +54,6 @@ const AudioContext = ({
             0,
             audioCommand.timex + loadLatency + contextOutputLatency / 1000
           );
-          setIsLoading(false);
         }
 
         //--> (control purpose) ----
@@ -74,6 +73,9 @@ const AudioContext = ({
               }
               setTimeout(() => {
                 setIsPlaying(true);
+                setTimeout(() => {
+                  setIsLoading(false);
+                }, 4000);
                 setIsLoading(false);
                 clearInterval(checkCurrentTimeInterval);
               }, contextOutputLatency);

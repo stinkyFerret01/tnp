@@ -21,9 +21,6 @@ const HomePage = ({ setAudioCommand, isPlaying, isLoading, setIsLoading }) => {
   useEffect(() => {
     if (isPlaying) {
       navigate("/game");
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 4000);
     }
   }, [isPlaying, navigate, setIsLoading]);
 

@@ -6,12 +6,12 @@ const StartButton = ({ isLoading, setIsLoading, isPlaying }) => {
 
   return (
     <div>
-      {!isLoading || !isPlaying ? (
+      {isLoading || isPlaying ? (
+        <div>LOADING</div>
+      ) : (
         <button className="start-button" onClick={handlePlayButtonClick}>
           PLAY
         </button>
-      ) : (
-        <div>LOADING</div>
       )}
     </div>
   );
