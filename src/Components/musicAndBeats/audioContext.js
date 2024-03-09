@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 const AudioContext = ({
   audioCommand,
   setIsPlaying,
+  setIsLoading,
   setOutputLatency,
   setAudioContextState,
   setBeat,
@@ -16,8 +17,9 @@ const AudioContext = ({
 
   useEffect(() => {
     clearInterval(checkCurrentTimeIntervalId);
-    console.log("COMMAND:", audioCommand);
+    // console.log("COMMAND:", audioCommand);
     if (audioCommand.actionX === "play" || audioCommand.actionX === "skip") {
+      setIsLoading(true);
       let loadLatencyMarker1 = Date.now();
       const audioContext = new (window.AudioContext ||
         window.webkitAudioContext)();
@@ -42,7 +44,6 @@ const AudioContext = ({
         let contextOutputLatency = Math.floor(
           source.context.outputLatency * 1000
         );
-        console.log("contextOutputLatency", contextOutputLatency);
 
         if (audioCommand.actionX === "play") {
           source.start();
@@ -53,6 +54,7 @@ const AudioContext = ({
             0,
             audioCommand.timex + loadLatency + contextOutputLatency / 1000
           );
+          setIsLoading(false);
         }
 
         //--> (control purpose) ----
@@ -72,6 +74,7 @@ const AudioContext = ({
               }
               setTimeout(() => {
                 setIsPlaying(true);
+                setIsLoading(false);
                 clearInterval(checkCurrentTimeInterval);
               }, contextOutputLatency);
             }

@@ -2,7 +2,7 @@ import ScoreStatus from "./scoreStatus";
 
 const GamePageTop = ({
   isPlaying,
-  isRunning,
+  isLoading,
   beat,
   score,
   missedShots,
@@ -12,7 +12,7 @@ const GamePageTop = ({
     <div className="game-page-top">
       <ScoreStatus
         isPlaying={isPlaying}
-        isRunning={isRunning}
+        isLoading={isLoading}
         beat={beat}
         score={score}
         missedTargets={missedTargets}

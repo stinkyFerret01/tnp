@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import StartButton from "../Components/homeContent/startButton";
 
-const HomePage = ({ setAudioCommand, isPlaying }) => {
-  const [isLoading, setIsLoading] = useState(false);
+const HomePage = ({ setAudioCommand, isPlaying, isLoading, setIsLoading }) => {
   const navigate = useNavigate();
 
   //--> starts the game (trigging isPlaying when audio is starting)
@@ -26,7 +25,7 @@ const HomePage = ({ setAudioCommand, isPlaying }) => {
         setIsLoading(false);
       }, 4000);
     }
-  }, [isPlaying, navigate]);
+  }, [isPlaying, navigate, setIsLoading]);
 
   return (
     <main className="home-page">

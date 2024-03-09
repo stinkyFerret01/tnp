@@ -26,6 +26,8 @@ function App() {
 
   //==> triggs or stops the beat intializer from the music
   const [isPlaying, setIsPlaying] = useState(false);
+  //==> true when music is loading but not playing
+  const [isLoading, setIsLoading] = useState(false);
 
   //==> stores the beat value that triggs buttons and animations activation
   const [beat, setBeat] = useState(0);
@@ -41,6 +43,7 @@ function App() {
       <AudioContext
         audioCommand={audioCommand}
         setIsPlaying={setIsPlaying}
+        setIsLoading={setIsLoading}
         setOutputLatency={setOutputLatency}
         setAudioContextState={setAudioContextState}
         setBeat={setBeat}
@@ -61,6 +64,8 @@ function App() {
               <HomePage
                 setAudioCommand={setAudioCommand}
                 isPlaying={isPlaying}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
               />
             }
           />
@@ -70,6 +75,7 @@ function App() {
               <GamePage
                 setAudioCommand={setAudioCommand}
                 isPlaying={isPlaying}
+                isLoading={isLoading}
                 beat={beat}
                 setBeat={setBeat}
               />

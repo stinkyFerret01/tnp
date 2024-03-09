@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import hsbfGameData from "../../beatData/hbfsGameData";
 
+import BeatDisplayer from "./beatDisplayer";
+
 const missedShotsColorDefiner = (index) => {
   if (index < 8) {
     return 1;
@@ -14,26 +16,18 @@ const missedShotsColorDefiner = (index) => {
 
 const ScoreStatus = ({
   isPlaying,
-  isRunning,
+  isLoading,
   beat,
   score,
   missedTargets,
   missedShots,
 }) => {
-  const [gameState, setGameState] = useState("-Playing...");
-  //--> sets the beat to display
-  const [beatDisplayed, setBeatDisplayed] = useState(null);
+  const [gameState, setGameState] = useState("-Off");
 
   //--> stores oppacity for animation when any score value increases
   const [missedShotOpacity, setMissedShotOpacity] = useState(0.5);
   const [scoreOpacity, setScoreOpacity] = useState(0.5);
   const [missedTargetsOpacity, setMissedTargetsOpacity] = useState(0.5);
-
-  //-->sets a displayable beat easy to read for the Player
-  useEffect(() => {
-    let newBeat = (beat - 2 - ((beat - 2) % 4)) / 4 - 107;
-    setBeatDisplayed(newBeat);
-  }, [beat]);
 
   //--> sets an animation when missedTargets increases
   useEffect(() => {
@@ -61,16 +55,16 @@ const ScoreStatus = ({
 
   //--> sets the gameState
   useEffect(() => {
-    if (!isRunning) {
-      setGameState("-Off");
+    if (isPlaying && !isLoading) {
+      setGameState("-Playing...");
     } else {
-      if (isPlaying) {
-        setGameState("-Playing...");
-      } else {
+      if (isLoading) {
         setGameState("-Loading...");
+      } else {
+        setGameState("-Off");
       }
     }
-  }, [isPlaying, isRunning]);
+  }, [isPlaying, isLoading]);
 
   return (
     <div className="score-status">
@@ -100,7 +94,7 @@ const ScoreStatus = ({
             }}
           ></div>
         </div>
-        <div className="game-element-container gec-beat">{beatDisplayed}</div>
+        <BeatDisplayer beat={beat}></BeatDisplayer>
       </div>
       <div className="score-status-bottom-line">
         <div className="game-element-container gec-missed-shots">
@@ -108,7 +102,6 @@ const ScoreStatus = ({
             return (
               <div
                 key={shot}
-                // className={`missed-shot gec-${missedShotsColorDefiner(index)}`}
                 className={`missed-shot m-s-${missedShotsColorDefiner(index)}`}
                 style={{
                   opacity: `${missedShotOpacity}`,
@@ -117,7 +110,15 @@ const ScoreStatus = ({
             );
           })}
         </div>
-        <div className="game-element-container gec-game-state">{gameState}</div>
+        <div className="game-element-container gec-game-state">
+          <p
+            style={
+              gameState === "-Off" ? { color: "orangered" } : { color: "lime" }
+            }
+          >
+            {gameState}
+          </p>
+        </div>
       </div>
     </div>
   );

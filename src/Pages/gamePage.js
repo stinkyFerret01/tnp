@@ -4,9 +4,7 @@ import GamePageTop from "../Components/gameContent/gamePageTop";
 import ButtonPanel from "../Components/gameContent/buttonPanel";
 import GamePageBottom from "../Components/gameContent/gamePageBottom";
 
-const GamePage = ({ setAudioCommand, isPlaying, beat, setBeat }) => {
-  const [isRunning, setIsRunning] = useState(true);
-
+const GamePage = ({ setAudioCommand, isPlaying, isLoading, beat, setBeat }) => {
   //==> stores the timeoutIds so they can be cleared if Player stops game
   const [buttonActivationTimeOutIds, setButtonActivationTimeOutIds] = useState(
     []
@@ -32,7 +30,7 @@ const GamePage = ({ setAudioCommand, isPlaying, beat, setBeat }) => {
     <main className="game-page">
       <GamePageTop
         isPlaying={isPlaying}
-        isRunning={isRunning}
+        isLoading={isLoading}
         beat={beat}
         score={score}
         missedShots={missedShots}
@@ -52,11 +50,11 @@ const GamePage = ({ setAudioCommand, isPlaying, beat, setBeat }) => {
       ></ButtonPanel>
       <GamePageBottom
         setAudioCommand={setAudioCommand}
-        setIsRunning={setIsRunning}
+        isPlaying={isPlaying}
+        isLoading={isLoading}
         beat={beat}
         buttonActivationTimeOutIds={buttonActivationTimeOutIds}
         setButtonActivationTimeOutIds={setButtonActivationTimeOutIds}
-        isRunning={isRunning}
         setBeatWawes={setBeatWawes}
       ></GamePageBottom>
     </main>
