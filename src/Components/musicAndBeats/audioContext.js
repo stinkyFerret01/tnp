@@ -61,25 +61,27 @@ const AudioContext = ({
         //---- TRIGGER isPlaying ----
         let checkCurrentTimeInterval;
 
-        const checkTime = () => {
-          let musicTime = audioContext.currentTime;
+        if (audioCommand.actionX === "play") {
+          const checkTime = () => {
+            let musicTime = audioContext.currentTime;
 
-          if (musicTime > 0) {
-            setOutputLatency(contextOutputLatency); //---- (control purpose) ----
-            if (Number.isNaN(contextOutputLatency)) {
-              contextOutputLatency = 40;
+            if (musicTime > 0) {
+              setOutputLatency(contextOutputLatency); //---- (control purpose) ----
+              if (Number.isNaN(contextOutputLatency)) {
+                contextOutputLatency = 40;
+              }
+              setTimeout(() => {
+                setIsPlaying(true);
+                clearInterval(checkCurrentTimeInterval);
+              }, contextOutputLatency);
             }
-            setTimeout(() => {
-              setIsPlaying(true);
-              clearInterval(checkCurrentTimeInterval);
-            }, contextOutputLatency);
-          }
-        };
+          };
 
-        checkCurrentTimeInterval = setInterval(() => {
-          checkTime();
-        }, 10);
-        setCheckCurrentTimeIntervalId(checkCurrentTimeInterval);
+          checkCurrentTimeInterval = setInterval(() => {
+            checkTime();
+          }, 10);
+          setCheckCurrentTimeIntervalId(checkCurrentTimeInterval);
+        }
       };
 
       loadAudio();
