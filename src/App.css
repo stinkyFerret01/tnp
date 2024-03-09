@@ -1,7 +1,7 @@
 @import "./styles/reset.css";
 @import "./styles/homePageStyles/homePage.css";
 @import "./styles/gamePageStyles/gamePage.css";
-@import "./styles/gamePageStyles/ScoresStatus.css";
+@import "./styles/gamePageStyles/gamePageTop.css";
 @import "./styles/gamePageStyles/beatGridGenerator.css";
 @import "./styles/gamePageStyles/buttonGrid.css";
 @import "./styles/gamePageStyles/gameButton.css";

@@ -35,21 +35,6 @@
     font-style: normal;
 }
 
-.game-page-top {
-    /* border: solid rgba(0, 255, 0, 1)  0.6vh; */
-
-    padding: 0 1.5% 0 1.5%;
-    width: 100%;
-    min-height: 14%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    box-sizing: border-box;
-}
-
 .button-panel {
     /* border: solid rgba(0, 255, 0, 1)  0.6vh; */
 

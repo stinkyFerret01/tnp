@@ -5,8 +5,6 @@ const AudioContext = ({
   setIsPlaying,
   setIsLoading,
   setOutputLatency,
-  setAudioContextState,
-  setBeat,
 }) => {
   //==> stores the musicContext to make it reachable for the code
   const [musicRef, setMusicRef] = useState(null);
@@ -20,15 +18,18 @@ const AudioContext = ({
     // console.log("COMMAND:", audioCommand);
     if (audioCommand.actionX === "play" || audioCommand.actionX === "skip") {
       setIsLoading(true);
-      let loadLatencyMarker1 = Date.now();
+
       const audioContext = new (window.AudioContext ||
         window.webkitAudioContext)();
 
+      //--> measure marker (load( time))
+      let loadLatencyMarker1 = Date.now();
+
+      //--> starts audio process
       const loadAudio = async () => {
+        //--> sets audio context
         const response = await fetch("../Audio/HBFSp04.mp3");
         const audioData = await response.arrayBuffer();
-
-        //---- decoding audioData takes a long time
         const audioBuffer = await audioContext.decodeAudioData(audioData);
 
         const source = audioContext.createBufferSource();
@@ -37,18 +38,26 @@ const AudioContext = ({
 
         source.connect(audioContext.destination);
 
-        //---- setting MusicRef ----
+        //--> sets MusicRef
         setMusicRef(source);
 
-        //---- EXECUTE start music ----
+        //--> calculates and sets outputLatency
         let contextOutputLatency = Math.floor(
           source.context.outputLatency * 1000
         );
+        setOutputLatency(contextOutputLatency); //---- (control purpose) ----
+        if (Number.isNaN(contextOutputLatency)) {
+          contextOutputLatency = 40;
+        }
 
+        //--> executes start music ----
         if (audioCommand.actionX === "play") {
           source.start();
         } else {
+          //--> measure marker (load( time))
           let loadLatencyMarker2 = Date.now();
+
+          //calculates load() time to synchronise the beatInitialiser and starts
           let loadLatency = (loadLatencyMarker2 - loadLatencyMarker1) / 1000;
           source.start(
             0,
@@ -57,10 +66,7 @@ const AudioContext = ({
           setIsLoading(false);
         }
 
-        //--> (control purpose) ----
-        setAudioContextState(audioContext.state);
-
-        //---- TRIGGER isPlaying ----
+        //-- checks if audio is ready to trigg the BeatInitialiser
         let checkCurrentTimeInterval;
 
         if (audioCommand.actionX === "play") {
@@ -68,10 +74,6 @@ const AudioContext = ({
             let musicTime = audioContext.currentTime;
 
             if (musicTime > 0) {
-              setOutputLatency(contextOutputLatency); //---- (control purpose) ----
-              if (Number.isNaN(contextOutputLatency)) {
-                contextOutputLatency = 40;
-              }
               setTimeout(() => {
                 setIsPlaying(true);
                 setTimeout(() => {

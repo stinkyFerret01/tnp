@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import GamePageTop from "../Components/gameContent/gamePageTop";
+import GamePageTop from "../Components/gameContent/gamePageTop/gamePageTop";
 import ButtonPanel from "../Components/gameContent/buttonPanel";
 import GamePageBottom from "../Components/gameContent/gamePageBottom";
 

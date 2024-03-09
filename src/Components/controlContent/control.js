@@ -22,8 +22,6 @@ const Control = ({
   isPlaying,
   outputLatency,
   setOutputLatency,
-  audioContextState,
-  setAudioContextState,
   beat,
   timeJumps,
   setTimeJumps,
@@ -86,7 +84,6 @@ const Control = ({
       setDateMarker(0);
       setBeatDif(null);
       setOutputLatency(null);
-      setAudioContextState(null);
     }
 
     // eslint-disable-next-line
@@ -104,16 +101,6 @@ const Control = ({
           }
         >
           Output Latency: {outputLatency}
-        </div>
-        <div
-          className="audio-context-control-element"
-          style={
-            isPlaying && audioContextState !== "running"
-              ? alertLevelStyles.redAlert
-              : {}
-          }
-        >
-          AudioContext State: {audioContextState}
         </div>
       </div>
       <div className="beat-dif-container">

@@ -21,7 +21,7 @@ const BeatInitialiser = ({
 
   const delayControler = (delay) => {
     if (delay < 0 && delay > -10000) {
-      //that means beat is super late and has to increase more than 1 to re-synch
+      // that means beat is super late and has to increase more than 1 to re-synch
       const newNegDelays = [
         ...negDelays,
         { when: dateFormatter(), howMuchMs: delay },

@@ -1,20 +1,26 @@
-.score-status {
+.game-page-top {
+    /* border: solid rgba(0, 255, 0, 1)  0.6vh; */
+
+    padding: 0 1.5% 0 1.5%;
     width: 100%;
+    min-height: 14%;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    box-sizing: border-box;
 }
 
-.score-status-top-line {
+.g-p-top-line {
     width: 100%;
 
     display: flex;
     justify-content: space-between;
 }
 
-.score-status-bottom-line {
+.g-p-bottom-line {
     width: 100%;
 
     display: flex;
@@ -28,13 +34,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.gec-score {
-    width: 55.2%;
-    justify-content: space-between;
-}
-.gec-missed-shots {
-    width: 27.6%;
-}
 .gec-num {
     color: gold;
     min-width: 2rem;
@@ -42,14 +41,20 @@
 }
 .gec-beat {
     color: orangered;
-    min-width: 2.5rem;
+    min-width: 2.8rem;
     justify-content: center;
-}.gec-command {
+}
+.gec-command {
     height: 6vh;
     font-size: 1.6rem;
 }
 
  /* SCORE */
+.gec-score {
+    width: 55.2%;
+    justify-content: space-between;
+}
+
 .score-bar {
     background-color: rgba(255,215,0,1);
 
@@ -76,6 +81,10 @@
 }
 
 /* MISSED SHOTS */
+.gec-missed-shots {
+    width: 27.6%;
+}
+
 .missed-shot {
     margin: 1%;
     height: 2.8vh;

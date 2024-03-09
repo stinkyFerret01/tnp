@@ -20,8 +20,6 @@ function App() {
   //==> stores the infos that triggs music and beats mechanics
   const [audioCommand, setAudioCommand] = useState({
     actionX: null,
-    timex: 0,
-    beatx: 0,
   });
 
   //==> triggs or stops the beat intializer from the music
@@ -36,7 +34,6 @@ function App() {
   const [timeJumps, setTimeJumps] = useState([]);
   const [negDelays, setNegDelays] = useState([]);
   const [outputLatency, setOutputLatency] = useState(NaN);
-  const [audioContextState, setAudioContextState] = useState(null);
 
   return (
     <div className="App">
@@ -45,7 +42,6 @@ function App() {
         setIsPlaying={setIsPlaying}
         setIsLoading={setIsLoading}
         setOutputLatency={setOutputLatency}
-        setAudioContextState={setAudioContextState}
         setBeat={setBeat}
       ></AudioContext>
       <BeatInitialiser
@@ -87,8 +83,6 @@ function App() {
         isPlaying={isPlaying}
         outputLatency={outputLatency}
         setOutputLatency={setOutputLatency}
-        audioContextState={audioContextState}
-        setAudioContextState={setAudioContextState}
         beat={beat}
         timeJumps={timeJumps}
         setTimeJumps={setTimeJumps}
