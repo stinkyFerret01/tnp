@@ -10,10 +10,19 @@
 
 .start-button {
     background-color: gold;
+    border: solid gold 2px;
+
+    width: 4rem;
+    height: 4rem;
+    border-radius: 6px;
+
     box-shadow: 0 0 5px gold,
-    0 0 25px gold,
-    0 0 50px gold,
-    0 0 200px gold;
-    -webkit-box-reflect: below 1px linear-gradient(transparent gold);
+    0 0 25px gold;
+
+    font-family: 'Roboto, sans-serif'
 }
+.start-button:hover {
+    cursor: pointer;
+}
+
   

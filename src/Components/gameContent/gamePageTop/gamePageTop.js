@@ -16,12 +16,20 @@ const GamePageTop = ({
   return (
     <div className="game-page-top">
       <div className="g-p-top-line">
-        <div style={{ display: "flex", margin: "0.6%" }}>
-          <div className="game-element-container gec-num">{score}</div>
+        <div
+          style={{
+            display: "flex",
+            padding: "0.6%",
+            alignItems: "center",
+          }}
+        >
           <div
             className="game-element-container gec-num"
-            style={{ color: "lime" }}
+            style={{ color: "gold" }}
           >
+            {score}
+          </div>
+          <div className="game-element-container gec-num">
             {hsbfGameData.wordsNumber}
           </div>
         </div>
@@ -29,7 +37,7 @@ const GamePageTop = ({
         <BeatDisplayer beat={beat}></BeatDisplayer>
       </div>
       <div className="g-p-bottom-line">
-        <MissedShotsBar missedShots={missedShots}></MissedShotsBar>
+        <MissedShotsBar beat={beat} missedShots={missedShots}></MissedShotsBar>
         <GameStateBar
           isLoading={isLoading}
           isPlaying={isPlaying}

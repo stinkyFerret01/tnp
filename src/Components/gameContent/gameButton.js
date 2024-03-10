@@ -89,7 +89,7 @@ const GameButton = ({
       }, 242);
     } else {
       if (beat - hsbfGameData.beatMod > -10) {
-        if (missedShots.length < 16) {
+        if (missedShots.length < 17) {
           setMissedShots((prevMissedShots) => [...prevMissedShots, Date.now()]);
         }
       }

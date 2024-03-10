@@ -35,7 +35,7 @@
     text-overflow: ellipsis;
 }
 .gec-num {
-    color: gold;
+    color: lime;
     min-width: 2rem;
     justify-content: center;
 }
@@ -56,8 +56,16 @@
 }
 
 .score-bar {
+    background-color: rgba(0, 255, 255, 1);
+
     height: 3vh;
-    /* shares colors with m-s-1 */
+
+    box-shadow: 0 0 5px rgba(0, 255, 255, 1),
+    0 0 8px rgba(0, 255, 255, 1),
+    0 0 18pxrrgba(0, 255, 255, 1),
+    0 0 60px rgba(0, 255, 255, 1);
+    -webkit-box-reflect: below 1px linear-gradient(transparent rgba(0, 255, 255, 1));
+
 }
 
 /* MISSED TARGETS */
@@ -78,10 +86,24 @@
     width: 27.6%;
 }
 
+.missed-shots-container {
+    margin: 1%;
+   
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+
+    box-sizing: border-box;
+}
 .missed-shot {
     margin: 1%;
     height: 2.8vh;
     min-width: 4.3%;
+    max-width: 4.3%;
+
+    
+
     opacity: 0.5;
 
     box-sizing: border-box;
