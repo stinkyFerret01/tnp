@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import GamePageTop from "../Components/gameContent/gamePageTop/gamePageTop";
 import ButtonPanel from "../Components/gameContent/buttonPanel";
 import GamePageBottom from "../Components/gameContent/gamePageBottom";
 
 const GamePage = ({
+  audioCommand,
   setAudioCommand,
   isPlaying,
   isLoading,
@@ -24,9 +25,21 @@ const GamePage = ({
   const [missedTargets, setMissedTargets] = useState(0);
   const [missedShots, setMissedShots] = useState([]);
 
+  //--> resets button activations and animations when game stops
+  useEffect(() => {
+    if (audioCommand.actionX === "stop") {
+      buttonActivationTimeOutIds.forEach((timeout) =>
+        clearTimeout(timeout.timeoutId)
+      );
+      setButtonActivationTimeOutIds([]);
+      setBeatWawes([]);
+    }
+  }, [audioCommand, buttonActivationTimeOutIds]);
+
   return (
     <main className="game-page">
       <GamePageTop
+        setAudioCommand={setAudioCommand}
         isPlaying={isPlaying}
         isLoading={isLoading}
         beat={beat}

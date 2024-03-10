@@ -151,7 +151,11 @@ const Control = ({
       <button onClick={toggleControlPanel}>close control</button>
     </div>
   ) : (
-    <button className="toggle-control-button" onClick={toggleControlPanel}>
+    <button
+      style={{ visibility: "hidden" }}
+      className="toggle-control-button"
+      onClick={toggleControlPanel}
+    >
       control
     </button>
   );

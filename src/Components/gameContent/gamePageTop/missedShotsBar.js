@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const MissedShotsBar = ({ beat, missedShots }) => {
+const MissedShotsBar = ({ setAudioCommand, beat, missedShots }) => {
   //--> stores oppacity for animation when any score value increases
   const [missedShotOpacity, setMissedShotOpacity] = useState(0.5);
 
@@ -20,7 +20,7 @@ const MissedShotsBar = ({ beat, missedShots }) => {
   //--> sets an animation when a missed shot is added
   useEffect(() => {
     if (missedShots.length > 16) {
-      setDangerAlert("-Game Over-");
+      setDangerAlert("-GameOver-");
     } else if (missedShots.length > 15) {
       if (beat % 2 === 0) {
         setDangerAlert("**Crit!c** sy5t3m 0v3rL0ad!!");
@@ -54,6 +54,13 @@ const MissedShotsBar = ({ beat, missedShots }) => {
       setMissedShotOpacity(0.5);
     }, 200);
   }, [missedShots]);
+
+  //--> stops the game when misseShots.length > 16
+  useEffect(() => {
+    if (dangerAlert === "-GameOver-") {
+      setAudioCommand({ actionX: "stop" });
+    }
+  }, [dangerAlert, setAudioCommand]);
 
   return (
     <div className="game-element-container gec-missed-shots">

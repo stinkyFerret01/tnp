@@ -6,6 +6,7 @@ import MissedShotsBar from "./missedShotsBar";
 import GameStateBar from "./gameStateBar";
 
 const GamePageTop = ({
+  setAudioCommand,
   isPlaying,
   isLoading,
   beat,
@@ -37,7 +38,11 @@ const GamePageTop = ({
         <BeatDisplayer beat={beat}></BeatDisplayer>
       </div>
       <div className="g-p-bottom-line">
-        <MissedShotsBar beat={beat} missedShots={missedShots}></MissedShotsBar>
+        <MissedShotsBar
+          setAudioCommand={setAudioCommand}
+          beat={beat}
+          missedShots={missedShots}
+        ></MissedShotsBar>
         <GameStateBar
           isLoading={isLoading}
           isPlaying={isPlaying}

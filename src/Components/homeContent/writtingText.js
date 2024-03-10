@@ -33,10 +33,7 @@ const WrittingText = ({ text }) => {
   }, [text]);
 
   return (
-    <div
-      className="game-text-container presentation"
-      style={{ whiteSpace: "pre-wrap" }}
-    >
+    <div className="game-text-container" style={{ whiteSpace: "pre-wrap" }}>
       {texteAffiche}
       {underScore}
     </div>

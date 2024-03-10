@@ -4,13 +4,14 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 
 .responsive-home {
     margin-top: 20vh;
-    width: 80vw;
+    width: 60vw;
+    max-width: 40rem;
     height: 40vh;
 
     display: flex;
@@ -29,6 +30,10 @@
     position: relative;
 }
 
+.presentation {
+    height: 10rem;
+}
+
 .game-text-container {
     color: lime;
 
@@ -36,6 +41,9 @@
     font-optical-sizing: auto;
     font-weight: 200;
     font-style: normal;
+}
+.centered {
+    text-align: center;
 }
 
 .play-button {
@@ -70,11 +78,12 @@
 
 .credits {
     height: 20vh;
-    width: 90vw;
+    max-width: 40rem;
     margin-bottom: 10vh;
     font-size: 0.5rem;
 
     display: flex;
+    justify-content: center;
     align-items: flex-end;
     
     text-align: center;
@@ -119,13 +128,12 @@
     .responsive-home {
       flex-direction: row;
     }
-    .presentation {
+    .responsive-home-container  {
         width: 50%;
         height: 100%;
     }
-    .play-button-container {
-        width: 50%;
-        height: 100%;
+    .credits {
+        width: 80vw;
     }
 }
 

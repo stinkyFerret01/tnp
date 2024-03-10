@@ -69,6 +69,7 @@ function App() {
             path="/game"
             element={
               <GamePage
+                audioCommand={audioCommand}
                 setAudioCommand={setAudioCommand}
                 isPlaying={isPlaying}
                 isLoading={isLoading}

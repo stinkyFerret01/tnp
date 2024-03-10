@@ -26,12 +26,6 @@ const GamePageBottom = ({
   //--> stops the game
   const handleStopButtonClick = () => {
     if (isPlaying) {
-      buttonActivationTimeOutIds.forEach((timeout) =>
-        clearTimeout(timeout.timeoutId)
-      );
-
-      setButtonActivationTimeOutIds([]);
-      setBeatWawes([]);
       setAudioCommand({
         actionX: "stop",
       });
@@ -44,7 +38,6 @@ const GamePageBottom = ({
       buttonActivationTimeOutIds.forEach((timeout) =>
         clearTimeout(timeout.timeoutId)
       );
-
       setButtonActivationTimeOutIds([]);
       setBeatWawes([]);
       setAudioCommand({
