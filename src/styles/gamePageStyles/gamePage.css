@@ -8,6 +8,13 @@
     justify-content: space-around;
     align-items: center;
     box-sizing: border-box;
+
+    opacity: 1;
+    visibility: visible;
+    animation: panelCharge 5s linear;
+
+    /* animation: fadeInAnimation ease 1.5s;
+    animation-fill-mode: forwards; */
 }
 
 .game-element-container {
@@ -17,7 +24,6 @@
 
     padding: 2px;
     margin: 1%;
-    height: 3.2vh;
     font-size: 1.1rem;
 
     display: flex;
@@ -60,4 +66,62 @@
     align-items: center;
 
     box-sizing: border-box;
+}
+
+@keyframes panelCharge {
+    0%{
+        opacity: 0;
+    }
+    11%{
+        opacity: 0.5;
+    }
+    11.1%{
+        opacity: 0.5;
+    }
+    11.2%{
+        opacity: 0.2;
+    }
+    17%{
+        opacity: 0.2;
+    }
+    17.1%{
+        opacity: 0.6;
+    }
+    18.2%{
+        opacity: 0.6;
+    }
+    18.3%{
+        opacity: 0.2;
+    }
+    19.1%{
+        opacity: 0.2;
+    }
+    19.2%{
+        opacity: 0.6;
+    }
+    19.4%{
+        opacity: 0.6;
+    }
+    19.5%{
+        opacity: 0.2
+    }
+    19.7%{
+        opacity: 0.2;
+    }
+    19.8%{
+        opacity: 0.6;
+    }
+    20.1%{
+        opacity: 0.5;
+    }
+    20.7% {
+        opacity: 0.05;
+    }
+    38%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+    }
+       
 }

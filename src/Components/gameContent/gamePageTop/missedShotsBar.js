@@ -23,7 +23,7 @@ const MissedShotsBar = ({ beat, missedShots }) => {
       setDangerAlert("-Game Over-");
     } else if (missedShots.length > 15) {
       if (beat % 2 === 0) {
-        setDangerAlert("-Overload!!!!");
+        setDangerAlert("**Crit!c** sy5t3m 0v3rL0ad!!");
         setTimeout(() => {
           setDangerAlert(null);
         }, 121);

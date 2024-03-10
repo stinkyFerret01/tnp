@@ -79,7 +79,7 @@ const AudioContext = ({
             if (musicTime > 0) {
               setTimeout(() => {
                 setIsPlaying(true);
-                setIsLoading(99);
+                setIsLoading(96);
                 setTimeout(() => {
                   setIsLoading(100);
                 }, 1000);
