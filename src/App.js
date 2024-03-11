@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
@@ -34,13 +34,6 @@ function App() {
   const [timeJumps, setTimeJumps] = useState([]);
   const [negDelays, setNegDelays] = useState([]);
   const [outputLatency, setOutputLatency] = useState(NaN);
-
-  useEffect(() => {
-    console.log("-----TRIGG-----");
-    console.log(isPlaying);
-    console.log(isLoading);
-    console.log(beat);
-  }, [isPlaying, isLoading, beat]);
 
   return (
     <div className="App">

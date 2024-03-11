@@ -17,8 +17,6 @@ const AudioContext = ({
     clearInterval(checkCurrentTimeIntervalId);
     // console.log("COMMAND:", audioCommand);
     if (audioCommand.actionX === "play" || audioCommand.actionX === "skip") {
-      setIsLoading(0);
-
       const audioContext = new (window.AudioContext ||
         window.webkitAudioContext)();
 
