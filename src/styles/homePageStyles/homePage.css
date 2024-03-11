@@ -130,9 +130,8 @@
     color: lime;
     background-color: transparent;
     caret-color: transparent;
-    /* background-color: white; */
 
-    width: 5px;
+    width: 100%;
     max-width: 100%;
     text-align: end;
 
@@ -149,6 +148,16 @@
 }
 .underscore {
     animation: blink 0.484s infinite;
+}
+
+.terminal-com-helper {
+    color: lime;
+
+    padding: 4px;
+    font-size: 0.8rem;
+
+    position: absolute;
+    top: 0;
 }
 
 /* BOTTOM PART */

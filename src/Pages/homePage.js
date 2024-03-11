@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import WrittingText from "../Components/homeContent/writtingText";
 import StartButton from "../Components/homeContent/startButton";
 import Terminal from "../Components/homeContent/terminal";
+import TerminalComHelper from "../Components/homeContent/terminalComHelper";
 
 const texts = {
   introText:
@@ -22,6 +23,9 @@ const HomePage = ({
   setIsLoading,
 }) => {
   const [terminalEnabled, setTerminalEnabled] = useState(false);
+  const [displayTerminalComHelper, setDisplayTerminalComHelper] =
+    useState(false);
+
   const navigate = useNavigate();
 
   //--> starts the game (trigging isPlaying when audio is starting)
@@ -77,6 +81,8 @@ const HomePage = ({
                 <Terminal
                   setBios={setBios}
                   setDisplayControl={setDisplayControl}
+                  displayTerminalComHelper={displayTerminalComHelper}
+                  setDisplayTerminalComHelper={setDisplayTerminalComHelper}
                 ></Terminal>
               )}
             </div>
@@ -106,6 +112,10 @@ const HomePage = ({
           </div>
         </div>
       )}
+      <TerminalComHelper
+        displayTerminalComHelper={displayTerminalComHelper}
+        setDisplayTerminalComHelper={setDisplayTerminalComHelper}
+      />
     </main>
   );
 };

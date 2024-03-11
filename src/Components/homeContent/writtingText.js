@@ -3,17 +3,17 @@ import React, { useEffect, useState } from "react";
 const WrittingText = ({ text, terminalEnabled, setTerminalEnabled }) => {
   //==> text to display
   const [displayedText, setDisplayedText] = useState("");
-  const [underScore, setUnderScore] = useState(null);
+  const [underScore, setUnderScore] = useState(" ");
 
   //--> underscore blinker
   useEffect(() => {
-    if (!underScore) {
+    if (underScore === " ") {
       setTimeout(() => {
         setUnderScore("_");
       }, 242);
     } else {
       setTimeout(() => {
-        setUnderScore(null);
+        setUnderScore(" ");
       }, 242);
     }
   }, [underScore]);

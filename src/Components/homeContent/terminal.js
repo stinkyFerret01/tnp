@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-const Terminal = ({ setBios, setDisplayControl }) => {
+const Terminal = ({
+  setBios,
+  setDisplayControl,
+  displayTerminalComHelper,
+  setDisplayTerminalComHelper,
+}) => {
   const [terminalCommand, setTerminalCommand] = useState("");
 
   //--> sets the command to display on the screen
@@ -27,6 +32,14 @@ const Terminal = ({ setBios, setDisplayControl }) => {
       setDisplayControl(true);
     } else if (terminalCommand === "!control") {
       setDisplayControl(false);
+    } else if (terminalCommand === "help") {
+      setDisplayTerminalComHelper(true);
+    } else if (terminalCommand === "!help") {
+      setDisplayTerminalComHelper(false);
+    } else if (terminalCommand === "buzzle") {
+      window.location.href = "https://buzzlegame.netlify.app/";
+    } else if (terminalCommand === "dev") {
+      window.location.href = "https://github.com/stinkyFerret01";
     }
     setTerminalCommand("");
   };
@@ -44,21 +57,31 @@ const Terminal = ({ setBios, setDisplayControl }) => {
   };
 
   return (
-    <div
-      className="game-text-container"
-      style={{
-        whiteSpace: "pre-wrap",
-        position: "relative",
-      }}
-    >
-      {terminalCommand}
-      <span className="underscore">{"_"}</span>
-      <input
-        type="text"
-        onInput={handleInput}
-        onKeyDown={handleKeyDown}
-        className="terminal-input"
-      />
+    <div className="game-text-container centered">
+      <div
+        className="game-text-container"
+        style={{
+          whiteSpace: "pre-wrap",
+          position: "relative",
+        }}
+      >
+        {terminalCommand}
+        <span className="underscore">{"_"}</span>
+        <input
+          type="text"
+          onInput={handleInput}
+          onKeyDown={handleKeyDown}
+          className="terminal-input"
+        />
+      </div>
+      {!displayTerminalComHelper && (
+        <div
+          className="game-text-container"
+          style={{ fontSize: "0.6rem", margin: "2vh" }}
+        >
+          type "help"
+        </div>
+      )}
     </div>
   );
 };
