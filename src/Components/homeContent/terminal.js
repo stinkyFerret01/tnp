@@ -6,7 +6,9 @@ const Terminal = () => {
   const handleInput = (event) => {
     console.log(event);
     if (terminalCommand.length < 12) {
-      setTerminalCommand((prevTermCom) => prevTermCom + event.nativeEvent.data);
+      setTerminalCommand(
+        (prevTermCom) => prevTermCom + event.nativeEvent.data.toLowerCase()
+      );
     }
     event.target.value = "";
   };
@@ -26,7 +28,6 @@ const Terminal = () => {
     if (event.key === "Enter") {
       event.preventDefault();
       terminalCommandExecuter();
-      console.log(terminalCommand);
     }
   };
 

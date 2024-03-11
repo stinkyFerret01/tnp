@@ -165,7 +165,7 @@
     text-align: center;
 }
 
-@media screen and (max-height: 500px) {
+@media screen and (max-height: 400px) {
     .responsive-home {
       flex-direction: row;
     }
