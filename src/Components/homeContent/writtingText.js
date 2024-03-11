@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const WrittingText = ({ text, terminalEnabled, setTerminalEnabled }) => {
   //==> text to display
-  const [texteAffiche, setTexteAffiche] = useState("");
+  const [displayedText, setDisplayedText] = useState("");
   const [underScore, setUnderScore] = useState(null);
 
   //--> underscore blinker
@@ -22,10 +22,10 @@ const WrittingText = ({ text, terminalEnabled, setTerminalEnabled }) => {
   useEffect(() => {
     let index = 0;
     const intervalId = setInterval(() => {
-      setTexteAffiche(text.slice(0, index + 1));
+      setDisplayedText(text.slice(0, index + 1));
       index++;
       if (index >= text.length) {
-        setTerminalEnabled(true);
+        // setTerminalEnabled(true);
         clearInterval(intervalId);
       }
     }, 100);
@@ -34,8 +34,11 @@ const WrittingText = ({ text, terminalEnabled, setTerminalEnabled }) => {
   }, [text, setTerminalEnabled]);
 
   return (
-    <div className="game-text-container" style={{ whiteSpace: "pre-wrap" }}>
-      {texteAffiche}
+    <div
+      className="game-text-container centered"
+      style={{ whiteSpace: "pre-wrap" }}
+    >
+      {displayedText}
       {!terminalEnabled && underScore}
     </div>
   );

@@ -15,8 +15,13 @@ const Terminal = () => {
       }, 242);
     }
   }, [underScore]);
+
   return (
-    <div className="game-text-container" style={{ whiteSpace: "pre-wrap" }}>
+    <div
+      //   onClick={handleTerminalClick}
+      className="game-text-container"
+      style={{ whiteSpace: "pre-wrap" }}
+    >
       {underScore}
     </div>
   );

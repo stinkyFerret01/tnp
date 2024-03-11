@@ -51,6 +51,13 @@ const MissedShotsBar = ({ setAudioCommand, beat, missedShots }) => {
     }
   }, [beat, missedShots, tempo]);
 
+  //--> sets the gameState to game over
+  useEffect(() => {
+    if (missedShots.length > 16 && dangerAlert === null) {
+      setDangerAlert("-GameOver-");
+    }
+  }, [dangerAlert, missedShots]);
+
   //--> sets an animation when a missed shot is added
   useEffect(() => {
     timeoutedSetter([0.5, 1], setMissedShotOpacity, 200);
