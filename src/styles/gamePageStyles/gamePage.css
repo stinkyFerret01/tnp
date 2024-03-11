@@ -10,11 +10,7 @@
     box-sizing: border-box;
 
     opacity: 1;
-    visibility: visible;
     animation: panelCharge 5s linear;
-
-    /* animation: fadeInAnimation ease 1.5s;
-    animation-fill-mode: forwards; */
 }
 
 .game-element-container {
@@ -70,54 +66,45 @@
 
 @keyframes panelCharge {
     0%{
-        opacity: 0;
+        opacity: 0.1;
     }
-    11%{
-        opacity: 0.5;
+    37%{
+        opacity: 0.1;
     }
-    11.1%{
-        opacity: 0.5;
-    }
-    11.2%{
-        opacity: 0.2;
-    }
-    17%{
-        opacity: 0.2;
-    }
-    17.1%{
+    37.4%{
         opacity: 0.6;
     }
-    18.2%{
+    37.7%{
         opacity: 0.6;
     }
-    18.3%{
+    37.8%{
         opacity: 0.2;
     }
-    19.1%{
+    38.3%{
         opacity: 0.2;
     }
-    19.2%{
+    38.4%{
         opacity: 0.6;
     }
-    19.4%{
+    38.9%{
         opacity: 0.6;
     }
-    19.5%{
+    39%{
         opacity: 0.2
     }
-    19.7%{
+    39.5%{
         opacity: 0.2;
     }
-    19.8%{
+    39.6%{
         opacity: 0.6;
     }
-    20.1%{
-        opacity: 0.5;
+    40.1%{
+        opacity: 0.6;
     }
-    20.7% {
-        opacity: 0.05;
+    40.2% {
+        opacity: 0.4;
     }
-    38%{
+    60%{
         opacity: 1;
     }
     100%{

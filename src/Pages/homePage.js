@@ -25,6 +25,9 @@ const HomePage = ({ setAudioCommand, isPlaying, isLoading, setIsLoading }) => {
 
   //--> navigates to gamePage when isPlaying gets trigged
   useEffect(() => {
+    //---- (test purpose) ----
+    // localStorage.removeItem("bestScore");
+
     if (isLoading === 100) {
       setTimeout(() => {
         navigate("/game");
@@ -34,29 +37,55 @@ const HomePage = ({ setAudioCommand, isPlaying, isLoading, setIsLoading }) => {
 
   return (
     <main className="home-page">
-      <div className="responsive-home">
+      {isLoading === 0 ? (
         <div
-          className="responsive-home-container"
-          style={
-            isLoading ? { visibility: "hidden" } : { visibility: "display" }
-          }
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
         >
-          <WrittingText text={texts.introText}></WrittingText>
+          <div className="responsive-home">
+            <div
+              className="responsive-home-container"
+              style={
+                isLoading ? { visibility: "hidden" } : { visibility: "display" }
+              }
+            >
+              <WrittingText text={texts.introText}></WrittingText>
+            </div>
+            <div className="responsive-home-container">
+              <StartButton
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
+                isPlaying={isPlaying}
+              ></StartButton>
+            </div>
+          </div>
+          <div
+            className="game-text-container credits"
+            style={
+              isLoading ? { visibility: "hidden" } : { visibility: "display" }
+            }
+          >
+            {texts.creditText}
+          </div>
         </div>
-        <div className="responsive-home-container">
-          <StartButton
-            isLoading={isLoading}
-            setIsLoading={setIsLoading}
-            isPlaying={isPlaying}
-          ></StartButton>
+      ) : (
+        <div>
+          <div className="loading-bar-container">
+            <div
+              className="loading-bar"
+              style={{
+                width: `${isLoading}%`,
+              }}
+            ></div>
+          </div>
+          <div className="game-text-container centered">
+            Loading {isLoading} %
+          </div>
         </div>
-      </div>
-      <div
-        className="game-text-container credits"
-        style={isLoading ? { visibility: "hidden" } : { visibility: "display" }}
-      >
-        {texts.creditText}
-      </div>
+      )}
     </main>
   );
 };

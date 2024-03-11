@@ -30,6 +30,7 @@
     position: relative;
 }
 
+/* TOP PART */
 .presentation {
     height: 10rem;
 }
@@ -46,6 +47,7 @@
     text-align: center;
 }
 
+/* MIDDLE PART */
 .play-button {
     background-color: rgba(0, 255, 0, 0.2);
     border: solid rgba(0, 255, 0, 0.6) 0.2rem;
@@ -74,19 +76,6 @@
     0 0 200px rgba(0, 255, 0, 0.4);
 
     cursor: pointer;
-}
-
-.credits {
-    height: 20vh;
-    max-width: 40rem;
-    margin-bottom: 10vh;
-    font-size: 0.5rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    
-    text-align: center;
 }
 
 .loading-bar-container {
@@ -122,6 +111,20 @@
     0 0 50px rgba(0, 255, 0, 0.6),
     0 0 200px rgba(0, 255, 0, 0.6);
     -webkit-box-reflect: below 1px linear-gradient(transparent lime);
+}
+
+/* BOTTOM PART */
+.credits {
+    height: 20vh;
+    max-width: 80vw;
+    margin-bottom: 10vh;
+    font-size: 0.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    
+    text-align: center;
 }
 
 @media screen and (max-height: 500px) {

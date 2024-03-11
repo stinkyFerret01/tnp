@@ -31,10 +31,14 @@ const GamePage = ({
       buttonActivationTimeOutIds.forEach((timeout) =>
         clearTimeout(timeout.timeoutId)
       );
-      setButtonActivationTimeOutIds([]);
+      if (buttonActivationTimeOutIds.length > 0) {
+        setButtonActivationTimeOutIds([]);
+      }
       setBeatWawes([]);
+    } else if (audioCommand === "skip") {
+      setIsLoading(0);
     }
-  }, [audioCommand, buttonActivationTimeOutIds]);
+  }, [audioCommand, buttonActivationTimeOutIds, setIsLoading]);
 
   return (
     <main className="game-page">

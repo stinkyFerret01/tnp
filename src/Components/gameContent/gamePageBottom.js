@@ -25,7 +25,7 @@ const GamePageBottom = ({
 
   //--> stops the game
   const handleStopButtonClick = () => {
-    if (isPlaying) {
+    if (isPlaying && isLoading === 100) {
       setAudioCommand({
         actionX: "stop",
       });
@@ -72,7 +72,7 @@ const GamePageBottom = ({
       </button>
       <button
         className="game-element-container gec-command"
-        style={{ opacity: !isPlaying ? "0.4" : "1" }}
+        style={{ opacity: isPlaying && isLoading === 100 ? "1" : "0.4" }}
         onClick={handleStopButtonClick}
       >
         STOP

@@ -1,4 +1,4 @@
-import hsbfGameData from "../../../beatData/hbfsGameData";
+import { useState, useEffect } from "react";
 
 import ScoreBar from "./scoreBar";
 import BeatDisplayer from "./beatDisplayer";
@@ -14,6 +14,29 @@ const GamePageTop = ({
   missedShots,
   missedTargets,
 }) => {
+  const [bestScore, setBestScore] = useState(localStorage.getItem("bestScore"));
+
+  const bestScoreSetter = () => {
+    const registeredBestScore = localStorage.getItem("bestScore");
+    if (registeredBestScore) {
+      if (registeredBestScore < score) {
+        localStorage.setItem("bestScore", score);
+        setBestScore(score);
+      }
+    } else if (score > 0) {
+      localStorage.setItem("bestScore", score);
+      setBestScore(score);
+    } else {
+      setBestScore("null");
+    }
+  };
+
+  useEffect(() => {
+    bestScoreSetter();
+
+    // eslint-disable-next-line
+  }, [score]);
+
   return (
     <div className="game-page-top">
       <div className="g-p-top-line">
@@ -30,8 +53,13 @@ const GamePageTop = ({
           >
             {score}
           </div>
-          <div className="game-element-container gec-num">
-            {hsbfGameData.wordsNumber}
+          <div
+            className="game-element-container gec-beat"
+            style={
+              bestScore !== "null" ? { color: "lime" } : { color: "orangered" }
+            }
+          >
+            {bestScore}
           </div>
         </div>
         <ScoreBar score={score} missedTargets={missedTargets}></ScoreBar>
