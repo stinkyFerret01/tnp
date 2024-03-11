@@ -28,9 +28,6 @@ const HomePage = ({ setAudioCommand, isPlaying, isLoading, setIsLoading }) => {
 
   //--> navigates to gamePage when isPlaying gets trigged
   useEffect(() => {
-    //---- (test purpose) ----
-    // localStorage.removeItem("bestScore");
-
     if (isLoading === 100) {
       setTimeout(() => {
         navigate("/game");

@@ -25,7 +25,7 @@ const WrittingText = ({ text, terminalEnabled, setTerminalEnabled }) => {
       setDisplayedText(text.slice(0, index + 1));
       index++;
       if (index >= text.length) {
-        // setTerminalEnabled(true);
+        setTerminalEnabled(true);
         clearInterval(intervalId);
       }
     }, 100);

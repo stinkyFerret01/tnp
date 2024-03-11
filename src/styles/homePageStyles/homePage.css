@@ -132,20 +132,23 @@
     caret-color: transparent;
     /* background-color: white; */
 
-    /* min-width:10px; */
-    width: 50px;
-    /* width: auto; */
+    width: 5px;
     max-width: 100%;
     text-align: end;
 
-    /* width: none; */
     border: none;
     outline: none;
+
+    position: absolute;
+    right: 0;
 
     font-family: "Source Code Pro", monospace;
     font-optical-sizing: auto;
     font-weight: 200;
     font-style: normal;
+}
+.underscore {
+    animation: blink 0.484s infinite;
 }
 
 /* BOTTOM PART */
@@ -178,33 +181,8 @@
         width: 80vw;
     }
 }
-
-
-
-
-/* TEST */
-#fauxInput {
-    border: 1px solid #ccc; /* Style de bordure */
-    min-height: 20px; /* Hauteur minimale */
-    width: 200px; /* Largeur */
-    padding: 4px; /* Padding */
-  }
-  
-  .fauxCaret {
-    display: inline-block;
-    width: 10px; /* Largeur du curseur */
-    height: 2px; /* Hauteur du curseur */
-    background-color: black; /* Couleur du curseur */
-    position: relative;
-    top: -1px; /* Ajustement de la position verticale du curseur */
-    animation: blink 1s steps(2, start) infinite;
-  }
   
   @keyframes blink {
-    to {
-      visibility: hidden;
-    }
+    0%, 50% { color: lime; }
+    50.01%, 100% { color: black; }
   }
-  
-
-  

@@ -1,28 +1,51 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Terminal = () => {
-  const [underScore, setUnderScore] = useState(null);
+  const [terminalCommand, setTerminalCommand] = useState("");
 
-  //--> underscore blinker
-  useEffect(() => {
-    if (!underScore) {
-      setTimeout(() => {
-        setUnderScore("_");
-      }, 242);
-    } else {
-      setTimeout(() => {
-        setUnderScore(null);
-      }, 242);
+  const handleInput = (event) => {
+    console.log(event);
+    if (terminalCommand.length < 12) {
+      setTerminalCommand((prevTermCom) => prevTermCom + event.nativeEvent.data);
     }
-  }, [underScore]);
+    event.target.value = "";
+  };
+
+  const terminalCommandExecuter = () => {
+    if (terminalCommand === "erase") {
+      localStorage.removeItem("bestScore");
+      setTerminalCommand("");
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Backspace") {
+      event.preventDefault();
+      setTerminalCommand(terminalCommand.slice(0, -1));
+    }
+    if (event.key === "Enter") {
+      event.preventDefault();
+      terminalCommandExecuter();
+      console.log(terminalCommand);
+    }
+  };
 
   return (
     <div
-      //   onClick={handleTerminalClick}
       className="game-text-container"
-      style={{ whiteSpace: "pre-wrap" }}
+      style={{
+        whiteSpace: "pre-wrap",
+        position: "relative",
+      }}
     >
-      {underScore}
+      {terminalCommand}
+      <span className="underscore">{"_"}</span>
+      <input
+        type="text"
+        onInput={handleInput}
+        onKeyDown={handleKeyDown}
+        className="terminal-input"
+      />
     </div>
   );
 };
