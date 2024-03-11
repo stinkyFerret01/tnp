@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const WrittingText = ({ text }) => {
+const WrittingText = ({ text, terminalEnabled, setTerminalEnabled }) => {
   //==> text to display
   const [texteAffiche, setTexteAffiche] = useState("");
   const [underScore, setUnderScore] = useState(null);
@@ -25,17 +25,18 @@ const WrittingText = ({ text }) => {
       setTexteAffiche(text.slice(0, index + 1));
       index++;
       if (index >= text.length) {
+        setTerminalEnabled(true);
         clearInterval(intervalId);
       }
     }, 100);
 
     return () => clearInterval(intervalId);
-  }, [text]);
+  }, [text, setTerminalEnabled]);
 
   return (
     <div className="game-text-container" style={{ whiteSpace: "pre-wrap" }}>
       {texteAffiche}
-      {underScore}
+      {!terminalEnabled && underScore}
     </div>
   );
 };

@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import WrittingText from "../Components/homeContent/writtingText";
 import StartButton from "../Components/homeContent/startButton";
+import Terminal from "../Components/homeContent/terminal";
 
 const texts = {
   introText:
@@ -12,6 +13,7 @@ const texts = {
 };
 
 const HomePage = ({ setAudioCommand, isPlaying, isLoading, setIsLoading }) => {
+  const [terminalEnabled, setTerminalEnabled] = useState(false);
   const navigate = useNavigate();
 
   //--> starts the game (trigging isPlaying when audio is starting)
@@ -52,7 +54,11 @@ const HomePage = ({ setAudioCommand, isPlaying, isLoading, setIsLoading }) => {
                 isLoading ? { visibility: "hidden" } : { visibility: "display" }
               }
             >
-              <WrittingText text={texts.introText}></WrittingText>
+              <WrittingText
+                text={texts.introText}
+                terminalEnabled={terminalEnabled}
+                setTerminalEnabled={setTerminalEnabled}
+              ></WrittingText>
             </div>
             <div className="responsive-home-container">
               <StartButton
@@ -61,7 +67,11 @@ const HomePage = ({ setAudioCommand, isPlaying, isLoading, setIsLoading }) => {
                 isPlaying={isPlaying}
               ></StartButton>
             </div>
+            <div className="responsive-home-short">
+              {terminalEnabled && <Terminal></Terminal>}
+            </div>
           </div>
+
           <div
             className="game-text-container credits"
             style={

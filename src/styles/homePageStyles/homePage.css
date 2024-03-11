@@ -20,8 +20,21 @@
     align-items: center;
 }
 .responsive-home-container {
+    /* border: solid yellow 1px; */
     width: 100%;
-    height: 50%;
+    height: 45%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+.responsive-home-short {
+    /* border: solid red 1px; */
+
+    width: 100%;
+    height: 10%;
 
     display: flex;
     justify-content: center;
@@ -132,7 +145,11 @@
       flex-direction: row;
     }
     .responsive-home-container  {
-        width: 50%;
+        width: 45%;
+        height: 100%;
+    }
+    .responsive-home-short {
+        width: 10%;
         height: 100%;
     }
     .credits {
