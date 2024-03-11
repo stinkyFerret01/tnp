@@ -6,6 +6,7 @@ const GamePageBottom = ({
   setAudioCommand,
   isPlaying,
   isLoading,
+  setIsLoading,
   beat,
   buttonActivationTimeOutIds,
   setButtonActivationTimeOutIds,
@@ -18,7 +19,11 @@ const GamePageBottom = ({
 
   //--> navigates back to home
   const handleBackButtonClick = () => {
-    if (isLoading === 0) {
+    if (!isPlaying && (isLoading === 0 || isLoading === 100)) {
+      setIsLoading(0);
+      setTimeout(() => {
+        navigate("/");
+      }, 100);
       navigate("/");
     }
   };
@@ -49,7 +54,7 @@ const GamePageBottom = ({
 
   //--> restarts the game
   const handleRestartButtonClick = () => {
-    if (isLoading === 0 && !isPlaying) {
+    if (!isPlaying && (isLoading === 0 || isLoading === 100)) {
       setAudioCommand({
         actionX: "play",
       });
@@ -65,7 +70,10 @@ const GamePageBottom = ({
     <div className="game-page-bottom">
       <button
         className="game-element-container gec-command"
-        style={{ opacity: isLoading > 0 || isPlaying ? "0.4" : "1" }}
+        style={{
+          opacity:
+            !isPlaying && (isLoading === 0 || isLoading === 100) ? "1" : "0.4",
+        }}
         onClick={handleBackButtonClick}
       >
         BACK
@@ -88,7 +96,10 @@ const GamePageBottom = ({
       </button>
       <button
         className="game-element-container gec-command"
-        style={{ opacity: isLoading > 0 || isPlaying ? "0.4" : "1" }}
+        style={{
+          opacity:
+            !isPlaying && (isLoading === 0 || isLoading === 100) ? "1" : "0.4",
+        }}
         onClick={handleRestartButtonClick}
       >
         RESET

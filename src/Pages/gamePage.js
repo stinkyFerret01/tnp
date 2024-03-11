@@ -35,8 +35,6 @@ const GamePage = ({
         setButtonActivationTimeOutIds([]);
       }
       setBeatWawes([]);
-    } else if (audioCommand === "skip") {
-      setIsLoading(0);
     }
   }, [audioCommand, buttonActivationTimeOutIds, setIsLoading]);
 

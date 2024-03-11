@@ -37,7 +37,7 @@ const BeatDisplayer = ({ beat }) => {
   }, [beat]);
 
   return (
-    <div className="game-element-container gec-beat">
+    <div className="game-element-container gec-num">
       <p style={{ opacity: beatOpacity }}>{beatDisplayed}</p>
     </div>
   );

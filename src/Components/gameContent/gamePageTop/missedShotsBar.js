@@ -1,10 +1,19 @@
 import { useState, useEffect } from "react";
 
+//==> data
+import hsbfGameData from "../../../beatData/hbfsGameData";
+
+//==> utils
+import timeoutedSetter from "../../../utils/timeoutedSetter";
+
 const MissedShotsBar = ({ setAudioCommand, beat, missedShots }) => {
   //--> stores oppacity for animation when any score value increases
   const [missedShotOpacity, setMissedShotOpacity] = useState(0.5);
 
+  //--> stores alertState according to missedShots.length
   const [dangerAlert, setDangerAlert] = useState(null);
+
+  const tempo = hsbfGameData.tempo;
 
   //--> missedShots has a different color according to their position
   const missedShotsColorDefiner = (index) => {
@@ -23,36 +32,28 @@ const MissedShotsBar = ({ setAudioCommand, beat, missedShots }) => {
       setDangerAlert("-GameOver-");
     } else if (missedShots.length > 15) {
       if (beat % 2 === 0) {
-        setDangerAlert("**Crit!c** sy5t3m 0v3rL0ad!!");
-        setTimeout(() => {
-          setDangerAlert(null);
-        }, 121);
+        timeoutedSetter(
+          [null, "**Crit!c** sy5t3m 0v3rL0ad!!"],
+          setDangerAlert,
+          tempo
+        );
       }
     } else if (missedShots.length > 13) {
       if (beat % 4 === 0) {
-        setDangerAlert("-Danger!!");
-        setTimeout(() => {
-          setDangerAlert(null);
-        }, 242);
+        timeoutedSetter([null, "-Danger!!"], setDangerAlert, tempo * 2);
       }
     } else if (missedShots.length > 8) {
       if (beat % 8 === 0) {
-        setDangerAlert("-Alert!");
-        setTimeout(() => {
-          setDangerAlert(null);
-        }, 484);
+        timeoutedSetter([null, "-Alert!"], setDangerAlert, tempo * 4);
       }
     } else {
       setDangerAlert(null);
     }
-  }, [beat, missedShots]);
+  }, [beat, missedShots, tempo]);
 
   //--> sets an animation when a missed shot is added
   useEffect(() => {
-    setMissedShotOpacity(1);
-    setTimeout(() => {
-      setMissedShotOpacity(0.5);
-    }, 200);
+    timeoutedSetter([0.5, 1], setMissedShotOpacity, 200);
   }, [missedShots]);
 
   //--> stops the game when misseShots.length > 16

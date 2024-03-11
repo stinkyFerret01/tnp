@@ -20,7 +20,7 @@
 
     padding: 2px;
     margin: 1%;
-    font-size: 1.1rem;
+    /* font-size: 1.1rem; */
 
     display: flex;
     align-items: center;
@@ -110,5 +110,4 @@
     100%{
         opacity: 1;
     }
-       
 }

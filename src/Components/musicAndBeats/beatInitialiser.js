@@ -10,6 +10,7 @@ import hsbfGameData from "../../beatData/hbfsGameData";
 
 const BeatInitialiser = ({
   audioCommand,
+  setAudioCommand,
   isPlaying,
   beat,
   setBeat,
@@ -51,7 +52,8 @@ const BeatInitialiser = ({
 
       //--> stops the beat loop (reseting initBeatDate)
     } else if (initBeatDate > 0 && beat === 1879) {
-      setInitBeatDate(0);
+      setAudioCommand({ actionX: "stop" });
+      // setInitBeatDate(0);
 
       //--> resets the beat
     } else if (initBeatDate === 0 && beat > 0) {

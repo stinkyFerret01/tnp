@@ -1,6 +1,10 @@
+import { useState, useEffect } from "react";
+
+//==> data
 import hsbfGameData from "../../../beatData/hbfsGameData";
 
-import { useState, useEffect } from "react";
+//==> utils
+import timeoutedSetter from "../../../utils/timeoutedSetter";
 
 const ScoreBar = ({ score, missedTargets }) => {
   //--> stores oppacity for animation when any score value increases
@@ -9,18 +13,12 @@ const ScoreBar = ({ score, missedTargets }) => {
 
   //--> sets an animation when missedTargets increases
   useEffect(() => {
-    setScoreOpacity(1);
-    setTimeout(() => {
-      setScoreOpacity(0.7);
-    }, 200);
+    timeoutedSetter([0.7, 1], setScoreOpacity, 200);
   }, [score]);
 
   //--> sets an animation when score increases
   useEffect(() => {
-    setMissedTargetsOpacity(1);
-    setTimeout(() => {
-      setMissedTargetsOpacity(0.5);
-    }, 200);
+    timeoutedSetter([0.5, 1], setMissedTargetsOpacity, 200);
   }, [missedTargets]);
 
   return (

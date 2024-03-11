@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
@@ -35,6 +35,13 @@ function App() {
   const [negDelays, setNegDelays] = useState([]);
   const [outputLatency, setOutputLatency] = useState(NaN);
 
+  useEffect(() => {
+    console.log("-----TRIGG-----");
+    console.log(isPlaying);
+    console.log(isLoading);
+    console.log(beat);
+  }, [isPlaying, isLoading, beat]);
+
   return (
     <div className="App">
       <AudioContext
@@ -46,6 +53,7 @@ function App() {
       ></AudioContext>
       <BeatInitialiser
         audioCommand={audioCommand}
+        setAudioCommand={setAudioCommand}
         isPlaying={isPlaying}
         beat={beat}
         setBeat={setBeat}

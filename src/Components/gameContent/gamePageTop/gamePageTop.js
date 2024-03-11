@@ -4,6 +4,7 @@ import ScoreBar from "./scoreBar";
 import BeatDisplayer from "./beatDisplayer";
 import MissedShotsBar from "./missedShotsBar";
 import GameStateBar from "./gameStateBar";
+import hsbfGameData from "../../../beatData/hbfsGameData";
 
 const GamePageTop = ({
   setAudioCommand,
@@ -41,29 +42,26 @@ const GamePageTop = ({
     <div className="game-page-top">
       <div className="g-p-top-line">
         <div
-          style={{
-            display: "flex",
-            padding: "0.6%",
-            alignItems: "center",
-          }}
+          className="game-element-container gec-num"
+          style={{ color: "gold" }}
         >
-          <div
-            className="game-element-container gec-num"
-            style={{ color: "gold" }}
-          >
-            {score}
-          </div>
-          <div
-            className="game-element-container gec-beat"
-            style={
-              bestScore !== "null" ? { color: "lime" } : { color: "orangered" }
-            }
-          >
-            {bestScore}
-          </div>
+          {score}
+        </div>
+        <div
+          className="game-element-container gec-num"
+          style={
+            bestScore !== "null" ? { color: "lime" } : { color: "orangered" }
+          }
+        >
+          {bestScore}
         </div>
         <ScoreBar score={score} missedTargets={missedTargets}></ScoreBar>
-        <BeatDisplayer beat={beat}></BeatDisplayer>
+        <div
+          className="game-element-container gec-num"
+          style={{ color: "lime" }}
+        >
+          {hsbfGameData.wordsNumber}
+        </div>
       </div>
       <div className="g-p-bottom-line">
         <MissedShotsBar
@@ -75,6 +73,7 @@ const GamePageTop = ({
           isLoading={isLoading}
           isPlaying={isPlaying}
         ></GameStateBar>
+        <BeatDisplayer beat={beat}></BeatDisplayer>
       </div>
     </div>
   );

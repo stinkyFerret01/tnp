@@ -2,7 +2,11 @@
 //==> il s'invoque avec une prop "word" qui défini sa valeur
 import { useEffect, useState } from "react";
 
+//==> data
 import hsbfGameData from "../../beatData/hbfsGameData";
+
+//==> utils
+import timeoutedSetter from "../../utils/timeoutedSetter";
 
 const GameButton = ({
   label,
@@ -24,6 +28,9 @@ const GameButton = ({
   //==> stores the time out from "on" to "miss"
   const [turnOffTimeoutId, setTurnOffTimeoutId] = useState(null);
 
+  const tempo = hsbfGameData.tempo;
+
+  //==> stops the activation if Player clicked very close before it was time
   const clearTimeoutByLabel = () => {
     const index = buttonActivationTimeoutIds.findIndex(
       (item) => item.label === label
@@ -77,17 +84,16 @@ const GameButton = ({
   //--> calculates and register scores for a click (define gameButton status for animation)
   const shootResultDefiner = () => {
     if (buttonStatus === "button-on" && !targetBlocker) {
+      //---- target hit ----
       if (beat - hsbfGameData.beatMod > -10) {
         setScore((prevScore) => prevScore + 1);
       }
       missCanceler();
       clearTimeoutByLabel();
 
-      setButtonStatus("button-hit");
-      setTimeout(() => {
-        setButtonStatus("button-off");
-      }, 242);
+      timeoutedSetter(["button-off", "button-hit"], setButtonStatus, tempo * 2);
     } else {
+      //---- shot missed ----
       if (beat - hsbfGameData.beatMod > -10) {
         if (missedShots.length < 17) {
           setMissedShots((prevMissedShots) => [...prevMissedShots, Date.now()]);
@@ -96,19 +102,17 @@ const GameButton = ({
 
       clearTimeoutByLabel();
 
-      setButtonStatus("button-miss");
-      setTimeout(() => {
-        setButtonStatus("button-off");
-      }, 242);
+      timeoutedSetter(
+        ["button-off", "button-miss"],
+        setButtonStatus,
+        tempo * 2
+      );
     }
   };
 
   //--> calculates results when any gameButton is clicked at any time
   const handleShoot = () => {
-    setTargetBlocker(true);
-    setTimeout(() => {
-      setTargetBlocker(false);
-    }, 200);
+    timeoutedSetter([false, true], setTargetBlocker, 200);
     shootResultDefiner();
   };
 

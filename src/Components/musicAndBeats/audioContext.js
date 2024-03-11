@@ -17,7 +17,7 @@ const AudioContext = ({
     clearInterval(checkCurrentTimeIntervalId);
     // console.log("COMMAND:", audioCommand);
     if (audioCommand.actionX === "play" || audioCommand.actionX === "skip") {
-      setIsLoading(10);
+      setIsLoading(0);
 
       const audioContext = new (window.AudioContext ||
         window.webkitAudioContext)();
@@ -80,9 +80,9 @@ const AudioContext = ({
               setTimeout(() => {
                 setIsPlaying(true);
                 setIsLoading(96);
-                setIsLoading(100);
-                // setTimeout(() => {
-                // }, 500);
+                setTimeout(() => {
+                  setIsLoading(100);
+                }, 400);
                 clearInterval(checkCurrentTimeInterval);
               }, contextOutputLatency);
             }

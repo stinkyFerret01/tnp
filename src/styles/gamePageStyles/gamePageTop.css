@@ -4,6 +4,7 @@
     padding: 0 1.5% 0 1.5%;
     width: 100%;
     min-height: 14%;
+    font-size: 1.1rem;
 
     display: flex;
     flex-direction: column;
@@ -37,14 +38,6 @@
     text-overflow: ellipsis;
 }
 .gec-num {
-    color: lime;
-
-    min-width: 2rem;
-    height: 3.2vh;
-
-    justify-content: center;
-}
-.gec-beat {
     color: orangered;
 
     min-width: 2.8rem;
@@ -94,26 +87,20 @@
 /* MISSED SHOTS */
 .gec-missed-shots {
     height: 3.2vh;
-    width: 40%;
+    min-width: 20.7vh;
+    max-width: 20.7vh;
 }
 
-.missed-shots-container {
-    margin: 1%;
-   
-    height: 100%;
-    width: 100%;
-
+.missed-shots-container {   
     display: flex;
 
     box-sizing: border-box;
 }
 .missed-shot {
-    margin: 1%;
-    height: 2.8vh;
-    min-width: 4.3%;
-    max-width: 4.3%;
-
-    
+    margin: 0.15vh;
+    height: 2.9vh;
+    min-width: 1vh;
+    max-width: 1vh;
 
     opacity: 0.5;
 
@@ -156,3 +143,11 @@
     -webkit-box-reflect: below 1px linear-gradient(transparent rgba(255,0,255,1));
 }
 
+@media screen and (max-height: 500px) {
+    .game-page-top {
+        font-size: 0.8rem;
+    }
+    .gec-command {
+        font-size: 1.2rem;
+    }
+}
