@@ -124,7 +124,7 @@ const GameButton = ({
   return (
     <button
       className={`game-button ${buttonStatus}`}
-      onTouchStart={handleShoot}
+      // onTouchStart={handleShoot}
       onClick={handleShoot}
     >
       {label.toUpperCase()}
