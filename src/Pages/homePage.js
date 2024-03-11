@@ -13,7 +13,14 @@ const texts = {
     "This project is for demonstration purposes,\nit has no commercial intent.\nAll musical rights belong to their respective owners.",
 };
 
-const HomePage = ({ setAudioCommand, isPlaying, isLoading, setIsLoading }) => {
+const HomePage = ({
+  setBios,
+  setDisplayControl,
+  setAudioCommand,
+  isPlaying,
+  isLoading,
+  setIsLoading,
+}) => {
   const [terminalEnabled, setTerminalEnabled] = useState(false);
   const navigate = useNavigate();
 
@@ -66,7 +73,12 @@ const HomePage = ({ setAudioCommand, isPlaying, isLoading, setIsLoading }) => {
               ></StartButton>
             </div>
             <div className="responsive-home-short">
-              {terminalEnabled && <Terminal></Terminal>}
+              {terminalEnabled && (
+                <Terminal
+                  setBios={setBios}
+                  setDisplayControl={setDisplayControl}
+                ></Terminal>
+              )}
             </div>
           </div>
 

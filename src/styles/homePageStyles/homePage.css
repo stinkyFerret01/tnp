@@ -182,7 +182,7 @@
     }
 }
   
-  @keyframes blink {
+@keyframes blink {
     0%, 50% { color: lime; }
-    50.01%, 100% { color: black; }
-  }
+    50.01%, 100% { color: transparent; }
+}

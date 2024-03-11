@@ -31,12 +31,19 @@ function App() {
   const [beat, setBeat] = useState(0);
 
   //==> stores control synchronisation values
+  const [displayControl, setDisplayControl] = useState(false);
   const [timeJumps, setTimeJumps] = useState([]);
   const [negDelays, setNegDelays] = useState([]);
   const [outputLatency, setOutputLatency] = useState(NaN);
 
+  //==> options
+  const [bios, setBios] = useState(false);
+
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={bios ? { backgroundColor: "blue" } : { backgroundColor: "black" }}
+    >
       <AudioContext
         audioCommand={audioCommand}
         setIsPlaying={setIsPlaying}
@@ -59,6 +66,8 @@ function App() {
             path="/"
             element={
               <HomePage
+                setBios={setBios}
+                setDisplayControl={setDisplayControl}
                 setAudioCommand={setAudioCommand}
                 isPlaying={isPlaying}
                 isLoading={isLoading}
@@ -82,16 +91,18 @@ function App() {
           />
         </Routes>
       </Router>
-      <Control
-        isPlaying={isPlaying}
-        outputLatency={outputLatency}
-        setOutputLatency={setOutputLatency}
-        beat={beat}
-        timeJumps={timeJumps}
-        setTimeJumps={setTimeJumps}
-        negDelays={negDelays}
-        setNegDelays={setNegDelays}
-      ></Control>
+      {displayControl && (
+        <Control
+          isPlaying={isPlaying}
+          outputLatency={outputLatency}
+          setOutputLatency={setOutputLatency}
+          beat={beat}
+          timeJumps={timeJumps}
+          setTimeJumps={setTimeJumps}
+          negDelays={negDelays}
+          setNegDelays={setNegDelays}
+        ></Control>
+      )}
     </div>
   );
 }

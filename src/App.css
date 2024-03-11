@@ -9,7 +9,9 @@
 
 
 .App {
-  background-color: black;
+  /* background-color: black; */
+  background-color: blue;
+
 
   min-width: 100vw;
   min-height: 100vh;
@@ -30,6 +32,9 @@
   font-optical-sizing: auto;
   font-weight: 200;
   font-style: normal;
+}
+.App:hover {
+  cursor: default;
 }
 
 main {

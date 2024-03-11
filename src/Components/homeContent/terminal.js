@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-const Terminal = () => {
+const Terminal = ({ setBios, setDisplayControl }) => {
   const [terminalCommand, setTerminalCommand] = useState("");
 
+  //--> sets the command to display on the screen
   const handleInput = (event) => {
-    console.log(event);
     if (terminalCommand.length < 12) {
       setTerminalCommand(
         (prevTermCom) => prevTermCom + event.nativeEvent.data.toLowerCase()
@@ -13,13 +13,25 @@ const Terminal = () => {
     event.target.value = "";
   };
 
+  //--> executes Player commands when "enter" is clicked
   const terminalCommandExecuter = () => {
     if (terminalCommand === "erase") {
       localStorage.removeItem("bestScore");
-      setTerminalCommand("");
+    } else if (terminalCommand === "bios") {
+      setBios(true);
+    } else if (terminalCommand === "!bios") {
+      setBios(false);
+    } else if (terminalCommand === "!bios") {
+      setBios(false);
+    } else if (terminalCommand === "control") {
+      setDisplayControl(true);
+    } else if (terminalCommand === "!control") {
+      setDisplayControl(false);
     }
+    setTerminalCommand("");
   };
 
+  //--> listens for special keyboard inputs
   const handleKeyDown = (event) => {
     if (event.key === "Backspace") {
       event.preventDefault();

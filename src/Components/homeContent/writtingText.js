@@ -35,6 +35,7 @@ const WrittingText = ({ text, terminalEnabled, setTerminalEnabled }) => {
 
   return (
     <div
+      onClick={() => setTerminalEnabled(true)}
       className="game-text-container centered"
       style={{ whiteSpace: "pre-wrap" }}
     >

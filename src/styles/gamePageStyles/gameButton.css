@@ -8,6 +8,9 @@
   font-weight: 200;
   font-style: normal;
 }
+.game-button:hover {
+  cursor: pointer;
+}
 
 /* no event */
 .button-off {

@@ -70,36 +70,44 @@ const GamePageBottom = ({
     <div className="game-page-bottom">
       <button
         className="game-element-container gec-command"
-        style={{
-          opacity:
-            !isPlaying && (isLoading === 0 || isLoading === 100) ? "1" : "0.4",
-        }}
+        style={
+          !isPlaying && (isLoading === 0 || isLoading === 100)
+            ? { opacity: "1", cursor: "pointer" }
+            : { opacity: "0.4", cursor: "default" }
+        }
         onClick={handleBackButtonClick}
       >
         BACK
       </button>
       <button
         className="game-element-container gec-command"
-        style={{ opacity: isPlaying && isLoading === 100 ? "1" : "0.4" }}
+        style={
+          isPlaying && isLoading === 100
+            ? { opacity: "1", cursor: "pointer" }
+            : { opacity: "0.4", cursor: "default" }
+        }
         onClick={handleStopButtonClick}
       >
         STOP
       </button>
       <button
         className="game-element-container gec-command"
-        style={{
-          opacity: !isPlaying || beat > hsbfGameData.beatMod - 32 ? "0.4" : "1",
-        }}
+        style={
+          !isPlaying || beat > hsbfGameData.beatMod - 32
+            ? { opacity: "0.4", cursor: "default" }
+            : { opacity: "1", cursor: "pointer" }
+        }
         onClick={handleSkipButtonClick}
       >
         SKIP
       </button>
       <button
         className="game-element-container gec-command"
-        style={{
-          opacity:
-            !isPlaying && (isLoading === 0 || isLoading === 100) ? "1" : "0.4",
-        }}
+        style={
+          !isPlaying && (isLoading === 0 || isLoading === 100)
+            ? { opacity: "1", cursor: "pointer" }
+            : { opacity: "0.4", cursor: "default" }
+        }
         onClick={handleRestartButtonClick}
       >
         RESET

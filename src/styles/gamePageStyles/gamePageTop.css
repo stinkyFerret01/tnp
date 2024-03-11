@@ -49,6 +49,9 @@
     height: 6vh;
     font-size: 1.6rem;
 }
+.gec-command:hover {
+    cursor: pointer;
+}
 
  /* SCORE */
 .gec-score {
