@@ -52,6 +52,7 @@ const AudioContext = ({
         }
 
         //--> executes start music ----
+        setIsLoading(96);
         if (audioCommand.actionX === "play") {
           source.start();
         } else {
@@ -77,10 +78,7 @@ const AudioContext = ({
             if (musicTime > 0) {
               setTimeout(() => {
                 setIsPlaying(true);
-                setIsLoading(96);
-                setTimeout(() => {
-                  setIsLoading(100);
-                }, 400);
+                setIsLoading(100);
                 clearInterval(checkCurrentTimeInterval);
               }, contextOutputLatency);
             }
