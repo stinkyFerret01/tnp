@@ -22,7 +22,10 @@ const HomePage = ({
   isLoading,
   setIsLoading,
 }) => {
+  //--> access to the terminal enabled when true
   const [terminalEnabled, setTerminalEnabled] = useState(false);
+
+  //--> displays the terminal command helper when true
   const [displayTerminalComHelper, setDisplayTerminalComHelper] =
     useState(false);
 
@@ -39,6 +42,9 @@ const HomePage = ({
 
   //--> navigates to gamePage when isPlaying gets trigged
   useEffect(() => {
+    if (isLoading > 0) {
+      setDisplayTerminalComHelper(false);
+    }
     if (isLoading === 100) {
       setTimeout(() => {
         navigate("/game");
@@ -67,6 +73,7 @@ const HomePage = ({
                 text={texts.introText}
                 terminalEnabled={terminalEnabled}
                 setTerminalEnabled={setTerminalEnabled}
+                displayTerminalComHelper={displayTerminalComHelper}
               ></WrittingText>
             </div>
             <div className="responsive-home-container">
@@ -77,14 +84,13 @@ const HomePage = ({
               ></StartButton>
             </div>
             <div className="responsive-home-short">
-              {terminalEnabled && (
-                <Terminal
-                  setBios={setBios}
-                  setDisplayControl={setDisplayControl}
-                  displayTerminalComHelper={displayTerminalComHelper}
-                  setDisplayTerminalComHelper={setDisplayTerminalComHelper}
-                ></Terminal>
-              )}
+              <Terminal
+                setBios={setBios}
+                setDisplayControl={setDisplayControl}
+                terminalEnabled={terminalEnabled}
+                displayTerminalComHelper={displayTerminalComHelper}
+                setDisplayTerminalComHelper={setDisplayTerminalComHelper}
+              ></Terminal>
             </div>
           </div>
 

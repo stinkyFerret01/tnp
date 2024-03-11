@@ -10,9 +10,9 @@
 
 .responsive-home {
     margin-top: 20vh;
-    width: 60vw;
+    width: 80vw;
     max-width: 40rem;
-    height: 40vh;
+    height: 60vh;
 
     display: flex;
     flex-direction: column;
@@ -185,6 +185,12 @@
     .responsive-home-short {
         width: 10%;
         height: 100%;
+    }
+    .terminal-com-helper {    
+        position: absolute;
+        top: 0;
+        left:0;
+        width: 50vw;
     }
     .credits {
         width: 80vw;

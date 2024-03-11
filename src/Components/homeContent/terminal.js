@@ -3,6 +3,7 @@ import { useState } from "react";
 const Terminal = ({
   setBios,
   setDisplayControl,
+  terminalEnabled,
   displayTerminalComHelper,
   setDisplayTerminalComHelper,
 }) => {
@@ -57,32 +58,34 @@ const Terminal = ({
   };
 
   return (
-    <div className="game-text-container centered">
-      <div
-        className="game-text-container"
-        style={{
-          whiteSpace: "pre-wrap",
-          position: "relative",
-        }}
-      >
-        {terminalCommand}
-        <span className="underscore">{"_"}</span>
-        <input
-          type="text"
-          onInput={handleInput}
-          onKeyDown={handleKeyDown}
-          className="terminal-input"
-        />
-      </div>
-      {!displayTerminalComHelper && (
+    terminalEnabled && (
+      <div className="game-text-container centered">
         <div
           className="game-text-container"
-          style={{ fontSize: "0.6rem", margin: "2vh" }}
+          style={{
+            whiteSpace: "pre-wrap",
+            position: "relative",
+          }}
         >
-          type "help"
+          {terminalCommand}
+          <span className="underscore">{"_"}</span>
+          <input
+            type="text"
+            onInput={handleInput}
+            onKeyDown={handleKeyDown}
+            className="terminal-input"
+          />
         </div>
-      )}
-    </div>
+        {!displayTerminalComHelper && (
+          <div
+            className="game-text-container"
+            style={{ fontSize: "0.6rem", margin: "2vh" }}
+          >
+            type "help"
+          </div>
+        )}
+      </div>
+    )
   );
 };
 

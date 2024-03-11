@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-const WrittingText = ({ text, terminalEnabled, setTerminalEnabled }) => {
+const WrittingText = ({
+  text,
+  terminalEnabled,
+  setTerminalEnabled,
+  displayTerminalComHelper,
+}) => {
   //==> text to display
   const [displayedText, setDisplayedText] = useState("");
   const [underScore, setUnderScore] = useState(" ");
@@ -34,14 +39,16 @@ const WrittingText = ({ text, terminalEnabled, setTerminalEnabled }) => {
   }, [text, setTerminalEnabled]);
 
   return (
-    <div
-      onClick={() => setTerminalEnabled(true)}
-      className="game-text-container centered"
-      style={{ whiteSpace: "pre-wrap" }}
-    >
-      {displayedText}
-      {!terminalEnabled && underScore}
-    </div>
+    !displayTerminalComHelper && (
+      <div
+        onClick={() => setTerminalEnabled(true)}
+        className="game-text-container centered"
+        style={{ whiteSpace: "pre-wrap" }}
+      >
+        {displayedText}
+        {!terminalEnabled && underScore}
+      </div>
+    )
   );
 };
 
