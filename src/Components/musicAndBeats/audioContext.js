@@ -10,12 +10,11 @@ const AudioContext = ({
   const [musicRef, setMusicRef] = useState(null);
 
   //==> stores the intervall that checks the context for the moment the music time is running
-  const [checkCurrentTimeIntervalId, setCheckCurrentTimeIntervalId] =
-    useState(null);
+  const [checkMusicIntervalId, setCheckMusicIntervalId] = useState(null);
 
   useEffect(() => {
-    clearInterval(checkCurrentTimeIntervalId);
-    // console.log("COMMAND:", audioCommand);
+    clearInterval(checkMusicIntervalId);
+    // console.log("COMMAND:", audioCommand); // ---- (test purpose) ----
     if (audioCommand.actionX === "play" || audioCommand.actionX === "skip") {
       const audioContext = new (window.AudioContext ||
         window.webkitAudioContext)();
@@ -51,15 +50,15 @@ const AudioContext = ({
           contextOutputLatency = 40;
         }
 
-        //--> executes start music ----
+        //--> executes start music
         setIsLoading(96);
         if (audioCommand.actionX === "play") {
           source.start();
         } else {
-          //--> measure marker (load( time))
+          //--> measure marker ( measuring load() time )
           let loadLatencyMarker2 = Date.now();
 
-          //calculates load() time to synchronise the beatInitialiser and starts
+          //--> calculates load() time to synchronise the beatInitialiser and starts
           let loadLatency = (loadLatencyMarker2 - loadLatencyMarker1) / 1000;
           source.start(
             0,
@@ -68,28 +67,35 @@ const AudioContext = ({
           setIsLoading(100);
         }
 
-        //-- checks if audio is ready to trigg the BeatInitialiser
-        let checkCurrentTimeInterval;
+        //--> checks if audio is ready to trigg the BeatInitialiser
+        let checkMusicInterval;
 
         if (audioCommand.actionX === "play") {
-          const checkTime = () => {
+          const checkMusic = () => {
             let musicTime = audioContext.currentTime;
 
             if (musicTime > 0) {
               setTimeout(() => {
                 setIsPlaying(true);
+                //---- PROBLEM ----
+                //-- we don't get why timeout is needed here for mobile devices --
+                //-- if setIsLoading(100) without timeout, the beat initiliser won't start,
+                // but the music will, (beat will stay null), it only occurs
+                // when the app was turned on, if you press back and play again,
+                // no problem will occur --
                 setTimeout(() => {
                   setIsLoading(100);
                 }, 100);
-                clearInterval(checkCurrentTimeInterval);
+                //---- PROBLEM ----
+                clearInterval(checkMusicInterval);
               }, contextOutputLatency);
             }
           };
 
-          checkCurrentTimeInterval = setInterval(() => {
-            checkTime();
+          checkMusicInterval = setInterval(() => {
+            checkMusic();
           }, 10);
-          setCheckCurrentTimeIntervalId(checkCurrentTimeInterval);
+          setCheckMusicIntervalId(checkMusicInterval);
         }
       };
 
