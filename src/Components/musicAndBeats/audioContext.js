@@ -86,7 +86,7 @@ const AudioContext = ({
                 setTimeout(() => {
                   setIsLoading(100);
                 }, 100);
-                //---- PROBLEM ----
+                //---- PROBLEM ----//
                 clearInterval(checkMusicInterval);
               }, contextOutputLatency);
             }

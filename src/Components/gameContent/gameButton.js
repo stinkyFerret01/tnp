@@ -71,8 +71,10 @@ const GameButton = ({
 
   //--> starts an activation delay when the label is detected in [goodWords]
   const buttonActivater = () => {
-    let delayApproach = tempo * 37;
-    let delayActive = tempo * 3;
+    // let delayApproach = tempo * 37;
+    let delayApproach = tempo * 36.8;
+
+    let delayActive = tempo * 3.5;
     const newTimeout = { date: Date.now() + tempo * 36, label: label };
     const buttonActivationTimeOut = setTimeout(() => {
       setButtonStatus("button-on");
