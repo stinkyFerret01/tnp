@@ -49,7 +49,7 @@
 }
 
 .scrollable-list {
-    height: 60vh;
+    height: 48vh;
     width: 100%;
 
     overflow-y: scroll;

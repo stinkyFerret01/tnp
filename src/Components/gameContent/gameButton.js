@@ -4,9 +4,16 @@ import { useEffect, useState, useRef } from "react";
 
 //==> data
 import hsbfGameData from "../../Data/hbfsGameData";
+import buzz from "../../Data/sounds/buzz.mp3";
+import laser from "../../Data/sounds/laser.mp3";
+import laser2 from "../../Data/sounds/laser2.mp3";
+import laser3 from "../../Data/sounds/laser3.mp3";
+import laser4 from "../../Data/sounds/laser4.mp3";
 
 //==> utils
 import timeoutedSetter from "../../utils/timeoutedSetter";
+
+const lasers = [laser, laser2, laser3, laser4];
 
 const GameButton = ({
   label,
@@ -30,6 +37,17 @@ const GameButton = ({
   const [turnOffTimeoutId, setTurnOffTimeoutId] = useState(null);
 
   const tempo = hsbfGameData.tempo;
+
+  const buzzPlayer = () => {
+    const audio = new Audio(buzz);
+    audio.play();
+  };
+
+  const laserPlayer = () => {
+    const randomNumber = Math.floor(Math.random() * 4);
+    const audio = new Audio(lasers[randomNumber]);
+    audio.play();
+  };
 
   //==> stops the activation if Player clicked very close before it was time
   const clearTimeoutByLabel = () => {
@@ -81,6 +99,7 @@ const GameButton = ({
   const shootResultDefiner = () => {
     if (buttonStatus === "button-on" && !targetBlocker) {
       //---- target hit ----
+      laserPlayer();
       if (beat - hsbfGameData.beatMod > -10) {
         setScore((prevScore) => prevScore + 1);
       }
@@ -90,6 +109,7 @@ const GameButton = ({
       timeoutedSetter(["button-off", "button-hit"], setButtonStatus, tempo * 2);
     } else {
       //---- shot missed ----
+      buzzPlayer();
       if (beat - hsbfGameData.beatMod > -10) {
         if (missedShots.length < 17) {
           setMissedShots((prevMissedShots) => [...prevMissedShots, Date.now()]);
@@ -137,7 +157,7 @@ const GameButton = ({
     <button
       className={`game-button ${buttonStatus}`}
       onTouchStart={handleShoot}
-      // onClick={handleShoot}
+      onClick={handleShoot}
     >
       {label.toUpperCase()}
     </button>

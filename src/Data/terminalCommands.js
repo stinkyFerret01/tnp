@@ -13,7 +13,7 @@ const terminalCommands = [
   },
   {
     command: "dev",
-    description: "navigates to the developer gitHub",
+    description: "navigates to the developer's gitHub",
   },
   {
     command: "erase",

@@ -1,11 +1,20 @@
+import laser from "../../Data/sounds/laser.mp3";
+
 const StartButton = ({
   isLoading,
   setIsLoading,
   isPlaying,
   displayTermComHelper,
 }) => {
+  //--> plays a sound when clicking start
+  const laserPlayer = () => {
+    const audio = new Audio(laser);
+    audio.play();
+  };
+
   //--> triggs the game commands to start the audio process
   const handlePlayButtonClick = () => {
+    laserPlayer();
     setIsLoading(5);
   };
 
