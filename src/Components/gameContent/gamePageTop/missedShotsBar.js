@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 //==> data
-import hsbfGameData from "../../../beatData/hbfsGameData";
+import hsbfGameData from "../../../Data/hbfsGameData";
 
 //==> utils
 import timeoutedSetter from "../../../utils/timeoutedSetter";

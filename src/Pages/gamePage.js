@@ -14,9 +14,7 @@ const GamePage = ({
   setBeat,
 }) => {
   //==> stores the timeoutIds so they can be cleared if Player stops game
-  const [buttonActivationTimeOutIds, setButtonActivationTimeOutIds] = useState(
-    []
-  );
+  const [buttonActTimeoutIds, setButtonActTimeoutIds] = useState([]);
   //==> stores the objects taht generate laser animation for goodWords
   const [beatWawes, setBeatWawes] = useState([]);
 
@@ -28,15 +26,13 @@ const GamePage = ({
   //--> resets button activations and animations when game stops
   useEffect(() => {
     if (audioCommand.actionX === "stop") {
-      buttonActivationTimeOutIds.forEach((timeout) =>
-        clearTimeout(timeout.timeoutId)
-      );
-      if (buttonActivationTimeOutIds.length > 0) {
-        setButtonActivationTimeOutIds([]);
+      buttonActTimeoutIds.forEach((timeout) => clearTimeout(timeout.timeoutId));
+      if (buttonActTimeoutIds.length > 0) {
+        setButtonActTimeoutIds([]);
       }
       setBeatWawes([]);
     }
-  }, [audioCommand, buttonActivationTimeOutIds, setIsLoading]);
+  }, [audioCommand, buttonActTimeoutIds, setIsLoading]);
 
   return (
     <main className="game-page">
@@ -57,8 +53,8 @@ const GamePage = ({
         setMissedTargets={setMissedTargets}
         missedShots={missedShots}
         setMissedShots={setMissedShots}
-        buttonActivationTimeOutIds={buttonActivationTimeOutIds}
-        setButtonActivationTimeOutIds={setButtonActivationTimeOutIds}
+        buttonActTimeoutIds={buttonActTimeoutIds}
+        setButtonActTimeoutIds={setButtonActTimeoutIds}
         beatWawes={beatWawes}
         setBeatWawes={setBeatWawes}
       ></ButtonPanel>
@@ -68,8 +64,8 @@ const GamePage = ({
         isLoading={isLoading}
         setIsLoading={setIsLoading}
         beat={beat}
-        buttonActivationTimeOutIds={buttonActivationTimeOutIds}
-        setButtonActivationTimeOutIds={setButtonActivationTimeOutIds}
+        buttonActTimeoutIds={buttonActTimeoutIds}
+        setButtonActTimeoutIds={setButtonActTimeoutIds}
         setBeatWawes={setBeatWawes}
         setScore={setScore}
         setMissedTargets={setMissedTargets}

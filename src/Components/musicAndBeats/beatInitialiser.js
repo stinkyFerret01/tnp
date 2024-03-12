@@ -6,7 +6,7 @@ import dateFormatter from "../../utils/dateFormatter";
 //--> checks if the delay is negative
 // import delayControlerLog from "../../utils/logs/delayControlerLog";
 
-import hsbfGameData from "../../beatData/hbfsGameData";
+import hsbfGameData from "../../Data/hbfsGameData";
 
 const BeatInitialiser = ({
   audioCommand,

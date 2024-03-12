@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 
+import hsbfGameData from "../../../Data/hbfsGameData";
+
 import ScoreBar from "./scoreBar";
 import BeatDisplayer from "./beatDisplayer";
 import MissedShotsBar from "./missedShotsBar";
 import GameStateBar from "./gameStateBar";
-import hsbfGameData from "../../../beatData/hbfsGameData";
 
 const GamePageTop = ({
   setAudioCommand,

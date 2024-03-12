@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import hsbfGameData from "../../beatData/hbfsGameData";
+import hsbfGameData from "../../Data/hbfsGameData";
 
 const BeatGridGenerator = ({ beat, goodWords, beatWawes, setBeatWawes }) => {
   //---- BEATWAWES INITIALIZER ----

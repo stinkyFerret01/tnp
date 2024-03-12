@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import hsbfGameData from "../../beatData/hbfsGameData";
+import hsbfGameData from "../../Data/hbfsGameData";
 
 const GamePageBottom = ({
   setAudioCommand,
@@ -8,8 +8,8 @@ const GamePageBottom = ({
   isLoading,
   setIsLoading,
   beat,
-  buttonActivationTimeOutIds,
-  setButtonActivationTimeOutIds,
+  buttonActTimeoutIds,
+  setButtonActTimeoutIds,
   setBeatWawes,
   setScore,
   setMissedTargets,
@@ -40,10 +40,8 @@ const GamePageBottom = ({
   //--> skips the intro
   const handleSkipButtonClick = () => {
     if (isPlaying) {
-      buttonActivationTimeOutIds.forEach((timeout) =>
-        clearTimeout(timeout.timeoutId)
-      );
-      setButtonActivationTimeOutIds([]);
+      buttonActTimeoutIds.forEach((timeout) => clearTimeout(timeout.timeoutId));
+      setButtonActTimeoutIds([]);
       setBeatWawes([]);
       setAudioCommand({
         actionX: "skip",

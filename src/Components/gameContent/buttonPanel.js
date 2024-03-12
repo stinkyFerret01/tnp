@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 //==> build the array with the goodwords data
 import beatRuleBuilder from "../../utils/beatRuleBuilder";
-import hsbfGameData from "../../beatData/hbfsGameData";
+import hsbfGameData from "../../Data/hbfsGameData";
 
 //==> the buttons displayed for the Player
 import ButtonGrid from "./buttonGrid";
@@ -18,8 +18,8 @@ const ButtonPanel = ({
   setMissedTargets,
   missedShots,
   setMissedShots,
-  buttonActivationTimeOutIds,
-  setButtonActivationTimeOutIds,
+  buttonActTimeoutIds,
+  setButtonActTimeoutIds,
   beatWawes,
   setBeatWawes,
 }) => {
@@ -55,8 +55,8 @@ const ButtonPanel = ({
           setMissedTargets={setMissedTargets}
           missedShots={missedShots}
           setMissedShots={setMissedShots}
-          buttonActivationTimeOutIds={buttonActivationTimeOutIds}
-          setButtonActivationTimeOutIds={setButtonActivationTimeOutIds}
+          buttonActTimeoutIds={buttonActTimeoutIds}
+          setButtonActTimeoutIds={setButtonActTimeoutIds}
         ></ButtonGrid>
         <BeatGridGenerator
           beat={beat}

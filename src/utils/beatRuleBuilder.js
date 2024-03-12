@@ -1,4 +1,4 @@
-import hsbfGameData from "../beatData/hbfsGameData";
+import hsbfGameData from "../Data/hbfsGameData";
 
 const beatRuleBuilder = (musicGameData) => {
   let wordsPosition = musicGameData.wordsPosition;

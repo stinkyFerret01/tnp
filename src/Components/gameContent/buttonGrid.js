@@ -1,4 +1,4 @@
-import hsbfGameData from "../../beatData/hbfsGameData";
+import hsbfGameData from "../../Data/hbfsGameData";
 
 import GameButton from "./gameButton";
 
@@ -10,8 +10,8 @@ const ButtonGrid = ({
   setMissedTargets,
   missedShots,
   setMissedShots,
-  buttonActivationTimeOutIds,
-  setButtonActivationTimeOutIds,
+  buttonActTimeoutIds,
+  setButtonActTimeoutIds,
 }) => {
   return (
     beatRule && (
@@ -28,8 +28,8 @@ const ButtonGrid = ({
                 setMissedTargets={setMissedTargets}
                 missedShots={missedShots}
                 setMissedShots={setMissedShots}
-                buttonActivationTimeoutIds={buttonActivationTimeOutIds}
-                setButtonActivationTimeOutIds={setButtonActivationTimeOutIds}
+                buttonActTimeoutIds={buttonActTimeoutIds}
+                setButtonActTimeoutIds={setButtonActTimeoutIds}
               ></GameButton>
             </div>
           );

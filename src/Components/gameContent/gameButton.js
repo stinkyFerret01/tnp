@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 //==> data
-import hsbfGameData from "../../beatData/hbfsGameData";
+import hsbfGameData from "../../Data/hbfsGameData";
 
 //==> utils
 import timeoutedSetter from "../../utils/timeoutedSetter";
@@ -16,8 +16,8 @@ const GameButton = ({
   setMissedTargets,
   missedShots,
   setMissedShots,
-  buttonActivationTimeoutIds,
-  setButtonActivationTimeOutIds,
+  buttonActTimeoutIds,
+  setButtonActTimeoutIds,
 }) => {
   //==> stores the button status
   const [buttonStatus, setButtonStatus] = useState("button-off");
@@ -32,22 +32,20 @@ const GameButton = ({
 
   //==> stops the activation if Player clicked very close before it was time
   const clearTimeoutByLabel = () => {
-    const index = buttonActivationTimeoutIds.findIndex(
-      (item) => item.label === label
-    );
+    const index = buttonActTimeoutIds.findIndex((item) => item.label === label);
 
     if (index !== -1) {
-      const element = buttonActivationTimeoutIds[index];
+      const element = buttonActTimeoutIds[index];
 
       if (Date.now() - element.date > 0) {
         clearTimeout(element.timeoutId);
 
         const updatedTimeOuts = [
-          ...buttonActivationTimeoutIds.slice(0, index),
-          ...buttonActivationTimeoutIds.slice(index + 1),
+          ...buttonActTimeoutIds.slice(0, index),
+          ...buttonActTimeoutIds.slice(index + 1),
         ];
 
-        setButtonActivationTimeOutIds(updatedTimeOuts);
+        setButtonActTimeoutIds(updatedTimeOuts);
       }
     }
   };
@@ -68,10 +66,7 @@ const GameButton = ({
       setTurnOffTimeoutId(turnTargetOff);
     }, delayApproach);
     newTimeout.timeoutId = buttonActivationTimeOut;
-    setButtonActivationTimeOutIds((prevIdsArray) => [
-      ...prevIdsArray,
-      newTimeout,
-    ]);
+    setButtonActTimeoutIds((prevIdsArray) => [...prevIdsArray, newTimeout]);
   };
 
   //--> cuts the turnOffTimeout

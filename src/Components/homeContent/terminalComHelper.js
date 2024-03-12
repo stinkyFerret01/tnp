@@ -1,19 +1,30 @@
+import { useEffect } from "react";
+import terminalCommands from "../../Data/terminalCommands";
+
 const TerminalComHelper = ({
+  isLoading,
   displayTerminalComHelper,
   setDisplayTerminalComHelper,
 }) => {
+  //--> turns the terminal helper off when starting game
+  useEffect(() => {
+    if (isLoading > 0) {
+      setDisplayTerminalComHelper(false);
+    }
+  }, [isLoading, setDisplayTerminalComHelper]);
+
   return (
     displayTerminalComHelper && (
       <div className="terminal-com-helper" style={{ display: "flex" }}>
         <div>
-          <p>"bios": sets the screen blue ("!bios" to set back to black)</p>
-          <p>"buzzle": navigates to Buzzle, the 2D puzzle game</p>
-          <p>"control": displays the control panel ("!control" to close)</p>
-          <p>"dev": navigates to the developer gitHub</p>
-          <p>"erase": erases the best score from your device</p>
-          <p>"help": displays the teminal command helper ("!help" to close)</p>
+          {terminalCommands.map((commmand) => {
+            return (
+              <p>
+                '{commmand.command}': {commmand.description}
+              </p>
+            );
+          })}
         </div>
-
         <button
           className="game-element-container"
           style={{ height: "1rem" }}

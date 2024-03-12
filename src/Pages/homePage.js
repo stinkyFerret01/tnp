@@ -1,18 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import texts from "../Data/texts";
+
 import WrittingText from "../Components/homeContent/writtingText";
 import StartButton from "../Components/homeContent/startButton";
+import LoadingBar from "../Components/homeContent/loadingBar";
 import Terminal from "../Components/homeContent/terminal";
 import TerminalComHelper from "../Components/homeContent/terminalComHelper";
-
-const texts = {
-  introText:
-    // "StinkyFerret_Production  \npresents:       \n-HBFS-       \nthe_rythm_game",
-    "StinkyFerret_Production\npresents:\n-HBFS-\nthe_rythm_game",
-  creditText:
-    "This project is for demonstration purposes,\nit has no commercial intent.\nAll musical rights belong to their respective owners.",
-};
 
 const HomePage = ({
   setBios,
@@ -42,49 +37,33 @@ const HomePage = ({
 
   //--> navigates to gamePage when isPlaying gets trigged
   useEffect(() => {
-    if (isLoading > 0) {
-      setDisplayTerminalComHelper(false);
-    }
     if (isLoading === 100) {
       setTimeout(() => {
         navigate("/game");
-      }, 100);
+      }, 60);
     }
   }, [isLoading, navigate]);
 
   return (
     <main className="home-page">
       {isLoading === 0 ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <div className="home-page-alt">
           <div className="responsive-home">
-            <div
-              className="responsive-home-container"
-              style={
-                isLoading ? { visibility: "hidden" } : { visibility: "display" }
-              }
-            >
+            <div className="responsive-home-container">
               <WrittingText
                 text={texts.introText}
                 terminalEnabled={terminalEnabled}
                 setTerminalEnabled={setTerminalEnabled}
                 displayTerminalComHelper={displayTerminalComHelper}
-              ></WrittingText>
+              />
             </div>
-            {/* <div className="responsive-home-container"> */}
             <div className="responsive-home-short">
               <StartButton
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
                 isPlaying={isPlaying}
-              ></StartButton>
+              />
             </div>
-            {/* <div className="responsive-home-short"> */}
             <div className="responsive-home-container">
               <Terminal
                 setBios={setBios}
@@ -92,38 +71,19 @@ const HomePage = ({
                 terminalEnabled={terminalEnabled}
                 displayTerminalComHelper={displayTerminalComHelper}
                 setDisplayTerminalComHelper={setDisplayTerminalComHelper}
-              ></Terminal>
+              />
             </div>
           </div>
-
-          <div
-            className="game-text-container credits"
-            style={
-              isLoading ? { visibility: "hidden" } : { visibility: "display" }
-            }
-          >
-            {texts.creditText}
-          </div>
+          <div className="game-text-container credits">{texts.creditText}</div>
+          <TerminalComHelper
+            isLoading={isLoading}
+            displayTerminalComHelper={displayTerminalComHelper}
+            setDisplayTerminalComHelper={setDisplayTerminalComHelper}
+          />
         </div>
       ) : (
-        <div>
-          <div className="loading-bar-container">
-            <div
-              className="loading-bar"
-              style={{
-                width: `${isLoading}%`,
-              }}
-            ></div>
-          </div>
-          <div className="game-text-container centered">
-            Loading {isLoading} %
-          </div>
-        </div>
+        <LoadingBar isLoading={isLoading} />
       )}
-      <TerminalComHelper
-        displayTerminalComHelper={displayTerminalComHelper}
-        setDisplayTerminalComHelper={setDisplayTerminalComHelper}
-      />
     </main>
   );
 };

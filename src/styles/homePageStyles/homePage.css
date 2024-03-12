@@ -8,6 +8,12 @@
     align-items: center;
 }
 
+.home-page-alt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .responsive-home {
     margin-top: 20vh;
     width: 80vw;
@@ -162,9 +168,9 @@
 
 /* BOTTOM PART */
 .credits {
-    height: 20vh;
+    height: 15vh;
     max-width: 80vw;
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;
     font-size: 0.5rem;
 
     display: flex;
