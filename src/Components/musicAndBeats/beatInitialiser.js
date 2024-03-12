@@ -35,7 +35,7 @@ const BeatInitialiser = ({
   //---- BEAT REPEATER ----
   useEffect(() => {
     //--> sets next beat
-    if (initBeatDate > 0 && beat < 1879) {
+    if (initBeatDate > 0 && (beat < 1879 || beat === null)) {
       //--> calculates delay before next beat
       let mult = beat + 1;
       let target = initBeatDate + hsbfGameData.tempo * mult;
