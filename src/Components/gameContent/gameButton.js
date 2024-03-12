@@ -99,7 +99,7 @@ const GameButton = ({
   const shootResultDefiner = () => {
     if (buttonStatus === "button-on" && !targetBlocker) {
       //---- target hit ----
-      laserPlayer();
+      // laserPlayer();
       if (beat - hsbfGameData.beatMod > -10) {
         setScore((prevScore) => prevScore + 1);
       }
@@ -109,7 +109,7 @@ const GameButton = ({
       timeoutedSetter(["button-off", "button-hit"], setButtonStatus, tempo * 2);
     } else {
       //---- shot missed ----
-      buzzPlayer();
+      // buzzPlayer();
       if (beat - hsbfGameData.beatMod > -10) {
         if (missedShots.length < 17) {
           setMissedShots((prevMissedShots) => [...prevMissedShots, Date.now()]);
