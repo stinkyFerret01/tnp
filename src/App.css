@@ -1,5 +1,6 @@
 @import "./styles/reset.css";
 @import "./styles/homePageStyles/homePage.css";
+@import "./styles/homePageStyles/commandTerminal.css";
 @import "./styles/gamePageStyles/gamePage.css";
 @import "./styles/gamePageStyles/gamePageTop.css";
 @import "./styles/gamePageStyles/beatGridGenerator.css";

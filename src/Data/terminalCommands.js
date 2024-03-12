@@ -1,15 +1,15 @@
 const terminalCommands = [
   {
-    command: "bios",
-    description: "sets the screen blue ('!bios' to set back to black)",
-  },
-  {
     command: "buzzle",
     description: "navigates to Buzzle, the 2D puzzle game",
   },
   {
     command: "control",
     description: "displays the control panel ('!control' to close)",
+  },
+  {
+    command: "core",
+    description: "sets the screen blue ('!core' to set back to black)",
   },
   {
     command: "dev",
@@ -21,7 +21,7 @@ const terminalCommands = [
   },
   {
     command: "help",
-    description: "displays the teminal command helper ('!help' to close)",
+    description: "displays the terminal command helper ('!help' to close)",
   },
   {
     command: "reset",

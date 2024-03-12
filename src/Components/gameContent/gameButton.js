@@ -1,6 +1,6 @@
 //==> Game button est l'element principal du jeux pour le Player
 //==> il s'invoque avec une prop "word" qui défini sa valeur
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 //==> data
 import hsbfGameData from "../../Data/hbfsGameData";
@@ -24,6 +24,7 @@ const GameButton = ({
 
   //==> block Player's click when true (anti-spam)
   const [targetBlocker, setTargetBlocker] = useState(false);
+  const doubleClickBCancel = useRef(false);
 
   //==> stores the time out from "on" to "miss"
   const [turnOffTimeoutId, setTurnOffTimeoutId] = useState(null);
@@ -52,9 +53,9 @@ const GameButton = ({
 
   //--> starts an activation delay when the label is detected in [goodWords]
   const buttonActivater = () => {
-    let delayApproach = 4520;
-    let delayActive = 400;
-    const newTimeout = { date: Date.now() + 4400, label: label };
+    let delayApproach = tempo * 37;
+    let delayActive = tempo * 3;
+    const newTimeout = { date: Date.now() + tempo * 36, label: label };
     const buttonActivationTimeOut = setTimeout(() => {
       setButtonStatus("button-on");
       const turnTargetOff = setTimeout(() => {
@@ -106,9 +107,21 @@ const GameButton = ({
   };
 
   //--> calculates results when any gameButton is clicked at any time
+  // const handleShoot = () => {
+  //   timeoutedSetter([false, true], setTargetBlocker, tempo);
+  //   shootResultDefiner();
+  // };
+
   const handleShoot = () => {
-    timeoutedSetter([false, true], setTargetBlocker, 200);
+    if (doubleClickBCancel.current) return;
+    timeoutedSetter([false, true], setTargetBlocker, tempo);
     shootResultDefiner();
+    doubleClickBCancel.current = true;
+
+    const timer = setTimeout(() => {
+      doubleClickBCancel.current = false;
+    }, tempo);
+    return () => clearTimeout(timer);
   };
 
   //--> triggs the activation off the gameButton
@@ -123,8 +136,8 @@ const GameButton = ({
   return (
     <button
       className={`game-button ${buttonStatus}`}
-      // onTouchStart={handleShoot}
-      onClick={handleShoot}
+      onTouchStart={handleShoot}
+      // onClick={handleShoot}
     >
       {label.toUpperCase()}
     </button>

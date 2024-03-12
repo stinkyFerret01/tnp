@@ -2,7 +2,7 @@ const StartButton = ({
   isLoading,
   setIsLoading,
   isPlaying,
-  displayTerminalComHelper,
+  displayTermComHelper,
 }) => {
   //--> triggs the game commands to start the audio process
   const handlePlayButtonClick = () => {
@@ -10,7 +10,7 @@ const StartButton = ({
   };
 
   return (
-    !displayTerminalComHelper && (
+    !displayTermComHelper && (
       <div>
         {isLoading > 0 || isPlaying ? (
           <div>

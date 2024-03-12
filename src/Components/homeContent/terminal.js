@@ -5,8 +5,8 @@ const Terminal = ({
   setBios,
   setDisplayControl,
   terminalEnabled,
-  displayTerminalComHelper,
-  setDisplayTerminalComHelper,
+  displayTermComHelper,
+  setDisplayTermComHelper,
 }) => {
   const [terminalCommand, setTerminalCommand] = useState("");
 
@@ -24,20 +24,18 @@ const Terminal = ({
   const terminalCommandExecuter = () => {
     if (terminalCommand === "erase") {
       localStorage.removeItem("bestScore");
-    } else if (terminalCommand === "bios") {
+    } else if (terminalCommand === "core") {
       setBios(true);
-    } else if (terminalCommand === "!bios") {
-      setBios(false);
-    } else if (terminalCommand === "!bios") {
+    } else if (terminalCommand === "!core") {
       setBios(false);
     } else if (terminalCommand === "control") {
       setDisplayControl(true);
     } else if (terminalCommand === "!control") {
       setDisplayControl(false);
     } else if (terminalCommand === "help") {
-      setDisplayTerminalComHelper(true);
+      setDisplayTermComHelper(true);
     } else if (terminalCommand === "!help") {
-      setDisplayTerminalComHelper(false);
+      setDisplayTermComHelper(false);
     } else if (terminalCommand === "buzzle") {
       window.location.href = "https://buzzlegame.netlify.app/";
     } else if (terminalCommand === "dev") {
@@ -45,7 +43,7 @@ const Terminal = ({
     } else if (terminalCommand === "reset") {
       setBios(false);
       setDisplayControl(false);
-      setDisplayTerminalComHelper(false);
+      setDisplayTermComHelper(false);
     } else if (terminalCommand === "play") {
       setIsLoading(5);
     }
@@ -83,7 +81,7 @@ const Terminal = ({
             className="terminal-input"
           />
         </div>
-        {!displayTerminalComHelper && (
+        {!displayTermComHelper && (
           <div
             className="game-text-container"
             style={{ fontSize: "0.6rem", margin: "2vh" }}

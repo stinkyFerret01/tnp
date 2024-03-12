@@ -1,0 +1,91 @@
+.terminal-input {
+    color: lime;
+    background-color: transparent;
+    caret-color: transparent;
+
+    width: 100%;
+    max-width: 100%;
+    text-align: end;
+
+    border: none;
+    outline: none;
+
+    position: absolute;
+    right: 0;
+
+    font-family: "Source Code Pro", monospace;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+.underscore {
+    animation: blink 0.484s infinite;
+}
+
+.terminal-com-helper {
+    color: lime;
+
+    width:100vw;
+    padding: 4px;
+    font-size: 0.8rem;
+
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    top: 0;
+    left:0;
+    box-sizing: border-box;
+}
+
+.terminal-com-help-top {
+    width: 100%;
+    margin-bottom: 4px;
+    font-size: 1.1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scrollable-list {
+    height: 60vh;
+    width: 100%;
+
+    overflow-y: scroll;
+    direction: rtl;
+}
+.scrollable-list p {
+    padding-left: 4px;
+
+    text-align: end;
+}
+.scrollable-list::-webkit-scrollbar {
+    background-color: rgba(0, 255, 0, 0.2);
+
+    width: 4px;
+    opacity: 0.2;
+
+}
+.scrollable-list::-webkit-scrollbar-thumb {
+    background-color: lime;
+}
+
+@keyframes blink {
+    0%, 50% { color: lime; }
+    50.01%, 100% { color: transparent; }
+}
+
+@media screen and (max-height: 400px) {
+    .terminal-com-helper {    
+        width: 60vw;
+        
+        position: absolute;
+        top: 0;
+        left:0;
+        box-sizing: border-box;
+    }
+    .terminal-com-help-top {
+        width: 105%;
+    }
+}

@@ -21,10 +21,20 @@ const HomePage = ({
   const [terminalEnabled, setTerminalEnabled] = useState(false);
 
   //--> displays the terminal command helper when true
-  const [displayTerminalComHelper, setDisplayTerminalComHelper] =
-    useState(false);
+  const [displayTermComHelper, setDisplayTermComHelper] = useState(false);
+  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenHeight(window.innerHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   //--> starts the game (trigging isPlaying when audio is starting)
   useEffect(() => {
@@ -54,7 +64,7 @@ const HomePage = ({
                 text={texts.introText}
                 terminalEnabled={terminalEnabled}
                 setTerminalEnabled={setTerminalEnabled}
-                displayTerminalComHelper={displayTerminalComHelper}
+                displayTermComHelper={displayTermComHelper}
               />
             </div>
             <div className="responsive-home-short">
@@ -62,25 +72,32 @@ const HomePage = ({
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
                 isPlaying={isPlaying}
-                displayTerminalComHelper={displayTerminalComHelper}
+                displayTermComHelper={displayTermComHelper}
               />
             </div>
-            <div className="responsive-home-container">
+            <div
+              className="responsive-home-container"
+              style={
+                displayTermComHelper && screenHeight < 401
+                  ? { marginLeft: "36vw" }
+                  : {}
+              }
+            >
               <Terminal
                 setIsLoading={setIsLoading}
                 setBios={setBios}
                 setDisplayControl={setDisplayControl}
                 terminalEnabled={terminalEnabled}
-                displayTerminalComHelper={displayTerminalComHelper}
-                setDisplayTerminalComHelper={setDisplayTerminalComHelper}
+                displayTermComHelper={displayTermComHelper}
+                setDisplayTermComHelper={setDisplayTermComHelper}
               />
             </div>
           </div>
           <div className="game-text-container credits">{texts.creditText}</div>
           <TerminalComHelper
             isLoading={isLoading}
-            displayTerminalComHelper={displayTerminalComHelper}
-            setDisplayTerminalComHelper={setDisplayTerminalComHelper}
+            displayTermComHelper={displayTermComHelper}
+            setDisplayTermComHelper={setDisplayTermComHelper}
           />
         </div>
       ) : (

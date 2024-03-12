@@ -132,44 +132,6 @@
     -webkit-box-reflect: below 1px linear-gradient(transparent lime);
 }
 
-.terminal-input {
-    color: lime;
-    background-color: transparent;
-    caret-color: transparent;
-
-    width: 100%;
-    max-width: 100%;
-    text-align: end;
-
-    border: none;
-    outline: none;
-
-    position: absolute;
-    right: 0;
-
-    font-family: "Source Code Pro", monospace;
-    font-optical-sizing: auto;
-    font-weight: 200;
-    font-style: normal;
-}
-.underscore {
-    animation: blink 0.484s infinite;
-}
-
-.terminal-com-helper {
-    color: lime;
-
-    width:100vw;
-    padding: 4px;
-    font-size: 0.8rem;
-
-    display: flex;
-    justify-content: space-between;
-
-    position: absolute;
-    top: 0;
-    left:0;
-}
 
 /* BOTTOM PART */
 .credits {
@@ -197,18 +159,9 @@
         width: 10%;
         height: 100%;
     }
-    .terminal-com-helper {    
-        position: absolute;
-        top: 0;
-        left:0;
-        width: 60vw;
-    }
     .credits {
         width: 80vw;
     }
 }
   
-@keyframes blink {
-    0%, 50% { color: lime; }
-    50.01%, 100% { color: transparent; }
-}
+

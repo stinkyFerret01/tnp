@@ -3,35 +3,43 @@ import terminalCommands from "../../Data/terminalCommands";
 
 const TerminalComHelper = ({
   isLoading,
-  displayTerminalComHelper,
-  setDisplayTerminalComHelper,
+  displayTermComHelper,
+  setDisplayTermComHelper,
 }) => {
+  //--> to display before each displayed command
+  let commandPrefix = "c/-> ";
+
   //--> turns the terminal helper off when starting game
   useEffect(() => {
     if (isLoading > 0) {
-      setDisplayTerminalComHelper(false);
+      setDisplayTermComHelper(false);
     }
-  }, [isLoading, setDisplayTerminalComHelper]);
+  }, [isLoading, setDisplayTermComHelper]);
 
   return (
-    displayTerminalComHelper && (
-      <div className="terminal-com-helper" style={{ display: "flex" }}>
-        <div>
+    displayTermComHelper && (
+      <div className="terminal-com-helper">
+        <div className="terminal-com-help-top">
+          {"--> terminal command helper:"}
+          <button
+            className="game-element-container"
+            style={{ height: "1rem" }}
+            onClick={() => setDisplayTermComHelper(false)}
+          >
+            X
+          </button>
+        </div>
+        <div className="scrollable-list">
           {terminalCommands.map((command) => {
             return (
               <p key={command.command}>
-                '{command.command}': {command.description}
+                {commandPrefix}
+                <span style={{ color: "gold" }}>{command.command}</span> :{" "}
+                {command.description}
               </p>
             );
           })}
         </div>
-        <button
-          className="game-element-container"
-          style={{ height: "1rem" }}
-          onClick={() => setDisplayTerminalComHelper(false)}
-        >
-          X
-        </button>
       </div>
     )
   );

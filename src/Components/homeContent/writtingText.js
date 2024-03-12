@@ -4,7 +4,7 @@ const WrittingText = ({
   text,
   terminalEnabled,
   setTerminalEnabled,
-  displayTerminalComHelper,
+  displayTermComHelper,
 }) => {
   //==> text to display
   const [displayedText, setDisplayedText] = useState("");
@@ -39,7 +39,7 @@ const WrittingText = ({
   }, [text, setTerminalEnabled]);
 
   return (
-    !displayTerminalComHelper && (
+    !displayTermComHelper && (
       <div
         onClick={() => setTerminalEnabled(true)}
         className="game-text-container centered"
