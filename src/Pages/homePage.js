@@ -76,14 +76,16 @@ const HomePage = ({
                 displayTerminalComHelper={displayTerminalComHelper}
               ></WrittingText>
             </div>
-            <div className="responsive-home-container">
+            {/* <div className="responsive-home-container"> */}
+            <div className="responsive-home-short">
               <StartButton
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
                 isPlaying={isPlaying}
               ></StartButton>
             </div>
-            <div className="responsive-home-short">
+            {/* <div className="responsive-home-short"> */}
+            <div className="responsive-home-container">
               <Terminal
                 setBios={setBios}
                 setDisplayControl={setDisplayControl}
