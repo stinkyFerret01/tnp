@@ -4,16 +4,16 @@ import { useEffect, useState, useRef } from "react";
 
 //==> data
 import hsbfGameData from "../../Data/hbfsGameData";
-import buzz from "../../Data/sounds/buzz.mp3";
-import laser from "../../Data/sounds/laser.mp3";
-import laser2 from "../../Data/sounds/laser2.mp3";
-import laser3 from "../../Data/sounds/laser3.mp3";
-import laser4 from "../../Data/sounds/laser4.mp3";
+// import buzz from "../../Data/sounds/buzz.mp3";
+// import laser from "../../Data/sounds/laser.mp3";
+// import laser2 from "../../Data/sounds/laser2.mp3";
+// import laser3 from "../../Data/sounds/laser3.mp3";
+// import laser4 from "../../Data/sounds/laser4.mp3";
 
 //==> utils
 import timeoutedSetter from "../../utils/timeoutedSetter";
 
-const lasers = [laser, laser2, laser3, laser4];
+// const lasers = [laser, laser2, laser3, laser4];
 
 const GameButton = ({
   label,
@@ -38,16 +38,16 @@ const GameButton = ({
 
   const tempo = hsbfGameData.tempo;
 
-  const buzzPlayer = () => {
-    const audio = new Audio(buzz);
-    audio.play();
-  };
-
-  const laserPlayer = () => {
-    const randomNumber = Math.floor(Math.random() * 4);
-    const audio = new Audio(lasers[randomNumber]);
-    audio.play();
-  };
+  //--> plays buzz or laser when Player shots
+  // const buzzPlayer = () => {
+  //   const audio = new Audio(buzz);
+  //   audio.play();
+  // };
+  // const laserPlayer = () => {
+  //   const randomNumber = Math.floor(Math.random() * 4);
+  //   const audio = new Audio(lasers[randomNumber]);
+  //   audio.play();
+  // };
 
   //==> stops the activation if Player clicked very close before it was time
   const clearTimeoutByLabel = () => {

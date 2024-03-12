@@ -1,4 +1,4 @@
-import laser from "../../Data/sounds/laser.mp3";
+// import laser from "../../Data/sounds/laser.mp3";
 
 const StartButton = ({
   isLoading,
@@ -7,14 +7,14 @@ const StartButton = ({
   displayTermComHelper,
 }) => {
   //--> plays a sound when clicking start
-  const laserPlayer = () => {
-    const audio = new Audio(laser);
-    audio.play();
-  };
+  // const laserPlayer = () => {
+  //   const audio = new Audio(laser);
+  //   audio.play();
+  // };
 
   //--> triggs the game commands to start the audio process
   const handlePlayButtonClick = () => {
-    laserPlayer();
+    // laserPlayer();
     setIsLoading(5);
   };
 
