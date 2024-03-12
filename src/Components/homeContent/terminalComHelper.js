@@ -17,10 +17,10 @@ const TerminalComHelper = ({
     displayTerminalComHelper && (
       <div className="terminal-com-helper" style={{ display: "flex" }}>
         <div>
-          {terminalCommands.map((commmand) => {
+          {terminalCommands.map((command) => {
             return (
-              <p>
-                '{commmand.command}': {commmand.description}
+              <p key={command.command}>
+                '{command.command}': {command.description}
               </p>
             );
           })}

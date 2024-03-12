@@ -24,16 +24,8 @@ const terminalCommands = [
     description: "displays the teminal command helper ('!help' to close)",
   },
   {
-    command: "bios",
-    description: "sets the screen blue ('!bios' to set back to black)",
-  },
-  {
-    command: "bios",
-    description: "sets the screen blue ('!bios' to set back to black)",
-  },
-  {
-    command: "bios",
-    description: "sets the screen blue ('!bios' to set back to black)",
+    command: "reset",
+    description: "resets the terminal parameters to default",
   },
 ];
 

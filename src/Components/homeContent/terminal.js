@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const Terminal = ({
+  setIsLoading,
   setBios,
   setDisplayControl,
   terminalEnabled,
@@ -41,6 +42,12 @@ const Terminal = ({
       window.location.href = "https://buzzlegame.netlify.app/";
     } else if (terminalCommand === "dev") {
       window.location.href = "https://github.com/stinkyFerret01";
+    } else if (terminalCommand === "reset") {
+      setBios(false);
+      setDisplayControl(false);
+      setDisplayTerminalComHelper(false);
+    } else if (terminalCommand === "play") {
+      setIsLoading(5);
     }
     setTerminalCommand("");
   };

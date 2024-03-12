@@ -62,10 +62,12 @@ const HomePage = ({
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
                 isPlaying={isPlaying}
+                displayTerminalComHelper={displayTerminalComHelper}
               />
             </div>
             <div className="responsive-home-container">
               <Terminal
+                setIsLoading={setIsLoading}
                 setBios={setBios}
                 setDisplayControl={setDisplayControl}
                 terminalEnabled={terminalEnabled}

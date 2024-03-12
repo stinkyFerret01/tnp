@@ -159,11 +159,16 @@
 .terminal-com-helper {
     color: lime;
 
+    width:100vw;
     padding: 4px;
     font-size: 0.8rem;
 
+    display: flex;
+    justify-content: space-between;
+
     position: absolute;
     top: 0;
+    left:0;
 }
 
 /* BOTTOM PART */
@@ -196,7 +201,7 @@
         position: absolute;
         top: 0;
         left:0;
-        width: 42vw;
+        width: 60vw;
     }
     .credits {
         width: 80vw;
