@@ -78,7 +78,9 @@ const AudioContext = ({
             if (musicTime > 0) {
               setTimeout(() => {
                 setIsPlaying(true);
-                setIsLoading(100);
+                setTimeout(() => {
+                  setIsLoading(100);
+                }, 100);
                 clearInterval(checkCurrentTimeInterval);
               }, contextOutputLatency);
             }
