@@ -139,11 +139,10 @@ const GameButton = ({
     timeoutedSetter([false, true], setTargetBlocker, tempo);
     shootResultDefiner();
     doubleClickBCancel.current = true;
+  };
 
-    const timer = setTimeout(() => {
-      doubleClickBCancel.current = false;
-    }, tempo);
-    return () => clearTimeout(timer);
+  const stopHandleShoot = () => {
+    doubleClickBCancel.current = false;
   };
 
   //--> triggs the activation off the gameButton
@@ -159,6 +158,7 @@ const GameButton = ({
     <button
       className={`game-button ${buttonStatus}`}
       onTouchStart={handleShoot}
+      onTouchEnd={stopHandleShoot}
       onClick={handleShoot}
     >
       {label.toUpperCase()}
