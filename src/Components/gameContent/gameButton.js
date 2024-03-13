@@ -1,6 +1,6 @@
 //==> Game button est l'element principal du jeux pour le Player
 //==> il s'invoque avec une prop "word" qui défini sa valeur
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 //==> data
 import hsbfGameData from "../../Data/hbfsGameData";
@@ -31,7 +31,7 @@ const GameButton = ({
 
   //==> block Player's click when true (anti-spam)
   const [targetBlocker, setTargetBlocker] = useState(false);
-  const doubleClickBCancel = useRef(false);
+  // const doubleClickBCancel = useRef(false);
 
   //==> stores the time out from "on" to "miss"
   const [turnOffTimeoutId, setTurnOffTimeoutId] = useState(null);
