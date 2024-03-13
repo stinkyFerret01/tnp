@@ -134,11 +134,19 @@ const GameButton = ({
   //   shootResultDefiner();
   // };
 
+  const handleTouch = () => {
+    doubleClickBCancel.current = true;
+    handleShoot();
+  };
+
   const handleShoot = () => {
     if (doubleClickBCancel.current) return;
     timeoutedSetter([false, true], setTargetBlocker, tempo);
     shootResultDefiner();
-    doubleClickBCancel.current = true;
+  };
+
+  const handleClick = () => {
+    handleShoot();
   };
 
   const stopHandleShoot = () => {
@@ -157,9 +165,9 @@ const GameButton = ({
   return (
     <button
       className={`game-button ${buttonStatus}`}
-      onTouchStart={handleShoot}
+      onTouchStart={handleTouch}
       onTouchEnd={stopHandleShoot}
-      // onClick={handleShoot}
+      onClick={handleClick}
     >
       {label.toUpperCase()}
     </button>
