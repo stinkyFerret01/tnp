@@ -159,7 +159,7 @@ const GameButton = ({
       className={`game-button ${buttonStatus}`}
       onTouchStart={handleShoot}
       onTouchEnd={stopHandleShoot}
-      onClick={handleShoot}
+      // onClick={handleShoot}
     >
       {label.toUpperCase()}
     </button>
