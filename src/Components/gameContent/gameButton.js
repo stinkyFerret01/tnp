@@ -129,30 +129,27 @@ const GameButton = ({
   };
 
   //--> calculates results when any gameButton is clicked at any time
-  // const handleShoot = () => {
-  //   timeoutedSetter([false, true], setTargetBlocker, tempo);
-  //   shootResultDefiner();
-  // };
-
-  const handleTouch = () => {
-    if (doubleClickBCancel.current) return;
-    doubleClickBCancel.current = true;
-    handleShoot();
-  };
-
   const handleShoot = () => {
     timeoutedSetter([false, true], setTargetBlocker, tempo);
     shootResultDefiner();
   };
 
-  const handleClick = () => {
-    if (doubleClickBCancel.current) return;
-    handleShoot();
-  };
-
-  const stopHandleShoot = () => {
-    doubleClickBCancel.current = false;
-  };
+  //---- onTouch test (wip) ----
+  // const handleTouch = () => {
+  //   doubleClickBCancel.current = true;
+  //   handleShoot();
+  // };
+  // const handleShoot = () => {
+  //   if (doubleClickBCancel.current) return;
+  //   timeoutedSetter([false, true], setTargetBlocker, tempo);
+  //   shootResultDefiner();
+  // };
+  // const handleClick = () => {
+  //   handleShoot();
+  // };
+  // const stopHandleShoot = () => {
+  //   doubleClickBCancel.current = false;
+  // };
 
   //--> triggs the activation off the gameButton
   useEffect(() => {
@@ -166,9 +163,9 @@ const GameButton = ({
   return (
     <button
       className={`game-button ${buttonStatus}`}
-      onTouchStart={handleTouch}
-      onTouchEnd={stopHandleShoot}
-      onClick={handleClick}
+      // onTouchStart={handleShoot}
+      // onTouchEnd={stopHandleShoot}
+      onClick={handleShoot}
     >
       {label.toUpperCase()}
     </button>
