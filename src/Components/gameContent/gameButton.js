@@ -135,17 +135,18 @@ const GameButton = ({
   // };
 
   const handleTouch = () => {
+    if (doubleClickBCancel.current) return;
     doubleClickBCancel.current = true;
     handleShoot();
   };
 
   const handleShoot = () => {
-    if (doubleClickBCancel.current) return;
     timeoutedSetter([false, true], setTargetBlocker, tempo);
     shootResultDefiner();
   };
 
   const handleClick = () => {
+    if (doubleClickBCancel.current) return;
     handleShoot();
   };
 
