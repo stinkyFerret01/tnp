@@ -8,8 +8,6 @@ import hsbfGameData from "../../Data/hbfsGameData";
 //==> utils
 import timeoutedSetter from "../../utils/timeoutedSetter";
 
-// const lasers = [laser, laser2, laser3, laser4];
-
 const GameButton = ({
   label,
   beat,
@@ -32,14 +30,6 @@ const GameButton = ({
   const [turnOffTimeoutId, setTurnOffTimeoutId] = useState(null);
 
   const tempo = hsbfGameData.tempo;
-
-  //--> plays buzz or laser when Player shots
-
-  // const laserPlayer = () => {
-  //   const randomNumber = Math.floor(Math.random() * 4);
-  //   const audio = new Audio(lasers[randomNumber]);
-  //   audio.play();
-  // };
 
   //==> stops the activation if Player clicked very close before it was time
   const clearTimeoutByLabel = () => {

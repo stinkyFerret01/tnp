@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import GamePageTop from "../Components/gameContent/gamePageTop/gamePageTop";
 import ButtonPanel from "../Components/gameContent/buttonPanel";
 import GamePageBottom from "../Components/gameContent/gamePageBottom";
+//---- sounds for score events (WIP) ----
 import PlayBuzz from "../Data/sounds/playBuzz";
 import PlayLaser from "../Data/sounds/playLaser";
 
@@ -38,6 +39,7 @@ const GamePage = ({
 
   return (
     <main className="game-page">
+      {/* ---- sounds for score events (WIP) ---- */}
       {isPlaying && <PlayBuzz event={missedShots} />}
       {isPlaying && <PlayLaser event={score} />}
       <GamePageTop

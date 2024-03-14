@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import buzz from "../sounds/buzz.mp3";
+import buzz from "../sounds/buzz00.mp3";
 
 const PlayBuzz = ({ event }) => {
   const [isPreLoading, setIsPreLoading] = useState(true);
