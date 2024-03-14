@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
 
-import buzz from "../sounds/buzz.mp3";
+import laser from "../sounds/laser.mp3";
 
-const PlayBuzz = ({ event }) => {
+const PlayLaser = ({ event }) => {
   const [isPreLoading, setIsPreLoading] = useState(true);
-  const [audio] = useState(new Audio(buzz));
+  const [audio] = useState(new Audio(laser));
 
   useEffect(() => {
     audio.preload = "auto";
   }, [audio]);
 
   useEffect(() => {
-    const buzzPlayer = () => {
+    const laserPlayer = () => {
       audio.play();
     };
     if (!isPreLoading) {
-      buzzPlayer();
+      laserPlayer();
     }
     setIsPreLoading(false);
 
@@ -23,4 +23,4 @@ const PlayBuzz = ({ event }) => {
   }, [event, audio]);
 };
 
-export default PlayBuzz;
+export default PlayLaser;
