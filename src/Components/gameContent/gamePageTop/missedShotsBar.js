@@ -6,14 +6,14 @@ import hsbfGameData from "../../../Data/hbfsGameData";
 //==> utils
 import timeoutedSetter from "../../../utils/timeoutedSetter";
 
+const tempo = hsbfGameData.tempo;
+
 const MissedShotsBar = ({ setAudioCommand, beat, missedShots }) => {
   //--> stores oppacity for animation when any score value increases
   const [missedShotOpacity, setMissedShotOpacity] = useState(0.5);
 
   //--> stores alertState according to missedShots.length
   const [dangerAlert, setDangerAlert] = useState(null);
-
-  const tempo = hsbfGameData.tempo;
 
   //--> missedShots has a different color according to their position
   const missedShotsColorDefiner = (index) => {
@@ -49,7 +49,7 @@ const MissedShotsBar = ({ setAudioCommand, beat, missedShots }) => {
     } else {
       setDangerAlert(null);
     }
-  }, [beat, missedShots, tempo]);
+  }, [beat, missedShots]);
 
   //--> sets the gameState to game over
   useEffect(() => {

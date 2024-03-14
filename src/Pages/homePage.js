@@ -17,15 +17,17 @@ const HomePage = ({
   isLoading,
   setIsLoading,
 }) => {
-  //--> access to the terminal enabled when true
+  //==> access to the terminal enabled when true
   const [terminalEnabled, setTerminalEnabled] = useState(false);
 
-  //--> displays the terminal command helper when true
+  //==> displays the terminal command helper when true
   const [displayTermComHelper, setDisplayTermComHelper] = useState(false);
+  //==> sets the terminal on another position when <= 400px (mobile on side)
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
 
   const navigate = useNavigate();
 
+  //--> controls the screenHeight to adapt style
   useEffect(() => {
     const handleResize = () => {
       setScreenHeight(window.innerHeight);
@@ -42,17 +44,12 @@ const HomePage = ({
       setAudioCommand({
         actionX: "play",
       });
-    }
-  }, [isLoading, isPlaying, setAudioCommand]);
-
-  //--> navigates to gamePage when isPlaying gets trigged
-  useEffect(() => {
-    if (isLoading === 100) {
+    } else if (isLoading === 100) {
       setTimeout(() => {
         navigate("/game");
       }, 60);
     }
-  }, [isLoading, navigate]);
+  }, [isLoading, isPlaying, setAudioCommand, navigate]);
 
   return (
     <main className="home-page">
@@ -78,7 +75,7 @@ const HomePage = ({
             <div
               className="responsive-home-container"
               style={
-                displayTermComHelper && screenHeight < 401
+                displayTermComHelper && screenHeight <= 400
                   ? { marginLeft: "36vw" }
                   : {}
               }

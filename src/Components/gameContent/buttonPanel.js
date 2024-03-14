@@ -13,7 +13,6 @@ import BeatGridGenerator from "./beatGridGenerator";
 const ButtonPanel = ({
   beat,
   setBeat,
-  score,
   setScore,
   setMissedTargets,
   missedShots,

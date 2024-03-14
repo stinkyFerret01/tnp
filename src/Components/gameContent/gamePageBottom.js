@@ -24,7 +24,6 @@ const GamePageBottom = ({
       setTimeout(() => {
         navigate("/");
       }, 100);
-      navigate("/");
     }
   };
 

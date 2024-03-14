@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import dateFormatter from "../../utils/dateFormatter";
 
-//---- (control purpose -- LOG ONLY) ----
+//---- (control purpose) ----
 //--> checks if the delay is negative
 // import delayControlerLog from "../../utils/logs/delayControlerLog";
 
@@ -42,7 +42,6 @@ const BeatInitialiser = ({
       let beatDate = Date.now();
       let delay = target - beatDate;
 
-      //---- (control purpose -- LOG ONLY) ----
       delayControler(delay);
 
       //--> nextBeat
@@ -53,7 +52,6 @@ const BeatInitialiser = ({
       //--> stops the beat loop (reseting initBeatDate)
     } else if (initBeatDate > 0 && beat === 1879) {
       setAudioCommand({ actionX: "stop" });
-      // setInitBeatDate(0);
 
       //--> resets the beat
     } else if (initBeatDate === 0 && beat > 0) {

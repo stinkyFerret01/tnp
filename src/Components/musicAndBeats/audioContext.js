@@ -81,8 +81,8 @@ const AudioContext = ({
                 //-- we don't get why timeout is needed here for mobile devices --
                 //-- if setIsLoading(100) without timeout, the beat initiliser won't start,
                 // but the music will, (beat will stay null), it only occurs
-                // when the app was turned on, if you press back and play again,
-                // no problem will occur --
+                // when the app was just turned on, if you press back and play again,
+                // the problem will not occur --
                 setTimeout(() => {
                   setIsLoading(100);
                 }, 100);

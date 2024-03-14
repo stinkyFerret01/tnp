@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import GamePageTop from "../Components/gameContent/gamePageTop/gamePageTop";
 import ButtonPanel from "../Components/gameContent/buttonPanel";
 import GamePageBottom from "../Components/gameContent/gamePageBottom";
+import PlayBuzz from "../Data/sounds/playBuzz";
 
 const GamePage = ({
   audioCommand,
@@ -15,7 +16,7 @@ const GamePage = ({
 }) => {
   //==> stores the timeoutIds so they can be cleared if Player stops game
   const [buttonActTimeoutIds, setButtonActTimeoutIds] = useState([]);
-  //==> stores the objects taht generate laser animation for goodWords
+  //==> stores the objects that generates grids animation for each goodWord
   const [beatWawes, setBeatWawes] = useState([]);
 
   //==> stores the current game scores value
@@ -36,6 +37,7 @@ const GamePage = ({
 
   return (
     <main className="game-page">
+      <PlayBuzz event={missedShots} />
       <GamePageTop
         setAudioCommand={setAudioCommand}
         isPlaying={isPlaying}

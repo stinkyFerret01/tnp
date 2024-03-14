@@ -10,16 +10,18 @@ const WrittingText = ({
   const [displayedText, setDisplayedText] = useState("");
   const [underScore, setUnderScore] = useState(" ");
 
+  const [displayIntervalId, setDisplayIntervalId] = useState(null);
+
   //--> underscore blinker
   useEffect(() => {
     if (underScore === " ") {
       setTimeout(() => {
         setUnderScore("_");
-      }, 242);
+      }, 240);
     } else {
       setTimeout(() => {
         setUnderScore(" ");
-      }, 242);
+      }, 240);
     }
   }, [underScore]);
 
@@ -34,14 +36,24 @@ const WrittingText = ({
         clearInterval(intervalId);
       }
     }, 100);
+    setDisplayIntervalId(intervalId);
 
     return () => clearInterval(intervalId);
   }, [text, setTerminalEnabled]);
 
+  //==> displays the full text when clicked on
+  const textSpoiler = () => {
+    clearInterval(displayIntervalId);
+    setTerminalEnabled(true);
+    setTimeout(() => {
+      setDisplayedText(text);
+    }, 110);
+  };
+
   return (
     !displayTermComHelper && (
       <div
-        onClick={() => setTerminalEnabled(true)}
+        onClick={textSpoiler}
         className="game-text-container centered"
         style={{ whiteSpace: "pre-wrap" }}
       >
