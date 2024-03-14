@@ -4,8 +4,8 @@ import GamePageTop from "../Components/gameContent/gamePageTop/gamePageTop";
 import ButtonPanel from "../Components/gameContent/buttonPanel";
 import GamePageBottom from "../Components/gameContent/gamePageBottom";
 //---- sounds for score events (WIP) ----
-import PlayBuzz from "../Data/sounds/playBuzz";
-import PlayLaser from "../Data/sounds/playLaser";
+// import PlayBuzz from "../Data/sounds/playBuzz";
+// import PlayLaser from "../Data/sounds/playLaser";
 
 const GamePage = ({
   audioCommand,
@@ -40,8 +40,8 @@ const GamePage = ({
   return (
     <main className="game-page">
       {/* ---- sounds for score events (WIP) ---- */}
-      {isPlaying && <PlayBuzz event={missedShots} />}
-      {isPlaying && <PlayLaser event={score} />}
+      {/* {isPlaying && <PlayBuzz event={missedShots} />} */}
+      {/* {isPlaying && <PlayLaser event={score} />} */}
       <GamePageTop
         setAudioCommand={setAudioCommand}
         isPlaying={isPlaying}
